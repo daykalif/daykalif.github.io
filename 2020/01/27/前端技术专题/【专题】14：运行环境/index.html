@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="运行环境运行环境即浏览器（server 端有 nodejs）下载网页源代码，渲染出页面，期间会执行若干 JS要保证代码在浏览器中：稳定且高效 一、网页加载过程 1.加载资源的形式  html 代码媒体文件，如图片、视频等JavaScript css  2.加载资源的过程  DNS 解析：域名-&gt;IP 地址浏览器根据 IP 地址向服务器发起 http 请求服务器处理请求 http 请求，并返回">
+<meta property="og:type" content="article">
+<meta property="og:title" content="运行环境">
+<meta property="og:url" content="https://daykalif.github.io/2020/01/27/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%9114%EF%BC%9A%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="运行环境运行环境即浏览器（server 端有 nodejs）下载网页源代码，渲染出页面，期间会执行若干 JS要保证代码在浏览器中：稳定且高效 一、网页加载过程 1.加载资源的形式  html 代码媒体文件，如图片、视频等JavaScript css  2.加载资源的过程  DNS 解析：域名-&gt;IP 地址浏览器根据 IP 地址向服务器发起 http 请求服务器处理请求 http 请求，并返回">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-01-27T12:34:16.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:49:54.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2020/01/27/前端技术专题/【专题】14：运行环境/"/>
+
+
+
+
+
+  <title>运行环境 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2020/01/27/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%9114%EF%BC%9A%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">运行环境</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-27T20:34:16+08:00">
+                2020-01-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/01/27/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%9114%EF%BC%9A%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/01/27/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%9114%EF%BC%9A%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2020/01/27/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%9114%EF%BC%9A%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83/" class="leancloud_visitors" data-flag-title="运行环境">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h4><p>运行环境即浏览器（server 端有 nodejs）<br>下载网页源代码，渲染出页面，期间会执行若干 JS<br>要保证代码在浏览器中：稳定且高效</p>
+<h5 id="一、网页加载过程"><a href="#一、网页加载过程" class="headerlink" title="一、网页加载过程"></a>一、网页加载过程</h5><blockquote>
+<p>1.加载资源的形式</p>
+</blockquote>
+<p>html 代码<br>媒体文件，如图片、视频等<br>JavaScript css</p>
+<blockquote>
+<p>2.加载资源的过程</p>
+</blockquote>
+<p>DNS 解析：域名-&gt;IP 地址<br>浏览器根据 IP 地址向服务器发起 http 请求<br>服务器处理请求 http 请求，并返回给浏览器</p>
+<blockquote>
+<p>3.渲染页面的过程</p>
+</blockquote>
+<p>根据 HTML 代码生成 DOM Tree<br>根据 CSS 代码生成 CSSOM<br>将 DOM Tree 和 CSSOM 整合形成 Render Tree<br>根据 Render Tree 渲染页面<br>遇到 script 标签则暂停渲染，优先加载并执行 JS 代码，完成再继续<br>直至把 Render Tree 渲染完成</p>
+<blockquote>
+<p>问：为何建议把 css 放到 head 中？</p>
+</blockquote>
+<p>在 DOM 树生成完成之前，就把 css 加载完，将 DOM Tree 和 CSSOM 整合形成 Render Tree</p>
+<blockquote>
+<p>问：为何建议把 js 放到 body 最后？</p>
+</blockquote>
+<p>本来渲染一部分，遇到 js 会暂停渲染，优先加载并执行 JS 代码，完成再继续【在 body 里面的最后】</p>
+<p>或者利用 window.onload &#x3D; function(){}代码包裹，文档加载之后再执行，或者 readyState 来触发 js，不建议放在 head 中。</p>
+<blockquote>
+<p>问：从输入 url 到渲染出页面的整个过程</p>
+</blockquote>
+<p>下载资源：各个资源类型，下载过程<br>渲染页面：结合 html css javascript 图片等</p>
+<blockquote>
+<p>window.onload 和 DOMContentLoaded 的区别</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;load&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//页面的全部资源加载完才会执行，包括图片、视频等</span></span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;DOMContentLoaded&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//DOM渲染完即可执行，此时图片、视频还可能没有加载完</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>window.onload：资源全部加载完才能执行，包括图片<br>DOMContentLoade ：DOM 渲染完成即可，图片可能尚未下载</p>
+<h5 id="二、性能优化（体验优化）"><a href="#二、性能优化（体验优化）" class="headerlink" title="二、性能优化（体验优化）"></a>二、性能优化（体验优化）</h5><p>性能优化原则：<br>多使用内存、缓存或其他方法<br>减少 CPU 计算量，减少网络加载耗时<br>（适用于所有编程的性能优化—空间换时间）</p>
+<h6 id="1-让加载更快"><a href="#1-让加载更快" class="headerlink" title="1.让加载更快"></a>1.让加载更快</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">减少资源体积：压缩代码【如webpack】【服务器端gzip压缩，浏览器进行反解析】</span><br><span class="line">减少访问次数：合并代码【如webpack，如雪碧图】，SSR服务端渲染，缓存</span><br><span class="line">   【缓存】：静态资源加<span class="built_in">hash</span>后缀，根据文件内容计算<span class="built_in">hash</span></span><br><span class="line">文件内容不变，则<span class="built_in">hash</span>不变，则url不变</span><br><span class="line">url和文件不变，则会自动触发http缓存机制，返回304</span><br><span class="line">   【SSR】:服务器端渲染：将网页和数据一起加载，一起渲染</span><br><span class="line">          非SSR（前后端分离）：先加载网页，再加载数据，再渲染数据</span><br><span class="line">          早先的JSP ASP PHP，现在的Vue React SSR</span><br><span class="line">使用更快的网络：CDN</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-让渲染更快"><a href="#2-让渲染更快" class="headerlink" title="2.让渲染更快"></a>2.让渲染更快</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CSS放在<span class="built_in">head</span>，JS放在body最下面</span><br><span class="line">尽早开始执行JS，用DOMContentLoaded触发</span><br><span class="line">懒加载（图片懒加载，上滑加载更多）【将图片地址放在自定义属性data-realsrc中，需要加载时再将地址赋值给src】</span><br><span class="line">对DOM查询进行缓存【例：循环时，将所有节点数量保存起来，再循环，而不是在<span class="keyword">for</span>中每次都去计算数量】</span><br><span class="line">频繁DOM操作，合并到一起插入DOM结构【使用文档碎片】</span><br><span class="line">节流throttle  防抖debounce</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>防抖 debounce</p>
+</blockquote>
+<p>监听一个输入框的，文字变化后触发 change 事件<br>直接用 keyup 事件，则会频发触发 change 事件<br>防抖：用户输入结束或暂停时，才会触发 change 事件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> input1 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;input1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// let timer = null</span></span><br><span class="line"><span class="comment">// input1.addEvent  Listener(&#x27;keyup&#x27;, function () &#123;</span></span><br><span class="line"><span class="comment">//     if (timer) &#123;</span></span><br><span class="line"><span class="comment">//         clearTimeout(timer)</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     timer = setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="comment">//         // 模拟触发 change 事件</span></span><br><span class="line"><span class="comment">//         console.log(input1.value)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//         // 清空定时器</span></span><br><span class="line"><span class="comment">//         timer = null</span></span><br><span class="line"><span class="comment">//     &#125;, 500)</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 封装防抖</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">debounce</span>(<span class="params">fn, delay = <span class="number">500</span></span>) &#123;</span><br><span class="line">  <span class="comment">// timer 是闭包中的</span></span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="number">2</span>); <span class="comment">//指向container</span></span><br><span class="line">    <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">      <span class="built_in">clearTimeout</span>(timer);</span><br><span class="line">    &#125;</span><br><span class="line">    timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="number">3</span>);</span><br><span class="line">      fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, <span class="variable language_">arguments</span>);</span><br><span class="line">      timer = <span class="literal">null</span>;</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line">input1.<span class="title function_">addEventListener</span>(</span><br><span class="line">  <span class="string">&quot;keyup&quot;</span>,</span><br><span class="line">  <span class="title function_">debounce</span>(<span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">this</span>, <span class="string">&quot;a&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">target</span>, <span class="string">&quot;b&quot;</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(input1.<span class="property">value</span>, <span class="string">&quot;c&quot;</span>);</span><br><span class="line">  &#125;, <span class="number">600</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="comment">//-------------详细封装的防抖函数-----------------</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">debounce</span>(<span class="params">func, wait, immediate</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> timeout, result;</span><br><span class="line">  <span class="keyword">let</span> debounced = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// console.log(this);  //=&gt;从中可以测试出this指向的container</span></span><br><span class="line">    <span class="keyword">let</span> _this = <span class="variable language_">this</span>; <span class="comment">//保存this</span></span><br><span class="line">    <span class="keyword">let</span> args = <span class="variable language_">arguments</span>; <span class="comment">// 获取对应的实参，解决前面的event指向问题</span></span><br><span class="line">    <span class="built_in">clearTimeout</span>(timeout); <span class="comment">// 清空上从定时器</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (immediate) &#123;</span><br><span class="line">      <span class="comment">//表示立即执行</span></span><br><span class="line">      <span class="comment">//第三个问题，解决立即执行防抖函数</span></span><br><span class="line">      <span class="keyword">let</span> callNow = !timeout;</span><br><span class="line">      <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        timeout = <span class="literal">null</span>;</span><br><span class="line">      &#125;, wait);</span><br><span class="line">      <span class="keyword">if</span> (callNow) result = func.<span class="title function_">apply</span>(_this, args);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">//不会立即执行</span></span><br><span class="line">      timeout = <span class="built_in">setTimeout</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="comment">// console.log(this)  //=&gt;这里面的this指向window，也就是前面的count那的this是指向window</span></span><br><span class="line">        <span class="comment">//但是防抖函数的this应该是指向container</span></span><br><span class="line">        result = func.<span class="title function_">apply</span>(_this, args);</span><br><span class="line">      &#125;, wait);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result; <span class="comment">//第四个问题，增加函数的返回结果</span></span><br><span class="line">  &#125;;</span><br><span class="line">  debounced.<span class="property">cancel</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//增加取消防抖</span></span><br><span class="line">    <span class="built_in">clearTimeout</span>(timeout);</span><br><span class="line">    timeout = <span class="literal">null</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> debounced;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Container</span> = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#container&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">CancelDebounce</span> = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#btn&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">doSomething</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e, <span class="string">&quot;第二个问题.由原来的undefined，指向当前鼠标事件对象&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">    <span class="variable language_">this</span>,</span><br><span class="line">    <span class="string">&quot;第一个问题.由原来指向window，改变成指向container【改变执行函数内部的this指向】&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="title class_">Container</span>.<span class="property">innerHTML</span> = count++; <span class="comment">//可能会做回调或者ajax请求</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;想要的结果&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> doSome = <span class="title function_">debounce</span>(doSomething, <span class="number">1000</span>);</span><br><span class="line"><span class="title class_">CancelDebounce</span>.<span class="property">onclick</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//取消防抖</span></span><br><span class="line">  doSome.<span class="title function_">cancel</span>();</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//高阶函数 防抖</span></span><br><span class="line"><span class="comment">// Container.onMouseMove = debounce(doSomething,1000,true);</span></span><br><span class="line"><span class="title class_">Container</span>.<span class="property">onMouseMove</span> = doSome;</span><br></pre></td></tr></table></figure>
+
+<p>防抖：事件响应函数在一段时间后才执行，如果在这段时间内再次调用，则重新计算执行时间；当预定的时间内没有再次调用该函数，则执行 doSomething</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">防抖函数常见应用：</span><br><span class="line">    scroll事件的滚动触发</span><br><span class="line">    搜索框输入查询</span><br><span class="line">    表单验证</span><br><span class="line">    按钮提交事件</span><br><span class="line">    浏览器<span class="string">&#x27;窗口缩放,resize事件&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>节流 throttle</p>
+</blockquote>
+<p>拖拽一个元素时，要随时拿到该元素被拖拽的位置<br>直接用 drag 事件，则会频发触发，很容易导致卡顿<br>节流：无论拖拽速度多快，都会每隔 100ms 触发一次</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> div1 = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;div1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// let timer = null</span></span><br><span class="line"><span class="comment">// div1.addEventListener(&#x27;drag&#x27;, function (e) &#123;</span></span><br><span class="line"><span class="comment">//     if (timer) &#123;</span></span><br><span class="line"><span class="comment">//         return</span></span><br><span class="line"><span class="comment">//     &#125;</span></span><br><span class="line"><span class="comment">//     timer = setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="comment">//         console.log(e.offsetX, e.offsetY)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//         timer = null</span></span><br><span class="line"><span class="comment">//     &#125;, 100)</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 封装节流</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">throttle</span>(<span class="params">fn, delay = <span class="number">100</span></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> timer = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (timer) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    timer = <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      fn.<span class="title function_">apply</span>(<span class="variable language_">this</span>, <span class="variable language_">arguments</span>);</span><br><span class="line">      timer = <span class="literal">null</span>;</span><br><span class="line">    &#125;, delay);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">div1.<span class="title function_">addEventListener</span>(</span><br><span class="line">  <span class="string">&quot;drag&quot;</span>,</span><br><span class="line">  <span class="title function_">throttle</span>(<span class="keyword">function</span> (<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(e.<span class="property">offsetX</span>, e.<span class="property">offsetY</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">div1.<span class="title function_">addEventListener</span>(<span class="string">&quot;drag&quot;</span>, <span class="keyword">function</span> (<span class="params">event</span>) &#123;&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//------详细封装的节流函数---------------</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">throttle</span>(<span class="params">func, wait, options</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> _this, args, timeout;</span><br><span class="line">  <span class="keyword">let</span> old = <span class="number">0</span>; <span class="comment">//之前的时间戳</span></span><br><span class="line">  <span class="keyword">if</span> (!options) options = &#123;&#125;; <span class="comment">//如果没有options就将其设置为空对象</span></span><br><span class="line">  <span class="keyword">let</span> later = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    old = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">valueOf</span>(); <span class="comment">//每隔1秒执行之后，需要更新时间</span></span><br><span class="line">    timeout = <span class="literal">null</span>;</span><br><span class="line">    func.<span class="title function_">apply</span>(_this, args);</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    _this = <span class="variable language_">this</span>;</span><br><span class="line">    args = <span class="variable language_">arguments</span>;</span><br><span class="line">    <span class="keyword">let</span> now = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">valueOf</span>(); <span class="comment">//获取当前时间戳</span></span><br><span class="line">    <span class="keyword">if</span> (options.<span class="property">leading</span> === <span class="literal">false</span> &amp;&amp; !old) &#123;</span><br><span class="line">      <span class="comment">//让第一次不进入</span></span><br><span class="line">      old = now;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (now - old &gt; wait) &#123;</span><br><span class="line">      <span class="comment">// 如果走到这里，表示第一次会直接执行</span></span><br><span class="line">      <span class="keyword">if</span> (timeout) &#123;</span><br><span class="line">        <span class="built_in">clearTimeout</span>(timeout);</span><br><span class="line">        timeout = <span class="literal">null</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      func.<span class="title function_">apply</span>(_this, args);</span><br><span class="line">      old = now;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!timeout &amp;&amp; options.<span class="property">trailing</span> !== <span class="literal">false</span>) &#123;</span><br><span class="line">      <span class="comment">//每隔1秒会执行</span></span><br><span class="line">      <span class="comment">//最后一次也被执行</span></span><br><span class="line">      timeout = <span class="built_in">setTimeout</span>(later, wait);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">doThrottle</span>(<span class="params">e</span>) &#123;</span><br><span class="line">  container.<span class="property">innerHTML</span> = count++;</span><br><span class="line">&#125;</span><br><span class="line">container.<span class="property">onmousemove</span> = <span class="title function_">throttle</span>(doThrottle, <span class="number">1000</span>, &#123;</span><br><span class="line">  <span class="attr">leading</span>: <span class="literal">false</span>, <span class="comment">//是否立即执行【否】</span></span><br><span class="line">  <span class="attr">trailing</span>: <span class="literal">true</span>, <span class="comment">//最后一次是否执行</span></span><br><span class="line">  <span class="comment">//两者不能同为false,否则就会产生bug,会导致触发事件立即执行一次后就失效了!</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">节流应用场景：</span><br><span class="line">    DOM元素的拖拽功能的实现</span><br><span class="line">    射击游戏中的每隔一段时间射击</span><br><span class="line">    计算鼠标移动的距离</span><br><span class="line">    监听scroll滚动事件</span><br><span class="line">    搜索联想</span><br><span class="line">    高频点击提交,表单重复提交</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>防抖节流之间的异同比较</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">相同:</span><br><span class="line">    都可以通过setTimeout实现</span><br><span class="line">    目的都是:降低回调执行频率,节省计算资源</span><br><span class="line">不同:</span><br><span class="line">    函数防抖: 在一段连续操作结束后,处理回调,利用clearTimeout和setTimeout实现.</span><br><span class="line">    函数节流:在一段连续操作中,每一段时间只执行一次,频率较高的时间中使用来提高性能.</span><br><span class="line">    函数防抖关注一定时间连续触发的事件只在最后执行,而函数节流侧重于一段时间内只执行一次!</span><br></pre></td></tr></table></figure>
+
+<h5 id="三、安全"><a href="#三、安全" class="headerlink" title="三、安全"></a>三、安全</h5><blockquote>
+<p>问：常见的 web 前端攻击方式有哪些？</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">XSS跨站请求攻击：</span><br><span class="line">    一个博客网站，我发表一篇博客，其中嵌入script脚本</span><br><span class="line">    脚本内容：获取cookie，发送到我的服务器（服务器配合跨域）</span><br><span class="line">    发布这篇博客，有人查看它，我轻松收割访问者的cookie</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">XSS预防：</span><br><span class="line">    替换特殊字符，如&lt;变为&amp;lt;&gt;变为&amp;gt;</span><br><span class="line">    &lt;scrtip&gt;变为&amp;lt;script&amp;gt;，直接显示，而不会作为脚本执行</span><br><span class="line">    前端要替换，后端也要替换，都做总不会有错</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">XSRF跨站请求伪造：</span><br><span class="line">    你正在购物，看中了某个商品，商品<span class="built_in">id</span>是100</span><br><span class="line">    付费接口是xxx.com/pay?<span class="built_in">id</span>=100,但没有任何验证</span><br><span class="line">    我是攻击者，我看中了一个商品，<span class="built_in">id</span>是200</span><br><span class="line">    我向你发送一封电子邮件，邮件标题很吸引人</span><br><span class="line">    但邮件正文隐藏着&lt;img src=xxx.com/pay?<span class="built_in">id</span>=200/&gt;</span><br><span class="line">    你一查看邮件，就帮我购买了<span class="built_in">id</span>是200的商品</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">XSRF预防：</span><br><span class="line">    使用post接口</span><br><span class="line">    增加验证，例如密码、短信验证码、指纹等</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/01/27/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%9112%EF%BC%9Ahttp%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/" rel="next" title="http浏览器缓存">
+                <i class="fa fa-chevron-left"></i> http浏览器缓存
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/08/JS/%E6%B5%85%E6%8B%B7%E8%B4%9D/" rel="prev" title="浅拷贝">
+                浅拷贝 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">运行环境</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E9%A1%B5%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">一、网页加载过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%EF%BC%88%E4%BD%93%E9%AA%8C%E4%BC%98%E5%8C%96%EF%BC%89"><span class="nav-number">1.2.</span> <span class="nav-text">二、性能优化（体验优化）</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E8%AE%A9%E5%8A%A0%E8%BD%BD%E6%9B%B4%E5%BF%AB"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.让加载更快</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E8%AE%A9%E6%B8%B2%E6%9F%93%E6%9B%B4%E5%BF%AB"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.让渲染更快</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%AE%89%E5%85%A8"><span class="nav-number">1.3.</span> <span class="nav-text">三、安全</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

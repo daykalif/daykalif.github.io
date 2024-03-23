@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.1234567891011121314151617181920212223242526&#x2F;** * 给定一个正整数N代表火车数量，0&lt;N&lt;10，接下来输入火车入站的序列，一共N辆火车，每辆火车以数字1-9编号，火车站只有一个方向进出，同时停靠在火车站的列车中，只有后进站的出站了，先进站的才能出站。要求输出所有火车出站的方案，以字典序排序输出。输入描述：有多组测试用例，每一组第一行输入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题6：前端中等编程题--无答案">
+<meta property="og:url" content="https://daykalif.github.io/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%986%EF%BC%9A%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%AD%89%E7%BC%96%E7%A8%8B%E9%A2%98--%E6%97%A0%E7%AD%94%E6%A1%88/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="1.1234567891011121314151617181920212223242526&#x2F;** * 给定一个正整数N代表火车数量，0&lt;N&lt;10，接下来输入火车入站的序列，一共N辆火车，每辆火车以数字1-9编号，火车站只有一个方向进出，同时停靠在火车站的列车中，只有后进站的出站了，先进站的才能出站。要求输出所有火车出站的方案，以字典序排序输出。输入描述：有多组测试用例，每一组第一行输入">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-01-06T15:11:24.000Z">
+<meta property="article:modified_time" content="2022-01-24T16:01:47.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2022/01/06/面试题/面试题6：前端中等编程题--无答案/"/>
+
+
+
+
+
+  <title>面试题6：前端中等编程题--无答案 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%986%EF%BC%9A%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%AD%89%E7%BC%96%E7%A8%8B%E9%A2%98--%E6%97%A0%E7%AD%94%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试题6：前端中等编程题--无答案</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-06T23:11:24+08:00">
+                2022-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%986%EF%BC%9A%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%AD%89%E7%BC%96%E7%A8%8B%E9%A2%98--%E6%97%A0%E7%AD%94%E6%A1%88/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%986%EF%BC%9A%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%AD%89%E7%BC%96%E7%A8%8B%E9%A2%98--%E6%97%A0%E7%AD%94%E6%A1%88/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%986%EF%BC%9A%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%AD%89%E7%BC%96%E7%A8%8B%E9%A2%98--%E6%97%A0%E7%AD%94%E6%A1%88/" class="leancloud_visitors" data-flag-title="面试题6：前端中等编程题--无答案">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  5.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  19
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1"><a href="#1" class="headerlink" title="1."></a>1.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 给定一个正整数N代表火车数量，0&lt;N&lt;10，接下来输入火车入站的序列，一共N辆火车，每辆火车以数字1-9编号，火车站只有一个方向进出，同时停靠在火车站的列车中，只有后进站的出站了，先进站的才能出站。</span><br><span class="line">要求输出所有火车出站的方案，以字典序排序输出。</span><br><span class="line"></span><br><span class="line">输入描述：有多组测试用例，每一组第一行输入一个正整数N（0</span><br><span class="line">输出描述：输出以字典序从小到大排序的火车出站序列号，每个编号以空格隔开，每个输出序列换行，具体见sample。</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">3</span><br><span class="line">1 2 3</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">1 2 3</span><br><span class="line">1 3 2</span><br><span class="line">2 1 3</span><br><span class="line">2 3 1</span><br><span class="line">3 2 1</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">第一种方案：1进、1出、2进、2出、3进、3出</span><br><span class="line">第二种方案：1进、1出、2进、3进、3出、2出</span><br><span class="line">第三种方案：1进、2进、2出、1出、3进、3出</span><br><span class="line">第四种方案：1进、2进、2出、3进、3出、1出</span><br><span class="line">第五种方案：1进、2进、3进、3出、2出、1出</span><br><span class="line">请注意，[3,1,2]这个序列是不可能实现的。</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *</span><br><span class="line">现在IPV4下用一个32位无符号整数来表示，一般用点分方式来显示，点将IP地址分成4个部分，每个部分为8位，</span><br><span class="line">表示成一个无符号整数（因此不需要用正号出现），如10.137.17.1，是我们非常熟悉的IP地址，</span><br><span class="line">一个IP地址串中没有空格出现（因为要表示成一个32数字）。</span><br><span class="line">现在需要你用程序来判断IP是否合法。</span><br><span class="line">注意本题有多组样例输入。</span><br><span class="line"></span><br><span class="line">输入描述：输入一个ip地址，保证是xx.xx.xx.xx的形式（xx为整数）</span><br><span class="line">输出描述：返回判断的结果YES or NO</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">10.138.15.1</span><br><span class="line">255.0.0.255</span><br><span class="line">255.255.255.1000</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">YES</span><br><span class="line">YES</span><br><span class="line">NO</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="3"><a href="#3" class="headerlink" title="3."></a>3.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 明明想在学校中请一些同学一起做一项问卷调查，为了实验的客观性，他先用计算机生成了N个1到1000之间的随机整数（N≤1000），</span><br><span class="line"> * 对于其中重复的数字，只保留一个，把其余相同的数去掉，不同的数对应着不同的学生的学号。然后再把这些数从小到大排序，</span><br><span class="line"> * 按照排好的顺序去找同学做调查。请你协助明明完成“去重”与“排序”的工作(同一个测试用例里可能会有多组数据，希望大家能正确处理)。</span><br><span class="line">注：测试用例保证输入参数的正确性，答题者无需验证。测试用例不止一组。</span><br><span class="line">当没有新的输入时，说明输入结束。</span><br><span class="line"></span><br><span class="line">输入描述：注意：输入可能有多组数据。每组数据都包括多行，第一行先输入随机整数的个数N，接下来的N行再输入相应个数的整数。</span><br><span class="line">具体格式请看下面的<span class="string">&quot;示例&quot;</span>。</span><br><span class="line"></span><br><span class="line">输出描述：返回多行，处理后的结果</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">2</span><br><span class="line">1</span><br><span class="line">11</span><br><span class="line">10</span><br><span class="line">20</span><br><span class="line">40</span><br><span class="line">32</span><br><span class="line">67</span><br><span class="line">40</span><br><span class="line">20</span><br><span class="line">89</span><br><span class="line">300</span><br><span class="line">400</span><br><span class="line">15</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">10</span><br><span class="line">15</span><br><span class="line">20</span><br><span class="line">32</span><br><span class="line">40</span><br><span class="line">67</span><br><span class="line">89</span><br><span class="line">300</span><br><span class="line">400</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">样例输入解释：</span><br><span class="line">样例有两组测试</span><br><span class="line">第一组是3个数字，分别是：2，2，1。</span><br><span class="line">第二组是11个数字，分别是：10，20，40，32，67，40，20，89，300，400，15。</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="4"><a href="#4" class="headerlink" title="4."></a>4.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 计算一个数字的立方根，不使用库函数。</span><br><span class="line">保留一位小数。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入描述：待求解参数，为double类型（一个实数）</span><br><span class="line">输出描述：输入参数的立方根。保留一位小数。</span><br><span class="line"></span><br><span class="line">输入：216</span><br><span class="line">输出：6.0</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="5"><a href="#5" class="headerlink" title="5."></a>5.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 功能:等差数列 2，5，8，11，14。。。。</span><br><span class="line">输入:正整数N &gt;0</span><br><span class="line">输出:求等差数列前N项和</span><br><span class="line">本题为多组输入，请使用<span class="keyword">while</span>(cin&gt;&gt;)等形式读取数据</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入描述：输入一个正整数。</span><br><span class="line">输出描述：输出一个相加后的整数。</span><br><span class="line"></span><br><span class="line">输入：2</span><br><span class="line">输出：7</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="6"><a href="#6" class="headerlink" title="6."></a>6.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 输出7有关数字的个数，包括7的倍数，</span><br><span class="line"> * 还有包含7的数字（如17，27，37...70，71，72，73...）的个数</span><br><span class="line"> * （一组测试用例里可能有多组数据，请注意处理）</span><br><span class="line"> *</span><br><span class="line"> *</span><br><span class="line"> * 输入描述：一个正整数N。(N不大于30000)</span><br><span class="line"> * 输出描述：不大于N的与7有关的数字个数，例如输入20，与7有关的数字包括7,14,17.</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">20</span><br><span class="line">10</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">3</span><br><span class="line">1</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="7"><a href="#7" class="headerlink" title="7."></a>7.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 分子为1的分数称为埃及分数。现输入一个真分数(分子比分母小的分数，叫做真分数)，请将该分数分解为埃及分数。如：8/11 = 1/2+1/5+1/55+1/110。</span><br><span class="line">注：真分数指分子小于分母的分数，分子和分母有可能gcd不为1！</span><br><span class="line">如有多个解，请输出任意一个。</span><br><span class="line">请注意本题含有多组样例输入！</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入描述：输入一个真分数，String型</span><br><span class="line">输出描述：输出分解后的string</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">8/11</span><br><span class="line">2/4</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">1/2+1/5+1/55+1/110</span><br><span class="line">1/3+1/6</span><br><span class="line"></span><br><span class="line">描述：</span><br><span class="line">第二个样例直接输出1/2也是可以的</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="8"><a href="#8" class="headerlink" title="8."></a>8.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"></span><br><span class="line">计算24点是一种扑克牌益智游戏，随机抽出4张扑克牌，通过加(+)，减(-)，乘(*), 除(/)四种运算法则计算得到整数24，本问题中，扑克牌通过如下字符或者字符串表示，其中，小写joker表示小王，大写JOKER表示大王：</span><br><span class="line"></span><br><span class="line">                   3 4 5 6 7 8 9 10 J Q K A 2 joker JOKER</span><br><span class="line"></span><br><span class="line">本程序要求实现：输入4张牌，输出一个算式，算式的结果为24点。</span><br><span class="line"></span><br><span class="line">详细说明：</span><br><span class="line">1.运算只考虑加减乘除运算，没有阶乘等特殊运算符号，友情提醒，整数除法要当心；</span><br><span class="line">2.牌面2~10对应的权值为2~10, J、Q、K、A权值分别为为11、12、13、1；</span><br><span class="line">3.输入4张牌为字符串形式，以一个空格隔开，首尾无空格；如果输入的4张牌中包含大小王，则输出字符串“ERROR”，表示无法运算；</span><br><span class="line">4.输出的算式格式为4张牌通过+ - * /四个运算符相连，中间无空格，4张牌出现顺序任意，只要结果正确；</span><br><span class="line">5.输出算式的运算顺序从左至右，不包含括号，如1+2+3*4的结果为24</span><br><span class="line">6.如果存在多种算式都能计算得出24，只需输出一种即可，如果无法得出24，则输出“NONE”表示无解。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入描述：输入4张牌为字符串形式，以一个空格隔开，首尾无空格；</span><br><span class="line">输出描述：如果输入的4张牌中包含大小王，则输出字符串“ERROR”，表示无法运算；</span><br><span class="line"></span><br><span class="line">输入：A A A A</span><br><span class="line">输出：NONE</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<h3 id="9"><a href="#9" class="headerlink" title="9."></a>9.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 假设一个球从任意高度自由落下，每次落地后反跳回原高度的一半; 再落下, 求它在第5次落地时，共经历多少米?第5次反弹多高？</span><br><span class="line">最后的误差判断是小数点6位</span><br><span class="line"></span><br><span class="line">输入描述：输入起始高度，int型</span><br><span class="line">输出描述：分别输出第5次落地时，共经过多少米第5次反弹多高</span><br><span class="line"></span><br><span class="line">输入：1</span><br><span class="line">输出：</span><br><span class="line">2.875</span><br><span class="line">0.03125</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="10"><a href="#10" class="headerlink" title="10."></a>10.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"></span><br><span class="line">子网掩码是用来判断任意两台计算机的IP地址是否属于同一子网络的根据。</span><br><span class="line">子网掩码与IP地址结构相同，是32位二进制数，其中网络号部分全为“1”和主机号部分全为“0”。利用子网掩码可以判断两台主机是否中同一子网中。</span><br><span class="line">若两台主机的IP地址分别与它们的子网掩码相“与”后的结果相同，则说明这两台主机在同一子网中。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">I P 地址　 192.168.0.1</span><br><span class="line">子网掩码　 255.255.255.0</span><br><span class="line"></span><br><span class="line">转化为二进制进行运算：</span><br><span class="line"></span><br><span class="line">I P 地址　11010000.10101000.00000000.00000001</span><br><span class="line">子网掩码　11111111.11111111.11111111.00000000</span><br><span class="line"></span><br><span class="line">AND运算</span><br><span class="line">11000000.10101000.00000000.00000000</span><br><span class="line"></span><br><span class="line">转化为十进制后为：</span><br><span class="line">192.168.0.0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">I P 地址　 192.168.0.254</span><br><span class="line">子网掩码　 255.255.255.0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">转化为二进制进行运算：</span><br><span class="line"></span><br><span class="line">I P 地址　11010000.10101000.00000000.11111110</span><br><span class="line">子网掩码　11111111.11111111.11111111.00000000</span><br><span class="line"></span><br><span class="line">AND运算</span><br><span class="line">11000000.10101000.00000000.00000000</span><br><span class="line"></span><br><span class="line">转化为十进制后为：</span><br><span class="line">192.168.0.0</span><br><span class="line"></span><br><span class="line">通过以上对两台计算机IP地址与子网掩码的AND运算后，我们可以看到它运算结果是一样的。均为192.168.0.0，所以这二台计算机可视为是同一子网络。</span><br><span class="line"></span><br><span class="line">输入一个子网掩码以及两个ip地址，判断这两个ip地址是否是一个子网络。</span><br><span class="line">若IP地址或子网掩码格式非法则输出1，若IP1与IP2属于同一子网络输出0，若IP1与IP2不属于同一子网络输出2。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入描述：输入子网掩码、两个ip地址</span><br><span class="line">输出描述：得到计算结果</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">255.255.255.0</span><br><span class="line">192.168.224.256</span><br><span class="line">192.168.10.4</span><br><span class="line">255.0.0.0</span><br><span class="line">193.194.202.15</span><br><span class="line">232.43.7.59</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="11"><a href="#11" class="headerlink" title="11."></a>11.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">计算最少出列多少位同学，使得剩下的同学排成合唱队形</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line"></span><br><span class="line">N位同学站成一排，音乐老师要请其中的(N-K)位同学出列，使得剩下的K位同学排成合唱队形。</span><br><span class="line">合唱队形是指这样的一种队形：设K位同学从左到右依次编号为1，2…，K，他们的身高分别为T1，T2，…，TK，   则他们的身高满足存在i（1&lt;=i&lt;=K）使得T1&lt;T2&lt;......&lt;Ti-1&lt;Ti&gt;Ti+1&gt;......&gt;TK。</span><br><span class="line"></span><br><span class="line">你的任务是，已知所有N位同学的身高，计算最少需要几位同学出列，可以使得剩下的同学排成合唱队形。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注意不允许改变队列元素的先后顺序</span><br><span class="line">请注意处理多组输入输出！</span><br><span class="line"></span><br><span class="line">输入描述：整数N</span><br><span class="line">输出描述：最少需要几位同学出列</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">8</span><br><span class="line">186 186 150 200 160 130 197 200</span><br><span class="line">输出：</span><br><span class="line">4</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="12"><a href="#12" class="headerlink" title="12."></a>12.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">题目描述：</span><br><span class="line"></span><br><span class="line">把m个同样的苹果放在n个同样的盘子里，允许有的盘子空着不放，问共有多少种不同的分法？（用K表示）5，1，1和1，5，1 是同一种分法。</span><br><span class="line"></span><br><span class="line">数据范围：0&lt;=m&lt;=10，1&lt;=n&lt;=10。</span><br><span class="line">本题含有多组样例输入。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入描述：输入两个int整数</span><br><span class="line">输出描述：输出结果，int型</span><br><span class="line"></span><br><span class="line">输入：7 3</span><br><span class="line">输出：8</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<p>###13.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">输入int型数组，询问该数组能否分成两组，使得两组中各元素加起来的和相等，并且，所有5的倍数必须在其中一个组中，所有3的倍数在另一个组中（不包括5的倍数），能满足以上条件，输出<span class="literal">true</span>；不满足时输出<span class="literal">false</span>。</span><br><span class="line">本题含有多组样例输入。</span><br><span class="line"></span><br><span class="line">输入描述：第一行是数据个数，第二行是输入的数据</span><br><span class="line">输出描述：返回<span class="literal">true</span>或者<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">4</span><br><span class="line">1 5 -5 1</span><br><span class="line">3</span><br><span class="line">3 5 8</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line"><span class="literal">true</span></span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">第一个样例：</span><br><span class="line">第一组：5 -5 1</span><br><span class="line">第二组：1</span><br><span class="line">第二个样例：由于3和5不能放在同一组，所以不存在一种分法。</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="14"><a href="#14" class="headerlink" title="14."></a>14.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">对字符串中的所有单词进行倒排。</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line"></span><br><span class="line">1、构成单词的字符只有26个大写或小写英文字母；</span><br><span class="line"></span><br><span class="line">2、非构成单词的字符均视为单词间隔符；</span><br><span class="line"></span><br><span class="line">3、要求倒排后的单词间隔符以一个空格表示；如果原字符串中相邻单词间有多个间隔符时，倒排转换后也只允许出现一个空格间隔符；</span><br><span class="line"></span><br><span class="line">4、每个单词最长20个字母；</span><br><span class="line"></span><br><span class="line">输入描述：输入一行以空格来分隔的句子</span><br><span class="line">输出描述：输出句子的逆序</span><br><span class="line"></span><br><span class="line">输入：I am a student</span><br><span class="line">输出：student a am I</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="15"><a href="#15" class="headerlink" title="15."></a>15.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">题目描述</span><br><span class="line">若两个正整数的和为素数，则这两个正整数称之为“素数伴侣”，如2和5、6和13，它们能应用于通信加密。现在密码学会请你设计一个程序，从已有的N（N为偶数）个正整数中挑选出若干对组成“素数伴侣”，挑选方案多种多样，例如有4个正整数：2，5，6，13，如果将5和6分为一组中只能得到一组“素数伴侣”，而将2和5、6和13编组将得到两组“素数伴侣”，能组成“素数伴侣”最多的方案称为“最佳方案”，当然密码学会希望你寻找出“最佳方案”。</span><br><span class="line"></span><br><span class="line">输入:</span><br><span class="line"></span><br><span class="line">有一个正偶数N（N≤100），表示待挑选的自然数的个数。后面给出具体的数字，范围为[2,30000]。</span><br><span class="line"></span><br><span class="line">输出:</span><br><span class="line"></span><br><span class="line">输出一个整数K，表示你求得的“最佳方案”组成“素数伴侣”的对数。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入说明：</span><br><span class="line">1 输入一个正偶数n</span><br><span class="line">2 输入n个整数</span><br><span class="line">注意：数据可能有多组</span><br><span class="line"></span><br><span class="line">输出说明：求得的“最佳方案”组成“素数伴侣”的对数。</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">4</span><br><span class="line">2 5 6 13</span><br><span class="line">2</span><br><span class="line">3 6</span><br><span class="line">输出：</span><br><span class="line">2</span><br><span class="line">0</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="16"><a href="#16" class="headerlink" title="16."></a>16.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">功能:输入一个正整数，按照从小到大的顺序输出它的所有质因子（重复的也要列举）（如180的质因子为2 2 3 3 5 ）</span><br><span class="line"></span><br><span class="line">最后一个数后面也要有空格</span><br><span class="line"></span><br><span class="line">输入描述：输入一个long型整数</span><br><span class="line">输出描述：按照从小到大的顺序输出它的所有质数的因子，以空格隔开。最后一个数后面也要有空格。</span><br><span class="line"></span><br><span class="line">输入：180</span><br><span class="line">输出：2 2 3 3 5</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="17"><a href="#17" class="headerlink" title="17."></a>17.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">定义一个二维数组N*M（其中2&lt;=N&lt;=10;2&lt;=M&lt;=10），如5 × 5数组下所示：</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int maze[5][5] = &#123;</span><br><span class="line">0, 1, 0, 0, 0,</span><br><span class="line">0, 1, 0, 1, 0,</span><br><span class="line">0, 0, 0, 0, 0,</span><br><span class="line">0, 1, 1, 1, 0,</span><br><span class="line">0, 0, 0, 1, 0,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">它表示一个迷宫，其中的1表示墙壁，0表示可以走的路，只能横着走或竖着走，不能斜着走，要求编程序找出从左上角到右下角的最短路线。入口点为[0,0],既第一空格是可以走的路。</span><br><span class="line"></span><br><span class="line">本题含有多组数据。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">输入描述：</span><br><span class="line">输入两个整数，分别表示二位数组的行数，列数。再输入相应的数组，其中的1表示墙壁，0表示可以走的路。数据保证有唯一解,不考虑有多解的情况，即迷宫只有一条通道。</span><br><span class="line"></span><br><span class="line">输出描述：</span><br><span class="line">左上角到右下角的最短路径，格式如样例所示。</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">5 5</span><br><span class="line">0 1 0 0 0</span><br><span class="line">0 1 0 1 0</span><br><span class="line">0 0 0 0 0</span><br><span class="line">0 1 1 1 0</span><br><span class="line">0 0 0 1 0</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">(0,0)</span><br><span class="line">(1,0)</span><br><span class="line">(2,0)</span><br><span class="line">(2,1)</span><br><span class="line">(2,2)</span><br><span class="line">(2,3)</span><br><span class="line">(2,4)</span><br><span class="line">(3,4)</span><br><span class="line">(4,4)</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="18"><a href="#18" class="headerlink" title="18."></a>18.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> /**</span><br><span class="line">问题：现在有许多不同身高的机器人在一条直线上排队，按顺序站成一排，排头向前，并且机器人均朝向排头一个方向，每个机器人都有一双只能向正前方看的眼睛，不能往斜上或者斜下方向看；一般来说，如果前面有比自己高或者一样高的机器人，机器人可以看到它；举例子，有四个机器人，身高分别是6、5、3、4，身高为4的机器人往正前方看，只能看到身高为5的机器人；另有四个机器人，身高分别是4、5、6、7，这种情况，每个机器人往正前方看都看不到前面的机器人。现在的问题是，当很多机器人站成一排时，我们需要找出能被看到最多次数的机器人。</span><br><span class="line">输入：一个数组，从前到后各个机器人的身高</span><br><span class="line">输出：输出第一个被看到次数最多的机器人的身高</span><br><span class="line">输入描述：</span><br><span class="line">第一排表示多少个机器人</span><br><span class="line">第二排一个数组，从前到后各个机器人的身高；比如6 5 3 4</span><br><span class="line"></span><br><span class="line">输出描述：</span><br><span class="line">输出第一个被看到次数最多的机器人的身高</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">4</span><br><span class="line">6 5 3 4</span><br><span class="line"></span><br><span class="line">输出：</span><br><span class="line">5</span><br><span class="line"></span><br><span class="line">说明：</span><br><span class="line">5被3和4看到，记2次最多</span><br><span class="line">  */</span><br></pre></td></tr></table></figure>
+
+<h3 id="19"><a href="#19" class="headerlink" title="19."></a>19.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> 输入一个字符串s，仅由英文小写字母组成，1&lt;=|s|&lt;=10000.</span><br><span class="line"> 请在s的所有子串中找到出现次数最多的子串，输出出现次数</span><br><span class="line"> 样例输入：aba</span><br><span class="line"> 样例输出：2</span><br><span class="line"> aba的所有子串为：a、b、a、ab、ba、aba</span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">直接统计abcd…z中出现最多的即可</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="20"><a href="#20" class="headerlink" title="20."></a>20.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">有一个xyz的立方体，要在这个立方体上砍k刀，每一刀可以看作是用一个平行于立方体某一面的平面切割立方体，且必须在坐标为整数的位置切割，如在x=0.5处用平面切割是非法的。</span><br><span class="line">问在切割k刀之后，最多可以把立方体切割成多少块。</span><br><span class="line">输入：</span><br><span class="line">输入仅包含一行，一行包含4个正整数x，y, z, k分别表示xyz的立方体和切割k刀。（1&lt;=x,y,z&lt;=10^6 , 0&lt;=k&lt;=10^9）</span><br><span class="line">输出：</span><br><span class="line">输出仅包含一个正整数，即至多切割成多少块。</span><br><span class="line"></span><br><span class="line">样例输入：</span><br><span class="line">2 2 2 3</span><br><span class="line">样例输出：</span><br><span class="line">8</span><br><span class="line">分析：</span><br><span class="line">设在x，y，z轴上分别切x1, y1, z1刀则问题转化为求max[(x1+1)(y1+1)(z1+1)]的值，限制条件为：x1+y1+z1=k; x1+1&lt;=x; y1+1&lt;=y; z1+1&lt;=z;即x+y+z-3&gt;=k。</span><br><span class="line">在数学上我们知道，在x1=y1=z1=k/3的时候，x1y1z1的值最大。所以我们的思路是让x1,y1,z1的值尽可能的接近</span><br><span class="line"></span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="21"><a href="#21" class="headerlink" title="21."></a>21.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">题目描述：</span><br><span class="line">给一个包含n个整数的数组S，找到与给定目标整数最接近的三个整数，并且返回这三个整数的和。</span><br><span class="line"></span><br><span class="line">输入描述：</span><br><span class="line">第一个参数为给定的目标整数，后面跟随不定数量的整数数组。</span><br><span class="line"></span><br><span class="line">输出描述：</span><br><span class="line">输出与给定目标整数最接近的三个整数的和。</span><br><span class="line"></span><br><span class="line">示例1</span><br><span class="line">输入：</span><br><span class="line">3 2 7 11 15</span><br><span class="line">输出：</span><br><span class="line">20</span><br><span class="line">说明</span><br><span class="line">2+7+11=20</span><br><span class="line"></span><br><span class="line">示例2</span><br><span class="line">输入:</span><br><span class="line">1 -1 2 3 -4</span><br><span class="line">输出：</span><br><span class="line">4</span><br><span class="line">说明</span><br><span class="line">-1+2+3=4</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="22"><a href="#22" class="headerlink" title="22."></a>22.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">题目描述：</span><br><span class="line">有M（数量100以内）个箱子，每个箱子里面装有若干个玩具球，已知第1个箱子玩具球的个数比第2个多2个，第2个箱子比第3个多3个，第3个箱子比第4个多7个，第4个箱子比第5个箱子多25个，第5个箱子比第6个多121个，以此类推，已知最后一个箱子有K个玩具球，请计算所有M个箱子的玩具球总数？</span><br><span class="line"></span><br><span class="line">输入描述：</span><br><span class="line">输入为2行，第一行为箱子数M，第二行为最后一箱玩具球个数，例如：</span><br><span class="line"></span><br><span class="line">10</span><br><span class="line">1</span><br><span class="line">输出描述：</span><br><span class="line">输出为1行，数字格式，例如</span><br><span class="line">3628854</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="23"><a href="#23" class="headerlink" title="23."></a>23.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">输入一个字符串，字符串包含多个子串，每个子串之间用一个或多个“，”隔开，子串内容可能是纯数字串、纯英文单词或者英文字母、数字、符号混合的字符串（字符串长度100以内），统计这些子串中所有首位和末位数字之和大于8的纯数字串的个数（只有一位的纯数字串不做统计），要求时间复杂度小于等于O(n)。</span><br><span class="line"></span><br><span class="line">输入描述：</span><br><span class="line">输入为1行字符串，例如：</span><br><span class="line"></span><br><span class="line">hello,79,1.9,are,09,there</span><br><span class="line">1</span><br><span class="line">输出描述：</span><br><span class="line">输出为一个数，例如：</span><br><span class="line"></span><br><span class="line">2</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h3 id="24"><a href="#24" class="headerlink" title="24."></a>24.</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">22娘和33娘接到了小电视君的扭蛋任务：</span><br><span class="line">一共有两台扭蛋机，编号分别为扭蛋机2号和扭蛋机3号，22娘使用扭蛋机2号，33娘使用扭蛋机3号。</span><br><span class="line">扭蛋机都不需要投币，但有一项特殊能力：</span><br><span class="line">扭蛋机2号：如果塞x（x范围为&gt;=0正整数）个扭蛋进去，然后就可以扭到2x+1个</span><br><span class="line">扭蛋机3号：如果塞x（x范围为&gt;=0正整数）个扭蛋进去，然后就可以扭到2x+2个</span><br><span class="line">22娘和33娘手中没有扭蛋，需要你帮她们设计一个方案，两人“轮流扭”（谁先开始不限，扭到的蛋可以交给对方使用），用“最少”的次数，使她们能够最后恰好扭到N个交给小电视君。</span><br><span class="line"></span><br><span class="line">输入描述：输入一个正整数，表示小电视君需要的N个扭蛋。</span><br><span class="line">输出描述：输出一个字符串，每个字符表示扭蛋机，字符只能包含<span class="string">&quot;2&quot;</span>和<span class="string">&quot;3&quot;</span>。</span><br><span class="line"></span><br><span class="line">输入：</span><br><span class="line">10</span><br><span class="line">输出：</span><br><span class="line">233</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%985%EF%BC%9A%E5%89%8D%E7%AB%AF%E7%AE%80%E5%8D%95%E7%BC%96%E7%A8%8B%E9%A2%98/" rel="next" title="面试题5：前端简单编程题">
+                <i class="fa fa-chevron-left"></i> 面试题5：前端简单编程题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%987%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/" rel="prev" title="面试题7：字符串数组对象的方法">
+                面试题7：字符串数组对象的方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1"><span class="nav-number">1.</span> <span class="nav-text">1.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2"><span class="nav-number">2.</span> <span class="nav-text">2.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3"><span class="nav-number">3.</span> <span class="nav-text">3.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4"><span class="nav-number">4.</span> <span class="nav-text">4.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5"><span class="nav-number">5.</span> <span class="nav-text">5.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6"><span class="nav-number">6.</span> <span class="nav-text">6.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7"><span class="nav-number">7.</span> <span class="nav-text">7.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8"><span class="nav-number">8.</span> <span class="nav-text">8.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9"><span class="nav-number">9.</span> <span class="nav-text">9.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10"><span class="nav-number">10.</span> <span class="nav-text">10.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11"><span class="nav-number">11.</span> <span class="nav-text">11.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12"><span class="nav-number">12.</span> <span class="nav-text">12.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14"><span class="nav-number">13.</span> <span class="nav-text">14.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15"><span class="nav-number">14.</span> <span class="nav-text">15.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16"><span class="nav-number">15.</span> <span class="nav-text">16.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17"><span class="nav-number">16.</span> <span class="nav-text">17.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18"><span class="nav-number">17.</span> <span class="nav-text">18.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19"><span class="nav-number">18.</span> <span class="nav-text">19.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20"><span class="nav-number">19.</span> <span class="nav-text">20.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21"><span class="nav-number">20.</span> <span class="nav-text">21.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22"><span class="nav-number">21.</span> <span class="nav-text">22.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23"><span class="nav-number">22.</span> <span class="nav-text">23.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24"><span class="nav-number">23.</span> <span class="nav-text">24.</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

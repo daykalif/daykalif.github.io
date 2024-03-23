@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、【前端经典面试题】前后端分离（说一说你理解的前后端分离？）1.对前后端分离的误解在回答这个问题的时候不要钻到某个具体的技术 ，或者某个具体的框架上面 → 比如 ajax 异步请求、vue 或 react 等组件化的开发框架、再或者 rest 接口规范、API 接口数据约定等。从某个具体的技术切入来回答对前后端分离的理解本身就是一种局限的看法，所以在回答这个问题的时候应该从以下几个方面展开。 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前后端分离和接口规范">
+<meta property="og:url" content="https://daykalif.github.io/2021/01/03/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="一、【前端经典面试题】前后端分离（说一说你理解的前后端分离？）1.对前后端分离的误解在回答这个问题的时候不要钻到某个具体的技术 ，或者某个具体的框架上面 → 比如 ajax 异步请求、vue 或 react 等组件化的开发框架、再或者 rest 接口规范、API 接口数据约定等。从某个具体的技术切入来回答对前后端分离的理解本身就是一种局限的看法，所以在回答这个问题的时候应该从以下几个方面展开。 2">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/struts_mvc.png">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/api.png">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/post.png">
+<meta property="article:published_time" content="2021-01-03T03:55:37.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:49:54.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.daykalif.com/blog_img/struts_mvc.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2021/01/03/扩展知识/前后端分离和接口规范/"/>
+
+
+
+
+
+  <title>前后端分离和接口规范 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2021/01/03/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前后端分离和接口规范</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-03T11:55:37+08:00">
+                2021-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/01/03/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/01/03/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/01/03/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83/" class="leancloud_visitors" data-flag-title="前后端分离和接口规范">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  10
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="一、【前端经典面试题】前后端分离（说一说你理解的前后端分离？）"><a href="#一、【前端经典面试题】前后端分离（说一说你理解的前后端分离？）" class="headerlink" title="一、【前端经典面试题】前后端分离（说一说你理解的前后端分离？）"></a>一、【前端经典面试题】前后端分离（说一说你理解的前后端分离？）</h4><h5 id="1-对前后端分离的误解"><a href="#1-对前后端分离的误解" class="headerlink" title="1.对前后端分离的误解"></a>1.对前后端分离的误解</h5><p>在回答这个问题的时候不要钻到某个具体的技术 ，或者某个具体的框架上面 → 比如 ajax 异步请求、vue 或 react 等组件化的开发框架、再或者 rest 接口规范、API 接口数据约定等。<br>从某个具体的技术切入来回答对前后端分离的理解本身就是一种局限的看法，所以在回答这个问题的时候应该从以下几个方面展开。</p>
+<h5 id="2-为什么要分离？"><a href="#2-为什么要分离？" class="headerlink" title="2.为什么要分离？"></a>2.为什么要分离？</h5><p>在以往的很长一段时间里，后端开发才是开发团队里的核心，前端开发往往仅由一小撮人甚至交给后端人员兼任。比如 JSP 开发，大部分是前后端高耦合的，前后端代码放在一起写，各种繁琐的套模板。这种开发方式在以前互联网服务不那么繁荣，web 化趋势还不那么明显的年代发挥着巨大作用。随着各种社会服务的信息化程度加深，前端需要展示的内容越来越复杂（比如淘宝页面），JSP 这种套模板的技术（仅仅依靠 html、css、js、jq 等技术的堆积来完成一个复杂的页面展示也变得非常繁杂）再也无法高效的开发。究其本质原因：<strong>前端开发没有像后端开发那样实现工程化、模块化、可复用化的思想。</strong><br>所以就会出现前后端开发不协调、效率低、扯皮的问题，这很不利于项目开发。因此项目管理者就想办法来解决这种问题，如何解决？→<strong>解耦</strong>。在软件领域，任何复杂的问题面前，高内聚、低耦合这种原则几乎总是能见效。所以前后端分离开发出现了，把前端开发的责任从后端开发人员身上拿掉，给前端开发工程师一个单独的岗位和责任领域，将前端也工程化、模块化、项目化。这才是前后端分离开发最开始的来源。这些与 vue、react 框架没有什么关系，<strong>它们充其量只是一种具体实现方式而已。从本质上来看，前后端分离并不是一个技术问题，而是一个工程化考量和项目管理的问题。</strong></p>
+<h5 id="3-什么是前后端分离？"><a href="#3-什么是前后端分离？" class="headerlink" title="3.什么是前后端分离？"></a>3.什么是前后端分离？</h5><p>在学习前端开发的时候，会发现前端开发的知识非常琐碎，前端往往是靠东平西凑（面向复制粘贴变成）来试图完成页面效果，开发过程没有 java 后端开发有逻辑，代码也很难管理。后端开发有各种各样的工具类、jar 包、maven 依赖、spring 框架等，具有工程化模块化思维，可以满足长期演进和迭代的目标。而前端那时候并没有，所以 vue.js 和 react.js 等这些前端框架的出现，它们从本质上打破了以前前端开发的游戏规则，这就是前端开发组件化框架（也叫前端开发工程化框架）。这些框架出现后，前端开发也开始像后端一样，遵循一套体系来进行约束性的开发，越来越工程化、组件化、迭代化，变得有章可循。<strong>前后端分离核心思想是前端 HTML 页面通过 AJAX 调用后端的 RESTFUL API 接口并使用 JSON 数据进行交互。</strong></p>
+<h5 id="4-如何做到前后端分离？"><a href="#4-如何做到前后端分离？" class="headerlink" title="4.如何做到前后端分离？"></a>4.如何做到前后端分离？</h5><p>从软件开发的四大步说起：设计、开发、测试、部署，真正的前后端分离需要渗透到以上的每一步中。<br><strong>第一阶段：设计阶段。</strong> 设计阶段的第一个层面是系统设计，后端系统设计包括后端架构：数据库、中间件、缓存等架构的设计，主要是考虑性能、容量、扩展性、可维护性。前端也应该如此，尤其是当一个网站页面多、复杂的时候，前端架构就也需要做好充分的规划和准备，以满足长期可演进、可迭代的目标。设计阶段的第二个层面是接口设计，前后端交互是通过接口来实现的，所以 model 层面上的接口约定也就极其重要，包括：接口的请求方式、数据类型、返回数据格式等。接口设计一定要评审到位，避免前后端开发人员因为某个没有约定好的接口扯来扯去。<br><strong>第二阶段：开发阶段。</strong> 前后端开发人员按照先前约定好的接口独立开发，互相透明（一旦出现扯皮现象，那就不算是严格独立的前后端开发，因为必定会有一方需要被迫妥协，去修改代码，这就算是还未完全实现解耦）。前端开发用来测试的数据都是从 mock 中模拟出来的，并不是从后端拿的；而后端开发仅提供一套接口，按照先前提供的评审好的接口约定来提供数据，这一套接口可以提供给很多的前端使用，比如 web 网页、h5 页面、app、微信小程序等。<br><strong>第三阶段：测试阶段。</strong> 要保证前后端独立可测试，前端测试包括：页面、跳转、展示、输入、传参、响应等；后端则包括：数据接口的提供、数据格式、校验、异常、数据一致性、权限问题等。<br><strong>第四阶段：部署阶段。</strong> 要保证前后端独立可部署。（JSP 时代前端 html 页面、css 样式、js 效果等都是由后台驱动，即前端都是塞到后端中，然后项目部署。当前端人员需要修改、发版本的时候就需要去求着后端人员帮忙）。前后端分离之后，就不再这样了，前后端发布上线可以完全独立，互相透明。</p>
+<h5 id="5-不要盲目使用该技术"><a href="#5-不要盲目使用该技术" class="headerlink" title="5.不要盲目使用该技术"></a>5.不要盲目使用该技术</h5><p>前后端分离确实是很合适复杂项目。但是不能为了做前后端分离而做前后端分离。一个完全的前后端分离需要相当的人力成本、开发成本、工具成本、部署成本等。所以小项目小团队就不合适这种前后端开发，一旦某一点做的不彻底，它就会带来很多负担，所以并不是所有的项目都适合前后端分离。</p>
+<h4 id="二、面试官：你们前后端分离的接口规范是什么？"><a href="#二、面试官：你们前后端分离的接口规范是什么？" class="headerlink" title="二、面试官：你们前后端分离的接口规范是什么？"></a>二、面试官：你们前后端分离的接口规范是什么？</h4><h5 id="一、为何要分离"><a href="#一、为何要分离" class="headerlink" title="一、为何要分离"></a>一、为何要分离</h5><p><img src="https://www.daykalif.com/blog_img/struts_mvc.png" alt="struts_mvc"></p>
+<p>1、前端开发重度依赖开发环境，开发效率低。<br>这种架构下，前后端协作有两种模式:</p>
+<ul>
+<li>一种是前端写 demo，写好后，让后端去套模板 。</li>
+<li>另一种协作模式是前端负责浏览器端的所有开发和服务器端的 View 层模板开发，支付宝是这种模式。</li>
+</ul>
+<p>2、前后端职责依旧纠缠不清。<br>还有一个很大的灰色地带是 Controller，页面路由等功能本应该是前端最关注的，但却是由后端来实现。</p>
+<p>3、对前端发挥的局限。</p>
+<blockquote>
+<p>代码重构的方向：</p>
+</blockquote>
+<p>关注点分离<br>职责分离<br>对的人做对的事<br>更好的共建模式<br>快速的反应变化</p>
+<h5 id="二、开发流程"><a href="#二、开发流程" class="headerlink" title="二、开发流程"></a>二、开发流程</h5><p>1、后端编写和维护接口文档，在 API 变化时更新接口文档<br>2、后端根据接口文档进行接口开发<br>3、前端根据接口文档进行开发 + Mock 平台<br>4、开发完成后联调和提交测试<br>5、Mock 服务器根据接口文档自动生成 Mock 数据，实现了接口文档即 API：</p>
+<p><img src="https://www.daykalif.com/blog_img/api.png" alt="api"></p>
+<h5 id="三、接口规范-V1-0-0"><a href="#三、接口规范-V1-0-0" class="headerlink" title="三、接口规范 V1.0.0"></a>三、接口规范 V1.0.0</h5><h6 id="1-规范原则"><a href="#1-规范原则" class="headerlink" title="1.规范原则"></a>1.规范原则</h6><p>接口返回数据即显示：前端仅做渲染逻辑处理；<br>渲染逻辑禁止跨多个接口调用；<br>前端关注交互、渲染逻辑，尽量避免业务逻辑处理的出现；<br>请求响应传输数据格式：JSON，JSON 数据尽量简单轻量，避免多级 JSON 的出现；</p>
+<h6 id="2-基本格式"><a href="#2-基本格式" class="headerlink" title="2.基本格式"></a>2.基本格式</h6><blockquote>
+<p>1.请求基本格式</p>
+</blockquote>
+<p>GET 请求、POST 请求必须包含 key 为 body 的入参，所有请求数据包装为 JSON 格式，并存放到入参 body 中，示例如下：</p>
+<p>1).GET 请求：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xxx/login?body=&#123;<span class="string">&quot;username&quot;</span>:<span class="string">&quot;admin&quot;</span>,<span class="string">&quot;password&quot;</span>:<span class="string">&quot;123456&quot;</span>,<span class="string">&quot;captcha&quot;</span>:<span class="string">&quot;scfd&quot;</span>,<span class="string">&quot;rememberMe&quot;</span>:<span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2).POST 请求：<br><img src="https://www.daykalif.com/blog_img/post.png" alt="post"></p>
+<blockquote>
+<p>2.响应基本格式</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">code</span>: <span class="number">200</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;success&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1).code : 请求处理状态</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">200</span>: 请求处理成功</span><br><span class="line"><span class="number">500</span>: 请求处理失败</span><br><span class="line"><span class="number">401</span>: 请求未认证，跳转登录页</span><br><span class="line"><span class="number">406</span>: 请求未授权，跳转未授权提示页</span><br></pre></td></tr></table></figure>
+
+<p>2).data.message: 请求处理消息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">code=<span class="number">200</span> 且 data.<span class="property">message</span>=“success”: 请求处理成功</span><br><span class="line">code=<span class="number">200</span> 且 data.<span class="property">message</span>!=“success”: 请求处理成功, 普通消息提示：message内容</span><br><span class="line">code=<span class="number">500</span>: 请求处理失败，警告消息提示：message内容</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>3.响应实体格式</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">code</span>: <span class="number">200</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">        <span class="attr">entity</span>: &#123;</span><br><span class="line">            <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">            <span class="attr">code</span>: <span class="string">&quot;XXX&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// data.entity: 响应返回的实体数据</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>4.响应列表格式</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">code</span>: <span class="number">200</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">        <span class="attr">list</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">                <span class="attr">code</span>: <span class="string">&quot;XXX&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">id</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">                <span class="attr">code</span>: <span class="string">&quot;XXX&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// data.list: 响应返回的列表数据</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>5.响应分页格式</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">code</span>: <span class="number">200</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">recordCount</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">        <span class="attr">totalCount</span>: <span class="number">2</span>,</span><br><span class="line">        <span class="attr">pageNo</span>: <span class="number">1</span>,</span><br><span class="line">        <span class="attr">pageSize</span>: <span class="number">10</span>,</span><br><span class="line">        <span class="attr">list</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">                <span class="attr">code</span>: <span class="string">&quot;H001&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">id</span>: <span class="number">2</span>,</span><br><span class="line">                <span class="attr">name</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">                <span class="attr">code</span>: <span class="string">&quot;H001&quot;</span></span><br><span class="line">            &#125; ],</span><br><span class="line">        <span class="attr">totalPage</span>: <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// data.recordCount: 当前页记录数</span></span><br><span class="line"><span class="comment">// data.totalCount: 总记录数</span></span><br><span class="line"><span class="comment">// data.pageNo: 当前页码</span></span><br><span class="line"><span class="comment">// data.pageSize: 每页大小</span></span><br><span class="line"><span class="comment">// data.totalPage: 总页数</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>6.特殊内容规范</p>
+</blockquote>
+<p>1).下拉框、复选框、单选框</p>
+<p>由后端接口统一逻辑判定是否选中，通过 isSelect 标示是否选中，示例如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">code</span>: <span class="number">200</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&quot;success&quot;</span>,</span><br><span class="line">        <span class="attr">list</span>: [&#123;</span><br><span class="line">            <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">            <span class="attr">code</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">            <span class="attr">isSelect</span>: <span class="number">1</span></span><br><span class="line">        &#125;, &#123;</span><br><span class="line">            <span class="attr">id</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">            <span class="attr">code</span>: <span class="string">&quot;XXX&quot;</span>,</span><br><span class="line">            <span class="attr">isSelect</span>: <span class="number">0</span></span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 禁止下拉框、复选框、单选框判定选中逻辑由前端来处理，统一由后端逻辑判定选中返回给前端展示；</span></span><br></pre></td></tr></table></figure>
+
+<p>2).Boolean 类型</p>
+<p>关于 Boolean 类型，JSON 数据传输中一律使用 1&#x2F;0 来标示，1 为是&#x2F;True，0 为否&#x2F;False；</p>
+<p>3).日期类型</p>
+<p>关于日期类型，JSON 数据传输中一律使用字符串，具体日期格式因业务而定；</p>
+<p>参考文档：<br><a href="https://www.cnblogs.com/shijianblog/p/12579410.html">https://www.cnblogs.com/shijianblog/p/12579410.html</a><br><a href="https://blog.csdn.net/aixuexidemomo/article/details/103207688">https://blog.csdn.net/aixuexidemomo/article/details/103207688</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/12/03/JS/%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="next" title="跨域解决方案">
+                <i class="fa fa-chevron-left"></i> 跨域解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/19/JS/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91%E5%BD%BB%E5%BA%95%E5%BC%84%E6%87%82JavaScript%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%EF%BC%88%E5%AE%8F%E4%BB%BB%E5%8A%A1%E5%92%8C%E5%BE%AE%E4%BB%BB%E5%8A%A1%EF%BC%89/" rel="prev" title="彻底弄懂JavaScript执行机制（宏任务和微任务）">
+                彻底弄懂JavaScript执行机制（宏任务和微任务） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E3%80%90%E5%89%8D%E7%AB%AF%E7%BB%8F%E5%85%B8%E9%9D%A2%E8%AF%95%E9%A2%98%E3%80%91%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%EF%BC%88%E8%AF%B4%E4%B8%80%E8%AF%B4%E4%BD%A0%E7%90%86%E8%A7%A3%E7%9A%84%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%EF%BC%9F%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">一、【前端经典面试题】前后端分离（说一说你理解的前后端分离？）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E5%AF%B9%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E8%AF%AF%E8%A7%A3"><span class="nav-number">1.1.</span> <span class="nav-text">1.对前后端分离的误解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E7%A6%BB%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2.为什么要分离？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">3.什么是前后端分离？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4.如何做到前后端分离？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E4%B8%8D%E8%A6%81%E7%9B%B2%E7%9B%AE%E4%BD%BF%E7%94%A8%E8%AF%A5%E6%8A%80%E6%9C%AF"><span class="nav-number">1.5.</span> <span class="nav-text">5.不要盲目使用该技术</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%9D%A2%E8%AF%95%E5%AE%98%EF%BC%9A%E4%BD%A0%E4%BB%AC%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E7%9A%84%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">二、面试官：你们前后端分离的接口规范是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%BA%E4%BD%95%E8%A6%81%E5%88%86%E7%A6%BB"><span class="nav-number">2.1.</span> <span class="nav-text">一、为何要分离</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">二、开发流程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83-V1-0-0"><span class="nav-number">2.3.</span> <span class="nav-text">三、接口规范 V1.0.0</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-%E8%A7%84%E8%8C%83%E5%8E%9F%E5%88%99"><span class="nav-number">2.3.1.</span> <span class="nav-text">1.规范原则</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-%E5%9F%BA%E6%9C%AC%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.基本格式</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

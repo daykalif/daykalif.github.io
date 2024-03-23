@@ -1,0 +1,1473 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Typescript1.介绍Typescript 是 Javascript 类型的超集，它可以编译成纯 JavaScript。Typescript 可以在任何浏览器、任何计算机和操作系统上运行，并且是开源的。 js: 12345678&#x2F;&#x2F; 动态类型let a &#x3D; 123;a &#x3D; &quot;string&quot;;function demo(data) &#123;  return Math.s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typescript－系统入门到项目实战">
+<meta property="og:url" content="https://daykalif.github.io/2021/04/04/%20Typescript/Typescript%EF%BC%8D%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8%E5%88%B0%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="Typescript1.介绍Typescript 是 Javascript 类型的超集，它可以编译成纯 JavaScript。Typescript 可以在任何浏览器、任何计算机和操作系统上运行，并且是开源的。 js: 12345678&#x2F;&#x2F; 动态类型let a &#x3D; 123;a &#x3D; &quot;string&quot;;function demo(data) &#123;  return Math.s">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-04-04T09:53:41.000Z">
+<meta property="article:modified_time" content="2022-01-24T16:02:50.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2021/04/04/ Typescript/Typescript－系统入门到项目实战/"/>
+
+
+
+
+
+  <title>Typescript－系统入门到项目实战 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2021/04/04/%20Typescript/Typescript%EF%BC%8D%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8%E5%88%B0%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Typescript－系统入门到项目实战</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-04T17:53:41+08:00">
+                2021-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/04/04/%20Typescript/Typescript%EF%BC%8D%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8%E5%88%B0%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/04/04/%20Typescript/Typescript%EF%BC%8D%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8%E5%88%B0%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/04/04/%20Typescript/Typescript%EF%BC%8D%E7%B3%BB%E7%BB%9F%E5%85%A5%E9%97%A8%E5%88%B0%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" class="leancloud_visitors" data-flag-title="Typescript－系统入门到项目实战">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  4.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  24
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Typescript"><a href="#Typescript" class="headerlink" title="Typescript"></a>Typescript</h2><h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1.介绍"></a>1.介绍</h3><p>Typescript 是 Javascript 类型的超集，它可以编译成纯 JavaScript。<br>Typescript 可以在任何浏览器、任何计算机和操作系统上运行，并且是开源的。</p>
+<p>js:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 动态类型</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">123</span>;</span><br><span class="line">a = <span class="string">&quot;string&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">demo</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">sqrt</span>(data.<span class="property">x</span> ** <span class="number">2</span> + data.<span class="property">y</span> ** <span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">demo</span>();</span><br></pre></td></tr></table></figure>
+
+<p>ts:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 静态类型</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">b</span>: <span class="built_in">number</span> = <span class="number">123</span>;</span><br><span class="line"><span class="comment">// b = &#x27;123&#x27;;</span></span><br><span class="line">b = <span class="number">456</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 1).类型别名</span></span><br><span class="line"><span class="comment">// type Point = &#123; x: number, y: number &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2).定义接口类型</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="attr">y</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ts带给我们很大的帮助，ts的静态类型使得我们在编写代码过程中，定位一些潜在问题。【1.开发过程中，发现潜在问题】</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">tyDemo</span>(<span class="params">data: Point</span>) &#123;</span><br><span class="line">  <span class="comment">//【3.代码语义更清晰易懂】</span></span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">sqrt</span>(data.<span class="property">x</span> ** <span class="number">2</span> + data.<span class="property">y</span> ** <span class="number">2</span>); <span class="comment">//【2.更友好的编辑器自动提示】</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">tyDemo</span>(&#123; <span class="attr">x</span>: <span class="number">3</span>, <span class="attr">y</span>: <span class="number">4</span> &#125;); <span class="comment">//如果不传参，会报错。</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-环境安装"><a href="#2-环境安装" class="headerlink" title="2.环境安装"></a>2.环境安装</h3><p>node、npm<br>typescript【sudo 下 npm install -g typescript】</p>
+<p>编译时：<br><code>tsc demo.ts</code> –&gt; 生成 demo.js 文件<br><code>node demo.js</code></p>
+<p>也可以安装：<br>npm install -g ts-node</p>
+<p>可直接运行编译：<br><code>ts-node demo.ts</code></p>
+<h3 id="3-静态类型"><a href="#3-静态类型" class="headerlink" title="3.静态类型"></a>3.静态类型</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 静态类型的变量类型不能修改；</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="attr">y</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">ponit</span>: <span class="title class_">Point</span> = &#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="number">3</span>,</span><br><span class="line">  <span class="attr">y</span>: <span class="number">4</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ponit.<span class="property">x</span>; <span class="comment">//这个静态类型的变量上的属性和方法也会确定；</span></span><br><span class="line">ponit.<span class="property">y</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-基础类型-对象类型"><a href="#4-基础类型-对象类型" class="headerlink" title="4.基础类型 &amp;&amp; 对象类型"></a>4.基础类型 &amp;&amp; 对象类型</h3><h4 id="1-基础类型"><a href="#1-基础类型" class="headerlink" title="1).基础类型"></a>1).基础类型</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础类型【null，undefined，symbol，boolean，number，string，void】</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">count</span>: <span class="built_in">number</span> = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">teacherName</span>: <span class="built_in">string</span> = <span class="string">&quot;daykalif&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-对象类型"><a href="#2-对象类型" class="headerlink" title="2).对象类型"></a>2).对象类型</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象类型【包含对象类型，数组类型，类类型，函数类型】</span></span><br><span class="line"><span class="comment">// 1).对象类型&#123;&#125;</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">teacher</span>: &#123; <span class="attr">name</span>: <span class="built_in">string</span>; <span class="attr">age</span>: <span class="built_in">number</span> &#125; = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;daykalif&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2).数组类型[]</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">numbers</span>: <span class="built_in">number</span>[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3).类类型class</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">daykalif</span>: <span class="title class_">Person</span> = <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 4).函数类型function</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">getTotal</span>: <span class="function">() =&gt;</span> <span class="built_in">number</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">123</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 冒号后面写的是类型，等号后面写的是具体的实现</span></span><br><span class="line"><span class="keyword">const</span> func = (<span class="attr">str</span>: <span class="built_in">string</span>): <span class="function"><span class="params">number</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//这里的返回值number可不写</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">parseInt</span>(str, <span class="number">10</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">func1</span>: <span class="function">(<span class="params">str: <span class="built_in">string</span></span>) =&gt;</span> <span class="built_in">number</span> = <span class="function">(<span class="params">str</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//这里的返回值number需要写</span></span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">parseInt</span>(str, <span class="number">10</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可直接类型推断</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">date</span>: <span class="title class_">Date</span> = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">const</span> date1 = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他的case</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;string&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> rawData = <span class="string">&#x27;&#123;&quot;name&quot;:&quot;daykalif&quot;&#125;&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">newData</span>: <span class="title class_">Person</span> = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(rawData);</span><br><span class="line"></span><br><span class="line"><span class="comment">// temp变量有可能是number，也可能是string</span></span><br><span class="line"><span class="keyword">let</span> <span class="attr">temp</span>: <span class="built_in">number</span> | <span class="built_in">string</span> = <span class="number">123</span>;</span><br><span class="line">temp = <span class="string">&quot;456&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-类型注解-类型推断"><a href="#5-类型注解-类型推断" class="headerlink" title="5.类型注解 &amp;&amp; 类型推断"></a>5.类型注解 &amp;&amp; 类型推断</h3><h4 id="1-类型注解"><a href="#1-类型注解" class="headerlink" title="1).类型注解"></a>1).类型注解</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.type annotation 类型注解，我们来告诉TS变量是什么类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="attr">count</span>: <span class="built_in">number</span>;</span><br><span class="line"><span class="attr">count</span>: <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果TS无法分析变量类型的话，我们就需要使用类型注解</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getTotal</span>(<span class="params">firstNumber: <span class="built_in">number</span>, secondNumber: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> firstNumber + secondNumber;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> total2 = <span class="title function_">getTotal</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-类型推断"><a href="#2-类型推断" class="headerlink" title="2).类型推断"></a>2).类型推断</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 2.type inference 类型推断,TS会自动的去尝试分析变量的类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> countInference = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果TS能够自动分析变量的类型，我们就什么也不需要做了</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> firstNumber = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">const</span> secondNumber = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">const</span> total = firstNumber + secondNumber;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;daykalif&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-函数相关类型"><a href="#6-函数相关类型" class="headerlink" title="6.函数相关类型"></a>6.函数相关类型</h3><h4 id="1-定义返回值"><a href="#1-定义返回值" class="headerlink" title="1).定义返回值"></a>1).定义返回值</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hello</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"><span class="keyword">const</span> hello1 = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">hello2</span> = (<span class="params"></span>) =&gt; &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">first: <span class="built_in">number</span>, second: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> first + second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> total = <span class="title function_">add</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">minus</span>(<span class="params">first: <span class="built_in">number</span>, second: <span class="built_in">number</span></span>): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> first + second + <span class="string">&quot;&quot;</span>; <span class="comment">//报错</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">result</span>: <span class="built_in">number</span> = <span class="title function_">minus</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-函数返回值为空"><a href="#2-函数返回值为空" class="headerlink" title="2).函数返回值为空"></a>2).函数返回值为空</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数的返回值为空</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sayHello</span>(<span class="params"></span>): <span class="built_in">void</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hello&quot;</span>);</span><br><span class="line">  <span class="comment">// return &#x27;&#x27;;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-函数返回值为-never"><a href="#3-函数返回值为-never" class="headerlink" title="3).函数返回值为 never"></a>3).函数返回值为 never</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数不可能执行完，因此函数返回值为never</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">errorEvent</span>(<span class="params"></span>): <span class="built_in">never</span> &#123;</span><br><span class="line">  <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="number">123</span>); <span class="comment">//代码不会执行</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">doSomeThing</span>(<span class="params"></span>): <span class="built_in">never</span> &#123;</span><br><span class="line">  <span class="keyword">while</span> (<span class="literal">true</span>) &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-解构赋值的类型注解写法"><a href="#4-解构赋值的类型注解写法" class="headerlink" title="4).解构赋值的类型注解写法"></a>4).解构赋值的类型注解写法</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">adds</span>(<span class="params">&#123; first, second &#125;: &#123; first: <span class="built_in">number</span>; second: <span class="built_in">number</span> &#125;</span>): <span class="built_in">number</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> first + second;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> totals = <span class="title function_">adds</span>(&#123; <span class="attr">first</span>: <span class="number">1</span>, <span class="attr">second</span>: <span class="number">2</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getNumber</span>(<span class="params">&#123; first &#125;: &#123; first: <span class="built_in">number</span> &#125;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> count = <span class="title function_">getNumber</span>(&#123; <span class="attr">first</span>: <span class="number">1</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-数组和元祖"><a href="#7-数组和元祖" class="headerlink" title="7.数组和元祖"></a>7.数组和元祖</h3><h4 id="1-数组-Array"><a href="#1-数组-Array" class="headerlink" title="1).数组 Array"></a>1).数组 Array</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="attr">arr</span>: (<span class="built_in">number</span> | <span class="built_in">string</span>)[] = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="attr">stringArr</span>: <span class="built_in">string</span>[] = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>];</span><br><span class="line"><span class="keyword">const</span> <span class="attr">undefinedArr</span>: <span class="literal">undefined</span>[] = [<span class="literal">undefined</span>]; <span class="comment">//数组里面的内容只能是undefined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">objectArr</span>: &#123; <span class="attr">name</span>: <span class="built_in">string</span>; <span class="attr">age</span>: <span class="built_in">number</span> &#125;[] = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&quot;daykalif&quot;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;,</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类型别名</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">User</span> = &#123; <span class="attr">name</span>: <span class="built_in">string</span>; <span class="attr">age</span>: <span class="built_in">number</span> &#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">objectArr1</span>: <span class="title class_">User</span>[] = [&#123; <span class="attr">name</span>: <span class="string">&quot;daykalif&quot;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">objectArr2</span>: <span class="title class_">Teacher</span>[] = [<span class="keyword">new</span> <span class="title class_">Teacher</span>(), &#123; <span class="attr">name</span>: <span class="string">&quot;daykalif&quot;</span>, <span class="attr">age</span>: <span class="number">18</span> &#125;];</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-元祖-Tuple"><a href="#2-元祖-Tuple" class="headerlink" title="2).元祖 Tuple"></a>2).元祖 Tuple</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="attr">teacherInfo</span>: [<span class="built_in">string</span>, <span class="built_in">string</span>, <span class="built_in">number</span>] = [<span class="string">&quot;daykalif&quot;</span>, <span class="string">&quot;male&quot;</span>, <span class="number">18</span>];</span><br><span class="line"><span class="comment">// 元祖的应用 -- 如：csv的数据结构格式</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">teacherList</span>: [<span class="built_in">string</span>, <span class="built_in">string</span>, <span class="built_in">number</span>][] = [</span><br><span class="line">  [<span class="string">&quot;dell&quot;</span>, <span class="string">&quot;male&quot;</span>, <span class="number">18</span>],</span><br><span class="line">  [<span class="string">&quot;sun&quot;</span>, <span class="string">&quot;female&quot;</span>, <span class="number">20</span>],</span><br><span class="line">  [<span class="string">&quot;jeny&quot;</span>, <span class="string">&quot;female&quot;</span>, <span class="number">28</span>],</span><br><span class="line">];</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-Interface-接口"><a href="#8-Interface-接口" class="headerlink" title="8.Interface 接口"></a>8.Interface 接口</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">getPersonName</span> = (<span class="params">person: &#123; name: <span class="built_in">string</span> &#125;</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">setPersonName</span> = (<span class="params">person: &#123; name: <span class="built_in">string</span> &#125;, name: <span class="built_in">string</span></span>) =&gt; &#123;</span><br><span class="line">  person.<span class="property">name</span> = name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用 interface：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interface和type相类似，但并不完全一致</span></span><br><span class="line"><span class="comment">// interface只可以注解对象的数据格式</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getPersonName</span> = (<span class="params">person: Person</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">setPersonName</span> = (<span class="params">person: Person, name: <span class="built_in">string</span></span>) =&gt; &#123;</span><br><span class="line">  person.<span class="property">name</span> = name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>使用类型别名：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类型别名【不仅可以注解对象的数据格式，也可以注解本身】</span></span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Person1</span> = &#123;</span><br><span class="line">  <span class="comment">//可以注解对象的数据格式</span></span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">type</span> <span class="title class_">Person2</span> = <span class="built_in">string</span>; <span class="comment">//可以注解本身</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getPersonName</span> = (<span class="params">person: Person1</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">setPersonName</span> = (<span class="params">person: Person1, name: <span class="built_in">string</span></span>) =&gt; &#123;</span><br><span class="line">  person.<span class="property">name</span> = name;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>interface 定义详解：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// interface只可以注解对象的数据格式</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="comment">//Person类型的数据，必须得有name属性，但是age属性可有可无</span></span><br><span class="line">  <span class="comment">// readonly name: string;   //只读</span></span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  age?: <span class="built_in">number</span>; <span class="comment">//可选属性</span></span><br><span class="line">  [<span class="attr">propName</span>: <span class="built_in">string</span>]: <span class="built_in">any</span>; <span class="comment">//额外的属性名为字符串类型，属性值为any都可以</span></span><br><span class="line">  <span class="title function_">say</span>(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 接口继承</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Teacher</span> <span class="keyword">extends</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">teacher</span>(): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> getPersonName = (<span class="attr">person</span>: <span class="title class_">Person</span>): <span class="function"><span class="params">void</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> setPersonName = (<span class="attr">person</span>: <span class="title class_">Teacher</span>, <span class="attr">name</span>: <span class="built_in">string</span>): <span class="function"><span class="params">void</span> =&gt;</span> &#123;</span><br><span class="line">  person.<span class="property">name</span> = name;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;daykalif&quot;</span>,</span><br><span class="line">  <span class="attr">sex</span>: <span class="string">&quot;male&quot;</span>,</span><br><span class="line">  <span class="title function_">say</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;say hello&quot;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">teacher</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;teach&quot;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">getPersonName</span>(person); <span class="comment">//传入包装过的对象可以有额外的属性</span></span><br><span class="line"><span class="title function_">setPersonName</span>(person, <span class="string">&quot;Wang&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 字面量的形式直接传递一个对象给变量的时候，ts会对对象进行强校验【如果interface写了[propName: string]: any;就不会报错】</span></span><br><span class="line"><span class="title function_">getPersonName</span>(&#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;daykalif&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">  <span class="attr">sex</span>: <span class="string">&quot;male&quot;</span>,</span><br><span class="line">  <span class="title function_">say</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;say hello&quot;</span>;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类应用接口，这个类必须拥有这个接口中的属性</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  name = <span class="string">&quot;daykalif&quot;</span>;</span><br><span class="line">  <span class="title function_">say</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;hello&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>interface 定义函数：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义函数类型的接口</span></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">SayHi</span> &#123;</span><br><span class="line">  (<span class="title class_">Word</span>: <span class="built_in">string</span>): <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">say</span>: <span class="title class_">SayHi</span> = <span class="function">(<span class="params">Word: <span class="built_in">string</span></span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;word&quot;</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-类的定义与继承"><a href="#9-类的定义与继承" class="headerlink" title="9.类的定义与继承"></a>9.类的定义与继承</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span> = <span class="string">&quot;daykalif&quot;</span>;</span><br><span class="line">  <span class="title function_">getName</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="title function_">getName</span>());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类的继承</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span> &#123;</span><br><span class="line">  <span class="title function_">getTeacherName</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Teacher&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 重写方法</span></span><br><span class="line">  <span class="title function_">getName</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">super</span>.<span class="title function_">getName</span>() + <span class="string">&quot;Wang&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> teacher = <span class="keyword">new</span> <span class="title class_">Teacher</span>();</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(teacher.<span class="title function_">getName</span>());</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(teacher.<span class="title function_">getTeacherName</span>());</span><br></pre></td></tr></table></figure>
+
+<h3 id="10-类中的访问类型和构造器"><a href="#10-类中的访问类型和构造器" class="headerlink" title="10.类中的访问类型和构造器"></a>10.类中的访问类型和构造器</h3><h4 id="1-访问类型"><a href="#1-访问类型" class="headerlink" title="1).访问类型"></a>1).访问类型</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// private,protected,public 访问类型</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// public允许我在类的内外被调用</span></span><br><span class="line"><span class="comment">// private允许在类内被使用</span></span><br><span class="line"><span class="comment">// protected允许在类内及继承的子类中使用</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="keyword">protected</span> <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">sayHi</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;hi&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">sayABC</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">sayHi</span>();</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="title function_">sayAge</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span>; <span class="comment">//报错</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">age</span>; <span class="comment">//不报错</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">sayABC</span>(); <span class="comment">//报错</span></span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">sayHi</span>(); <span class="comment">//不报错</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">person.<span class="property">name</span> = <span class="string">&quot;daykalif&quot;</span>; <span class="comment">//报错</span></span><br><span class="line">person.<span class="property">age</span> = <span class="number">18</span>; <span class="comment">//报错</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>); <span class="comment">//报错</span></span><br><span class="line">person.<span class="title function_">sayHi</span>();</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-constructor-构造器"><a href="#2-constructor-构造器" class="headerlink" title="2).constructor 构造器"></a>2).constructor 构造器</h4><p>1.constructor 传统写法</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;daykalif&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+
+<p>2.constructor 简化的语法</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;daykalif&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+
+<p>3.子类继承父类时，如果子类和父类都拥有 constructor，子类需要调用 super</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span></span>) &#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Teacher</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> age: <span class="built_in">number</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">super</span>(<span class="string">&quot;daykalif&quot;</span>); <span class="comment">//调用父类的构造函数</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> teacher = <span class="keyword">new</span> <span class="title class_">Teacher</span>(<span class="number">28</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(teacher.<span class="property">name</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(teacher.<span class="property">age</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="11-静态属性，Setter-和-Getter"><a href="#11-静态属性，Setter-和-Getter" class="headerlink" title="11.静态属性，Setter 和 Getter"></a>11.静态属性，Setter 和 Getter</h3><h4 id="1-Getter-Setter"><a href="#1-Getter-Setter" class="headerlink" title="1).Getter &amp;&amp; Setter"></a>1).Getter &amp;&amp; Setter</h4><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> _name: <span class="built_in">string</span></span>) &#123;&#125; <span class="comment">//私有属性一般在属性名前加_</span></span><br><span class="line">  <span class="keyword">get</span> <span class="title function_">name</span>() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">_name</span> + <span class="string">&quot; Wang&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">set</span> <span class="title function_">name</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> realName = name.<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>)[<span class="number">0</span>];</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">_name</span> = realName;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;daykalif&quot;</span>);</span><br><span class="line"><span class="comment">// person.name; //报错</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br><span class="line">person.<span class="property">name</span> = <span class="string">&quot;daykalif Wang&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+
+<p>工厂模式：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 工厂模式</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span></span>) &#123;&#125;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="title function_">getInstance</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="comment">//static表示把这个方法挂在类上，而不是挂在实例上面</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Demo</span>(name);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// demo1和demo2指向的是不同的实例</span></span><br><span class="line"><span class="keyword">const</span> demo1 = <span class="title class_">Demo</span>.<span class="title function_">getInstance</span>(<span class="string">&quot;zhangsan&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> demo2 = <span class="title class_">Demo</span>.<span class="title function_">getInstance</span>(<span class="string">&quot;lisi&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo1.<span class="property">name</span>); <span class="comment">//zhangsan</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo2.<span class="property">name</span>); <span class="comment">//lisi</span></span><br></pre></td></tr></table></figure>
+
+<p>单例模式：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单例模式</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Demo</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="attr">instance</span>: <span class="title class_">Demo</span>;</span><br><span class="line">  <span class="keyword">private</span> <span class="title function_">constructor</span>(<span class="params"><span class="keyword">public</span> name: <span class="built_in">string</span></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">static</span> <span class="title function_">getInstance</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">//static表示把这个方法挂在类上，而不是挂在实例上面</span></span><br><span class="line">    <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">instance</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">instance</span> = <span class="keyword">new</span> <span class="title class_">Demo</span>(<span class="string">&quot;daykalif&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">instance</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// demo1和demo2指向的是相同的实例</span></span><br><span class="line"><span class="keyword">const</span> demo1 = <span class="title class_">Demo</span>.<span class="title function_">getInstance</span>();</span><br><span class="line"><span class="keyword">const</span> demo2 = <span class="title class_">Demo</span>.<span class="title function_">getInstance</span>();</span><br><span class="line"><span class="comment">// Demo.instance;   //报错</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo1.<span class="property">name</span>); <span class="comment">//daykalif</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(demo2.<span class="property">name</span>); <span class="comment">//daykalif</span></span><br></pre></td></tr></table></figure>
+
+<p>只读属性：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">readonly</span> <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">name: <span class="built_in">string</span></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span> = name;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> person = <span class="keyword">new</span> <span class="title class_">Person</span>(<span class="string">&quot;daykalif&quot;</span>);</span><br><span class="line">person.<span class="property">name</span> = <span class="string">&quot;zhangsan&quot;</span>; <span class="comment">//无法分配到 &quot;name&quot; ，因为它是只读属性。ts(2540)</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(person.<span class="property">name</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="12-抽象类"><a href="#12-抽象类" class="headerlink" title="12.抽象类"></a>12.抽象类</h3><p>抽象类</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Geom</span> &#123;</span><br><span class="line">  <span class="comment">//抽象类--抽象类只能被继承，不能被实例化</span></span><br><span class="line">  <span class="attr">width</span>: <span class="built_in">number</span>;</span><br><span class="line">  <span class="title function_">getType</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;Gemo&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">abstract</span> <span class="title function_">getArea</span>(): <span class="built_in">number</span>; <span class="comment">//方法的具体的实现也是抽象的</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Geom</span> &#123;</span><br><span class="line">  <span class="title function_">getArea</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">123</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Square</span> &#123;&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Triangle</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>interface 抽离:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Teacher</span> <span class="keyword">extends</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">teachingAge</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">age</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> teacher = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;daykalif&quot;</span>,</span><br><span class="line">  <span class="attr">teachingAge</span>: <span class="number">3</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> student = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;zhangsan&quot;</span>,</span><br><span class="line">  <span class="attr">age</span>: <span class="number">18</span>,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="title function_">getUserInfo</span> = (<span class="params">user: Person</span>) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(user.<span class="property">name</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title function_">getUserInfo</span>(teacher);</span><br><span class="line"><span class="title function_">getUserInfo</span>(student);</span><br></pre></td></tr></table></figure>
+
+<h2 id="进阶语法"><a href="#进阶语法" class="headerlink" title="进阶语法"></a>进阶语法</h2><h3 id="13-tsconfig-配置文件"><a href="#13-tsconfig-配置文件" class="headerlink" title="13.tsconfig 配置文件"></a>13.tsconfig 配置文件</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;include&quot;</span>: [<span class="string">&quot;./src/demo.ts&quot;</span>],</span><br><span class="line">  <span class="string">&quot;exclude&quot;</span>: [<span class="string">&quot;./src/demo1.ts&quot;</span>],</span><br><span class="line">  <span class="string">&quot;files&quot;</span>: [<span class="string">&quot;./src/demo.ts&quot;</span>],<span class="comment">/*和include相似*/</span></span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="comment">/* Visit https://aka.ms/tsconfig.json to read more about this file */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Basic Options */</span></span><br><span class="line">    <span class="string">&quot;incremental&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* 【增量编译：只编译变化内容的文件，已经编译过的内容就不编译了】Enable incremental compilation */</span></span><br><span class="line">    <span class="string">&quot;target&quot;</span>: <span class="string">&quot;es5&quot;</span>,</span><br><span class="line">    <span class="comment">/* Specify ECMAScript target version: &#x27;ES3&#x27; (default), &#x27;ES5&#x27;, &#x27;ES2015&#x27;, &#x27;ES2016&#x27;, &#x27;ES2017&#x27;, &#x27;ES2018&#x27;, &#x27;ES2019&#x27;, &#x27;ES2020&#x27;, or &#x27;ESNEXT&#x27;. */</span></span><br><span class="line">    <span class="string">&quot;module&quot;</span>: <span class="string">&quot;amd&quot;</span>,</span><br><span class="line">    <span class="comment">/* Specify module code generation: &#x27;none&#x27;, &#x27;commonjs&#x27;, &#x27;amd&#x27;, &#x27;system&#x27;, &#x27;umd&#x27;, &#x27;es2015&#x27;, &#x27;es2020&#x27;, or &#x27;ESNext&#x27;. */</span></span><br><span class="line">    <span class="comment">// &quot;lib&quot;: [],                                   /* Specify library files to be included in the compilation. */</span></span><br><span class="line">    <span class="string">&quot;allowJs&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* 【允许编译js文件】Allow javascript files to be compiled. */</span></span><br><span class="line">    <span class="string">&quot;checkJs&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* 【对js语法进行检测】Report errors in .js files. */</span></span><br><span class="line">    <span class="comment">// &quot;jsx&quot;: &quot;preserve&quot;,                           /* Specify JSX code generation: &#x27;preserve&#x27;, &#x27;react-native&#x27;, &#x27;react&#x27;, &#x27;react-jsx&#x27; or &#x27;react-jsxdev&#x27;. */</span></span><br><span class="line">    <span class="comment">// &quot;declaration&quot;: true,                         /* Generates corresponding &#x27;.d.ts&#x27; file. */</span></span><br><span class="line">    <span class="comment">// &quot;declarationMap&quot;: true,                      /* Generates a sourcemap for each corresponding &#x27;.d.ts&#x27; file. */</span></span><br><span class="line">    <span class="string">&quot;sourceMap&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* 【打包过程中，生成sourceMap文件】Generates corresponding &#x27;.map&#x27; file. */</span></span><br><span class="line">    <span class="string">&quot;outFile&quot;</span>: <span class="string">&quot;./dist/page.js&quot;</span>,                             <span class="comment">/* 【对输出文件统一打包成一个文件，并且要配合&quot;module&quot;:&quot;amd&quot;】Concatenate and emit output to single file. */</span></span><br><span class="line">    <span class="string">&quot;outDir&quot;</span>: <span class="string">&quot;./build&quot;</span>,</span><br><span class="line">    <span class="comment">/* 【指定输出文件的地址】Redirect output structure to the directory. */</span></span><br><span class="line">    <span class="string">&quot;rootDir&quot;</span>: <span class="string">&quot;./src&quot;</span>,</span><br><span class="line">    <span class="comment">/* 【指定输入的文件地址】Specify the root directory of input files. Use to control the output directory structure with --outDir. */</span></span><br><span class="line">    <span class="comment">// &quot;composite&quot;: true,                           /* Enable project compilation */</span></span><br><span class="line">    <span class="comment">// &quot;tsBuildInfoFile&quot;: &quot;./&quot;,                     /* Specify file to store incremental compilation information */</span></span><br><span class="line">    <span class="string">&quot;removeComments&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* 【设为true：去除掉ts文件中的注释】Do not emit comments to output. */</span></span><br><span class="line">    <span class="comment">// &quot;noEmit&quot;: true,                              /* Do not emit outputs. */</span></span><br><span class="line">    <span class="comment">// &quot;importHelpers&quot;: true,                       /* Import emit helpers from &#x27;tslib&#x27;. */</span></span><br><span class="line">    <span class="comment">// &quot;downlevelIteration&quot;: true,                  /* Provide full support for iterables in &#x27;for-of&#x27;, spread, and destructuring when targeting &#x27;ES5&#x27; or &#x27;ES3&#x27;. */</span></span><br><span class="line">    <span class="comment">// &quot;isolatedModules&quot;: true,                     /* Transpile each file as a separate module (similar to &#x27;ts.transpileModule&#x27;). */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Strict Type-Checking Options */</span></span><br><span class="line">    <span class="string">&quot;strict&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* Enable all strict type-checking options. */</span></span><br><span class="line">    <span class="string">&quot;noImplicitAny&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* 【必须对any增加类型说明】Raise error on expressions and declarations with an implied &#x27;any&#x27; type. */</span></span><br><span class="line">    <span class="comment">// 【不能把null赋值给其他基础类型】&quot;strictNullChecks&quot;: true,                    /* Enable strict null checks. */</span></span><br><span class="line">    <span class="comment">// &quot;strictFunctionTypes&quot;: true,                 /* Enable strict checking of function types. */</span></span><br><span class="line">    <span class="comment">// &quot;strictBindCallApply&quot;: true,                 /* Enable strict &#x27;bind&#x27;, &#x27;call&#x27;, and &#x27;apply&#x27; methods on functions. */</span></span><br><span class="line">    <span class="comment">// &quot;strictPropertyInitialization&quot;: true,        /* Enable strict checking of property initialization in classes. */</span></span><br><span class="line">    <span class="comment">// &quot;noImplicitThis&quot;: true,                      /* Raise error on &#x27;this&#x27; expressions with an implied &#x27;any&#x27; type. */</span></span><br><span class="line">    <span class="comment">// &quot;alwaysStrict&quot;: true,                        /* Parse in strict mode and emit &quot;use strict&quot; for each source file. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Additional Checks */</span></span><br><span class="line">    <span class="string">&quot;noUnusedLocals&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* 【检测没有被使用的局部变量】Report errors on unused locals. */</span></span><br><span class="line">    <span class="string">&quot;noUnusedParameters&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* 【针对函数的未被使用的参数】Report errors on unused parameters. */</span></span><br><span class="line">    <span class="comment">// &quot;noImplicitReturns&quot;: true,                   /* Report error when not all code paths in function return a value. */</span></span><br><span class="line">    <span class="comment">// &quot;noFallthroughCasesInSwitch&quot;: true,          /* Report errors for fallthrough cases in switch statement. */</span></span><br><span class="line">    <span class="comment">// &quot;noUncheckedIndexedAccess&quot;: true,            /* Include &#x27;undefined&#x27; in index signature results */</span></span><br><span class="line">    <span class="comment">// &quot;noPropertyAccessFromIndexSignature&quot;: true,  /* Require undeclared properties from index signatures to use element accesses. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Module Resolution Options */</span></span><br><span class="line">    <span class="comment">// &quot;moduleResolution&quot;: &quot;node&quot;,                  /* Specify module resolution strategy: &#x27;node&#x27; (Node.js) or &#x27;classic&#x27; (TypeScript pre-1.6). */</span></span><br><span class="line">    <span class="comment">// &quot;baseUrl&quot;: &quot;./&quot;,                             /* Base directory to resolve non-absolute module names. */</span></span><br><span class="line">    <span class="comment">// &quot;paths&quot;: &#123;&#125;,                                 /* A series of entries which re-map imports to lookup locations relative to the &#x27;baseUrl&#x27;. */</span></span><br><span class="line">    <span class="comment">// &quot;rootDirs&quot;: [],                              /* List of root folders whose combined content represents the structure of the project at runtime. */</span></span><br><span class="line">    <span class="comment">// &quot;typeRoots&quot;: [],                             /* List of folders to include type definitions from. */</span></span><br><span class="line">    <span class="comment">// &quot;types&quot;: [],                                 /* Type declaration files to be included in compilation. */</span></span><br><span class="line">    <span class="comment">// &quot;allowSyntheticDefaultImports&quot;: true,        /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */</span></span><br><span class="line">    <span class="string">&quot;esModuleInterop&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies &#x27;allowSyntheticDefaultImports&#x27;. */</span></span><br><span class="line">    <span class="comment">// &quot;preserveSymlinks&quot;: true,                    /* Do not resolve the real path of symlinks. */</span></span><br><span class="line">    <span class="comment">// &quot;allowUmdGlobalAccess&quot;: true,                /* Allow accessing UMD globals from modules. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Source Map Options */</span></span><br><span class="line">    <span class="comment">// &quot;sourceRoot&quot;: &quot;&quot;,                            /* Specify the location where debugger should locate TypeScript files instead of source locations. */</span></span><br><span class="line">    <span class="comment">// &quot;mapRoot&quot;: &quot;&quot;,                               /* Specify the location where debugger should locate map files instead of generated locations. */</span></span><br><span class="line">    <span class="comment">// &quot;inlineSourceMap&quot;: true,                     /* Emit a single file with source maps instead of having a separate file. */</span></span><br><span class="line">    <span class="comment">// &quot;inlineSources&quot;: true,                       /* Emit the source alongside the sourcemaps within a single file; requires &#x27;--inlineSourceMap&#x27; or &#x27;--sourceMap&#x27; to be set. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Experimental Options */</span></span><br><span class="line">    <span class="comment">// &quot;experimentalDecorators&quot;: true,              /* Enables experimental support for ES7 decorators. */</span></span><br><span class="line">    <span class="comment">// &quot;emitDecoratorMetadata&quot;: true,               /* Enables experimental support for emitting type metadata for decorators. */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/* Advanced Options */</span></span><br><span class="line">    <span class="string">&quot;skipLibCheck&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">/* Skip type checking of declaration files. */</span></span><br><span class="line">    <span class="string">&quot;forceConsistentCasingInFileNames&quot;</span>: <span class="literal">true</span> <span class="comment">/* Disallow inconsistently-cased references to the same file. */</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="14-联合类型和类型保护"><a href="#14-联合类型和类型保护" class="headerlink" title="14.联合类型和类型保护"></a>14.联合类型和类型保护</h3><p>联合声明类型 &amp;&amp; 1.通过类型断言的方式 进行 类型保护 &amp;&amp; 2.通过 in 语法 进行 类型保护</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line">  <span class="attr">fly</span>: <span class="built_in">boolean</span>;</span><br><span class="line">  <span class="attr">sing</span>: <span class="function">() =&gt;</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Dog</span> &#123;</span><br><span class="line">  <span class="attr">fly</span>: <span class="built_in">boolean</span>;</span><br><span class="line">  <span class="attr">bark</span>: <span class="function">() =&gt;</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">trainAnimal</span>(<span class="params">animal: Bird | Dog</span>) &#123;</span><br><span class="line">  <span class="comment">//联合声明类型</span></span><br><span class="line">  <span class="comment">// 1.通过类型断言的方式 进行 类型保护</span></span><br><span class="line">  <span class="keyword">if</span> (animal.<span class="property">fly</span>) &#123;</span><br><span class="line">    (animal <span class="keyword">as</span> <span class="title class_">Bird</span>).<span class="title function_">sing</span>(); <span class="comment">//断言的方式，告诉ts  animal就是Bird</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    (animal <span class="keyword">as</span> <span class="title class_">Dog</span>).<span class="title function_">bark</span>();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 2.通过 in 语法 进行 类型保护</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="string">&quot;sing&quot;</span> <span class="keyword">in</span> animal) &#123;</span><br><span class="line">    animal.<span class="title function_">sing</span>();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    animal.<span class="title function_">bark</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.typeof 语法来做类型保护:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">add</span>(<span class="params">first: <span class="built_in">string</span> | <span class="built_in">number</span>, second: <span class="built_in">string</span> | <span class="built_in">number</span></span>) &#123;</span><br><span class="line">  <span class="comment">// 3.typeof语法来做类型保护</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> first === <span class="string">&quot;string&quot;</span> || <span class="keyword">typeof</span> second === <span class="string">&quot;string&quot;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> first + second;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.使用 instanceof 语法来做类型保护:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NumberObj</span> &#123;</span><br><span class="line">  <span class="comment">//【只有class才能被instanceof调用的默认行为，不能使用interface】</span></span><br><span class="line">  <span class="attr">count</span>: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">addSecond</span>(<span class="params">first: <span class="built_in">object</span> | NumberObj, second: <span class="built_in">object</span> | NumberObj</span>) &#123;</span><br><span class="line">  <span class="comment">// 4.使用 instanceof 语法来做类型保护</span></span><br><span class="line">  <span class="keyword">if</span> (first <span class="keyword">instanceof</span> <span class="title class_">NumberObj</span> &amp;&amp; second <span class="keyword">instanceof</span> <span class="title class_">NumberObj</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> first.<span class="property">count</span> + second.<span class="property">count</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-Enum-枚举类型"><a href="#15-Enum-枚举类型" class="headerlink" title="15.Enum 枚举类型"></a>15.Enum 枚举类型</h3><p>安装依赖：</p>
+<blockquote>
+<p>npm init -y<br>npm install ts-node -D<br>npm install typescript -S</p>
+</blockquote>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// const Status = &#123;</span></span><br><span class="line"><span class="comment">//   OFFLINE: 0,</span></span><br><span class="line"><span class="comment">//   ONLINE: 1,</span></span><br><span class="line"><span class="comment">//   DELETE: 2</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">Status</span> &#123;</span><br><span class="line">  <span class="variable constant_">OFFLINE</span>,</span><br><span class="line">  <span class="variable constant_">ONLINE</span> = <span class="number">4</span>, <span class="comment">//设初始值</span></span><br><span class="line">  <span class="variable constant_">DELETE</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不写 = 4的话，默认0，1，2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">OFFLINE</span>); <span class="comment">//0</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>[<span class="number">4</span>]); <span class="comment">//ONLINE</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">ONLINE</span>); <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Status</span>.<span class="property">DELETE</span>); <span class="comment">//5</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getResult</span>(<span class="params">status</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">OFFLINE</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;offline&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">ONLINE</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;online&quot;</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (status === <span class="title class_">Status</span>.<span class="property">DELETE</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;delete&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> result = <span class="title function_">getResult</span>(<span class="title class_">Status</span>.<span class="property">OFFLINE</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br></pre></td></tr></table></figure>
+
+<h3 id="16-函数泛型"><a href="#16-函数泛型" class="headerlink" title="16.函数泛型"></a>16.函数泛型</h3><figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 泛型 generic 泛指的类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> join&lt;T&gt;(<span class="attr">first</span>: T, <span class="attr">second</span>: T) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join&lt;<span class="built_in">string</span>&gt;(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line">join&lt;<span class="built_in">number</span>&gt;(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// join&lt;string&gt;(1, 1); //报错</span></span><br></pre></td></tr></table></figure>
+
+<p>函数数组：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1.T[]</span></span><br><span class="line"><span class="keyword">function</span> map&lt;T&gt;(<span class="attr">params</span>: T[]) &#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">map&lt;<span class="built_in">string</span>&gt;([<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">/** 等价于：*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2.Array&lt;T&gt;</span></span><br><span class="line"><span class="keyword">function</span> mapCopy&lt;T&gt;(<span class="attr">params</span>: <span class="title class_">Array</span>&lt;T&gt;) &#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line">mapCopy&lt;<span class="built_in">string</span>&gt;([<span class="string">&quot;123&quot;</span>, <span class="string">&quot;456&quot;</span>]);</span><br></pre></td></tr></table></figure>
+
+<p>传多个参数:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> join2&lt;T, P&gt;(<span class="attr">first</span>: T, <span class="attr">second</span>: P) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;first&#125;</span><span class="subst">$&#123;second&#125;</span>`</span>;</span><br><span class="line">&#125;</span><br><span class="line">join2&lt;<span class="built_in">number</span>, <span class="built_in">number</span>&gt;(<span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">join2&lt;<span class="built_in">number</span>, <span class="built_in">string</span>&gt;(<span class="number">1</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line"><span class="comment">// 类型推断</span></span><br><span class="line"><span class="title function_">join2</span>(<span class="number">1</span>, <span class="string">&quot;1&quot;</span>);</span><br><span class="line"><span class="title function_">join2</span>(<span class="string">&quot;1&quot;</span>, <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>函数返回类型也为 T:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> anotherJoin&lt;T&gt;(<span class="attr">first</span>: T, <span class="attr">second</span>: T): T &#123;</span><br><span class="line">  <span class="keyword">return</span> first;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="17-类中的泛型以及泛型类型"><a href="#17-类中的泛型以及泛型类型" class="headerlink" title="17.类中的泛型以及泛型类型"></a>17.类中的泛型以及泛型类型</h3><p>示例 1:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span>&lt;T&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> data: T[]</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">getItem</span>(<span class="attr">index</span>: <span class="built_in">number</span>): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">data</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> data = <span class="keyword">new</span> <span class="title class_">DataManager</span>&lt;<span class="built_in">string</span>&gt;([<span class="string">&quot;1&quot;</span>]);</span><br><span class="line">data.<span class="title function_">getItem</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>示例 2:<br>extends:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Item</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span>&lt;T <span class="keyword">extends</span> <span class="title class_">Item</span>&gt; &#123;</span><br><span class="line">  <span class="comment">//T必须拥有Item中所有的东西</span></span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> data: T[]</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">getItem</span>(<span class="attr">index</span>: <span class="built_in">number</span>): <span class="built_in">string</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">data</span>[index].<span class="property">name</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> data = <span class="keyword">new</span> <span class="title class_">DataManager</span>([</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&quot;dell&quot;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">]);</span><br><span class="line">data.<span class="title function_">getItem</span>(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+
+<p>示例 3:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">DataManager</span>&lt;T <span class="keyword">extends</span> <span class="built_in">number</span> | <span class="built_in">string</span>&gt; &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params"><span class="keyword">private</span> data: T[]</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">getItem</span>(<span class="attr">index</span>: <span class="built_in">number</span>): T &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">data</span>[index];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> data = <span class="keyword">new</span> <span class="title class_">DataManager</span>&lt;<span class="title class_">Test</span>&gt;([]); <span class="comment">//报错</span></span><br><span class="line"><span class="keyword">const</span> data1 = <span class="keyword">new</span> <span class="title class_">DataManager</span>&lt;<span class="built_in">number</span>&gt;([]);</span><br></pre></td></tr></table></figure>
+
+<p>示例 4:如何使用泛型作为一个具体类型的注解:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="attr">func</span>: &lt;T&gt;<span class="function">() =&gt;</span> <span class="built_in">string</span> = &lt;T&gt;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;123&quot;</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//---------------------------------------------</span></span><br><span class="line"><span class="keyword">function</span> hello&lt;T&gt;(<span class="attr">params</span>: T) &#123;</span><br><span class="line">  <span class="keyword">return</span> params;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> <span class="attr">funct</span>: &lt;T&gt;<span class="function">(<span class="params">params: T</span>) =&gt;</span> T = hello;</span><br></pre></td></tr></table></figure>
+
+<h3 id="18-命名空间-namespace"><a href="#18-命名空间-namespace" class="headerlink" title="18.命名空间-namespace"></a>18.命名空间-namespace</h3><p>示例 1:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title class_">Home</span> &#123;</span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Header</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Content</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">class</span> <span class="title class_">Footer</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Page</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Header</span>();</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Content</span>();</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Footer</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;<span class="keyword">new</span> <span class="title class_">Home</span>.<span class="title class_">Page</span>();&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>监控并编译 ts： tsc -w</p>
+</blockquote>
+<p>示例 2:</p>
+<p>components.ts:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> <span class="title class_">Components</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">namespace</span> <span class="title class_">SubComponents</span> &#123;</span><br><span class="line">    <span class="comment">//控制台可调用Components.SubComponents.Test，输出f Test()&#123;&#125;</span></span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">interface</span> <span class="title class_">User</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Header</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Header&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Content</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Content&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Footer</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">const</span> elem = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;div&quot;</span>);</span><br><span class="line">      elem.<span class="property">innerText</span> = <span class="string">&quot;This is Footer&quot;</span>;</span><br><span class="line">      <span class="variable language_">document</span>.<span class="property">body</span>.<span class="title function_">appendChild</span>(elem);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>page.ts</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">///&lt;reference path=&#x27;./components.ts&#x27; /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title class_">Home</span> &#123;</span><br><span class="line">  <span class="keyword">export</span> <span class="keyword">class</span> <span class="title class_">Page</span> &#123;</span><br><span class="line">    <span class="attr">user</span>: <span class="title class_">Components</span>.<span class="property">User</span> = &#123;</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&quot;dell&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Components</span>.<span class="title class_">Header</span>();</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Components</span>.<span class="title class_">Content</span>();</span><br><span class="line">      <span class="keyword">new</span> <span class="title class_">Components</span>.<span class="title class_">Footer</span>();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>index.html:</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;!<span class="variable constant_">DOCTYPE</span> html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;Document&lt;/title&gt;</span><br><span class="line">  &lt;script src=&#x27;./dist/page.js&#x27;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    new Home.Page();</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line"></span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/28/%E8%8B%B1%E8%AF%AD/English%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/" rel="next" title="English英语语法">
+                <i class="fa fa-chevron-left"></i> English英语语法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/07/08/React/%E3%80%90%E5%8E%9F%E5%88%9B%E3%80%91React%E6%BA%90%E7%A0%81/" rel="prev" title="React的源码实现-卡颂视频讲解">
+                React的源码实现-卡颂视频讲解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Typescript"><span class="nav-number">1.</span> <span class="nav-text">Typescript</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.</span> <span class="nav-text">1.介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85"><span class="nav-number">1.2.</span> <span class="nav-text">2.环境安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E9%9D%99%E6%80%81%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.3.</span> <span class="nav-text">3.静态类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B-%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">4.基础类型 &amp;&amp; 对象类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.4.1.</span> <span class="nav-text">1).基础类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%AF%B9%E8%B1%A1%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.4.2.</span> <span class="nav-text">2).对象类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3-%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="nav-number">1.5.</span> <span class="nav-text">5.类型注解 &amp;&amp; 类型推断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.5.1.</span> <span class="nav-text">1).类型注解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="nav-number">1.5.2.</span> <span class="nav-text">2).类型推断</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%87%BD%E6%95%B0%E7%9B%B8%E5%85%B3%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.6.</span> <span class="nav-text">6.函数相关类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E5%AE%9A%E4%B9%89%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="nav-number">1.6.1.</span> <span class="nav-text">1).定义返回值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%BA%E7%A9%BA"><span class="nav-number">1.6.2.</span> <span class="nav-text">2).函数返回值为空</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%BA-never"><span class="nav-number">1.6.3.</span> <span class="nav-text">3).函数返回值为 never</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%E7%9A%84%E7%B1%BB%E5%9E%8B%E6%B3%A8%E8%A7%A3%E5%86%99%E6%B3%95"><span class="nav-number">1.6.4.</span> <span class="nav-text">4).解构赋值的类型注解写法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E6%95%B0%E7%BB%84%E5%92%8C%E5%85%83%E7%A5%96"><span class="nav-number">1.7.</span> <span class="nav-text">7.数组和元祖</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%95%B0%E7%BB%84-Array"><span class="nav-number">1.7.1.</span> <span class="nav-text">1).数组 Array</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%85%83%E7%A5%96-Tuple"><span class="nav-number">1.7.2.</span> <span class="nav-text">2).元祖 Tuple</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Interface-%E6%8E%A5%E5%8F%A3"><span class="nav-number">1.8.</span> <span class="nav-text">8.Interface 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E7%BB%A7%E6%89%BF"><span class="nav-number">1.9.</span> <span class="nav-text">9.类的定义与继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-%E7%B1%BB%E4%B8%AD%E7%9A%84%E8%AE%BF%E9%97%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-number">1.10.</span> <span class="nav-text">10.类中的访问类型和构造器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E8%AE%BF%E9%97%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.10.1.</span> <span class="nav-text">1).访问类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-constructor-%E6%9E%84%E9%80%A0%E5%99%A8"><span class="nav-number">1.10.2.</span> <span class="nav-text">2).constructor 构造器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7%EF%BC%8CSetter-%E5%92%8C-Getter"><span class="nav-number">1.11.</span> <span class="nav-text">11.静态属性，Setter 和 Getter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Getter-Setter"><span class="nav-number">1.11.1.</span> <span class="nav-text">1).Getter &amp;&amp; Setter</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.12.</span> <span class="nav-text">12.抽象类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">进阶语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#13-tsconfig-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">13.tsconfig 配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B%E5%92%8C%E7%B1%BB%E5%9E%8B%E4%BF%9D%E6%8A%A4"><span class="nav-number">2.2.</span> <span class="nav-text">14.联合类型和类型保护</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-Enum-%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.3.</span> <span class="nav-text">15.Enum 枚举类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-%E5%87%BD%E6%95%B0%E6%B3%9B%E5%9E%8B"><span class="nav-number">2.4.</span> <span class="nav-text">16.函数泛型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-%E7%B1%BB%E4%B8%AD%E7%9A%84%E6%B3%9B%E5%9E%8B%E4%BB%A5%E5%8F%8A%E6%B3%9B%E5%9E%8B%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.5.</span> <span class="nav-text">17.类中的泛型以及泛型类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4-namespace"><span class="nav-number">2.6.</span> <span class="nav-text">18.命名空间-namespace</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

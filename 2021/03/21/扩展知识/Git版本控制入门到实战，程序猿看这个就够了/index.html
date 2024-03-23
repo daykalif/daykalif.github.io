@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="git,打包构建工具," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Git 操作详细步骤1.Git 版本控制引言自诞生于 2005 年以来，Git 日臻成熟完善，在高度易用的同时，仍然保留着初期设定的目标。它的速度飞快，极其适合管理大项目 。 主要竞争对手：SVNCVSMercurial 采用 Git 的云服务：githubgitee（oschina） 2.Git 版本控制-集中式与分布式实例分析集中式：【如以前去医院的门诊挂号，所有人都在窗口等待办理】分布式：【">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git版本控制入门到实战，程序猿看这个就够了">
+<meta property="og:url" content="https://daykalif.github.io/2021/03/21/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98%EF%BC%8C%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9C%8B%E8%BF%99%E4%B8%AA%E5%B0%B1%E5%A4%9F%E4%BA%86/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="Git 操作详细步骤1.Git 版本控制引言自诞生于 2005 年以来，Git 日臻成熟完善，在高度易用的同时，仍然保留着初期设定的目标。它的速度飞快，极其适合管理大项目 。 主要竞争对手：SVNCVSMercurial 采用 Git 的云服务：githubgitee（oschina） 2.Git 版本控制-集中式与分布式实例分析集中式：【如以前去医院的门诊挂号，所有人都在窗口等待办理】分布式：【">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/git1.jpg">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/git2.png">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/git3.png">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/git4.png">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/git5.png">
+<meta property="og:image" content="https://www.daykalif.com/blog_img/git6.png">
+<meta property="article:published_time" content="2021-03-21T03:49:55.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:49:54.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta property="article:tag" content="git">
+<meta property="article:tag" content="打包构建工具">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.daykalif.com/blog_img/git1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2021/03/21/扩展知识/Git版本控制入门到实战，程序猿看这个就够了/"/>
+
+
+
+
+
+  <title>Git版本控制入门到实战，程序猿看这个就够了 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2021/03/21/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98%EF%BC%8C%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9C%8B%E8%BF%99%E4%B8%AA%E5%B0%B1%E5%A4%9F%E4%BA%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Git版本控制入门到实战，程序猿看这个就够了</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-21T11:49:55+08:00">
+                2021-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/03/21/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98%EF%BC%8C%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9C%8B%E8%BF%99%E4%B8%AA%E5%B0%B1%E5%A4%9F%E4%BA%86/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/03/21/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98%EF%BC%8C%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9C%8B%E8%BF%99%E4%B8%AA%E5%B0%B1%E5%A4%9F%E4%BA%86/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2021/03/21/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/Git%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%85%A5%E9%97%A8%E5%88%B0%E5%AE%9E%E6%88%98%EF%BC%8C%E7%A8%8B%E5%BA%8F%E7%8C%BF%E7%9C%8B%E8%BF%99%E4%B8%AA%E5%B0%B1%E5%A4%9F%E4%BA%86/" class="leancloud_visitors" data-flag-title="Git版本控制入门到实战，程序猿看这个就够了">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  6.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  25
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Git-操作详细步骤"><a href="#Git-操作详细步骤" class="headerlink" title="Git 操作详细步骤"></a>Git 操作详细步骤</h2><h3 id="1-Git-版本控制引言"><a href="#1-Git-版本控制引言" class="headerlink" title="1.Git 版本控制引言"></a>1.Git 版本控制引言</h3><p>自诞生于 2005 年以来，Git 日臻成熟完善，在高度易用的同时，仍然保留着初期设定的目标。它的速度飞快，极其适合管理大项目 。</p>
+<p>主要竞争对手：<br>SVN<br>CVS<br>Mercurial</p>
+<p>采用 Git 的云服务：<br>github<br>gitee（oschina）</p>
+<h3 id="2-Git-版本控制-集中式与分布式实例分析"><a href="#2-Git-版本控制-集中式与分布式实例分析" class="headerlink" title="2.Git 版本控制-集中式与分布式实例分析"></a>2.Git 版本控制-集中式与分布式实例分析</h3><p>集中式：【如以前去医院的门诊挂号，所有人都在窗口等待办理】<br>分布式：【如现如今可以通过 114 挂号，手机公众号挂号，门诊窗口挂号…】</p>
+<p>Svn：集中式<br>Git：分布式</p>
+<h3 id="3-Git-版本控制-mac-windows-linux-安装-git-软件"><a href="#3-Git-版本控制-mac-windows-linux-安装-git-软件" class="headerlink" title="3.Git 版本控制-mac-windows-linux 安装 git 软件"></a>3.Git 版本控制-mac-windows-linux 安装 git 软件</h3><p>Git 可以在 windows、Mac、Linux 全平台系统使用。登录 <code>https://git-scm.com/downloads</code> 下载你系统的 Git 软件并进行安装。</p>
+<blockquote>
+<p>windows 用户我更建议安装 git for windows ，下载地址： <a href="https://gitforwindows.org/">https://gitforwindows.org/</a><br>包信 Git Base 、Git Gui<br>mac 用户，下载地址【git 官网】：<a href="https://git-scm.com/">https://git-scm.com/</a></p>
+</blockquote>
+<p>安装后通过以下命令查看，如果显示版本号那就是安装成功了</p>
+<p><code>git --version</code></p>
+<p><strong>Gui</strong>：</p>
+<p>Gui 指 Git 的图形界面管理软件，<code>https://git-scm.com/downloads/guis</code> 这个网址列出了多个可供基本上所有平台使用的 Gui 软件。如果要使用 Gui 而非命令行操作，我推荐 sourcetree 这也是我多年使用的软件，功能强大、跨平台、免费。</p>
+<blockquote>
+<p>新人建议直接使用命令行管理 GIT</p>
+</blockquote>
+<h3 id="4-Git-版本控制-配置作者信息"><a href="#4-Git-版本控制-配置作者信息" class="headerlink" title="4.Git 版本控制 - 配置作者信息"></a>4.Git 版本控制 - 配置作者信息</h3><p><strong>初始配置</strong>：</p>
+<p>配置文件为 ~&#x2F;.gitconfig ，执行任何 Git 配置命令后文件将自动创建。</p>
+<p>第一个要配置的是你个人的用户名称和电子邮件地址。这两条配置很重要，每次 Git 提交时都会引用这两条信息，说明是谁提交了更新，所以会随更新内容一起被永久纳入历史记录：</p>
+<p><code>git config --global user.email &quot;xxxxx@qq.com&quot;</code><br><code>git config --global user.name &quot;daykalif&quot;</code></p>
+<p><code>git config --global color.ui true</code></p>
+<p>查看当前用户（global）配置:<br><code>git config --global  --list</code></p>
+<blockquote>
+<p>tips:<br>快捷键【control+l】：清屏</p>
+</blockquote>
+<p>进入文件夹，初始化新仓库 <code>git init</code> 【此时运行命令：ls -a 可查看到.git 文件，这就是版本仓库；进入.git 文件，运行命令 ls -la，可看到这个仓库的一些配置信息；如果去修改这个文件中的 config 文件，并修改：<code>git config user.name &quot;wjp&quot;</code>，可看到这个项目的昵称改为了 wjp】</p>
+<h3 id="5-Git-版本控制-新建仓库与维护旧仓库"><a href="#5-Git-版本控制-新建仓库与维护旧仓库" class="headerlink" title="5.Git 版本控制 - 新建仓库与维护旧仓库"></a>5.Git 版本控制 - 新建仓库与维护旧仓库</h3><p>新建文件夹：GIT<br>进入 GIT 文件夹，新建文件夹：bbs<br>进入 bbs 文件夹，运行 git 初始化命令：git init<br>回退到 GIT 文件夹，克隆代码：<code>git clone https://gitee.com/houdunwang/hdcms.git</code><br>删除 GIT 文件夹下所有的内容：【千万主要当前的位置】<code>rm -rf *</code></p>
+<h3 id="6-Git-版本控制-Git-流水线操作分析"><a href="#6-Git-版本控制-Git-流水线操作分析" class="headerlink" title="6.Git 版本控制 - Git 流水线操作分析"></a>6.Git 版本控制 - Git 流水线操作分析</h3><h4 id="Git-工作区、暂存区和版本库"><a href="#Git-工作区、暂存区和版本库" class="headerlink" title="Git 工作区、暂存区和版本库"></a>Git 工作区、暂存区和版本库</h4><p><strong>基本概念</strong><br>我们先来理解下 Git 工作区、暂存区和版本库概念：</p>
+<p>工作区：就是你在电脑里能看到的目录。<br>暂存区：英文叫 stage 或 index。一般存放在 .git 目录下的 index 文件（.git&#x2F;index）中，所以我们把暂存区有时也叫作索引（index）。<br>版本库：工作区有一个隐藏目录 .git，这个不算工作区，而是 Git 的版本库。<br>下面这个图展示了工作区、版本库中的暂存区和版本库之间的关系：</p>
+<ul>
+<li>建立文件（本地工作文件夹）</li>
+<li>追加文件（索引区）</li>
+<li>提交文件（本地库）</li>
+</ul>
+<p><img src="https://www.daykalif.com/blog_img/git1.jpg" alt="git"></p>
+<ul>
+<li><p>图中左侧为工作区，右侧为版本库。在版本库中标记为 “index” 的区域是暂存区（stage&#x2F;index），标记为 “master” 的是 master 分支所代表的目录树。</p>
+</li>
+<li><p>图中我们可以看出此时 “HEAD” 实际是指向 master 分支的一个”游标”。所以图示的命令中出现 HEAD 的地方可以用 master 来替换。</p>
+</li>
+<li><p>图中的 objects 标识的区域为 Git 的对象库，实际位于 “.git&#x2F;objects” 目录下，里面包含了创建的各种对象及内容。</p>
+</li>
+<li><p>当对工作区修改（或新增）的文件执行 git add 命令时，暂存区的目录树被更新，同时工作区修改（或新增）的文件内容被写入到对象库中的一个新的对象中，而该对象的 ID 被记录在暂存区的文件索引中。</p>
+</li>
+<li><p>当执行提交操作（git commit）时，暂存区的目录树写到版本库（对象库）中，master 分支会做相应的更新。即 master 指向的目录树就是提交时暂存区的目录树。</p>
+</li>
+<li><p>当执行 <code>git reset HEAD</code> 命令时，暂存区的目录树会被重写，被 master 分支指向的目录树所替换，但是工作区不受影响。</p>
+</li>
+<li><p>当执行 <code>git rm --cached &lt;file&gt;</code>命令时，会直接从暂存区删除文件，工作区则不做出改变。</p>
+</li>
+<li><p>当执行 <code>git checkout .</code> 或者 <code>git checkout -- &lt;file&gt;</code> 命令时，会用暂存区全部或指定的文件替换工作区的文件。这个操作很危险，会清除工作区中未添加到暂存区的改动。</p>
+</li>
+<li><p>当执行 <code>git checkout HEAD .</code> 或者 <code>git checkout HEAD &lt;file&gt;</code> 命令时，会用 HEAD 指向的 master 分支中的全部或者部分文件替换暂存区和以及工作区中的文件。这个命令也是极具危险性的，因为不但会清除工作区中未提交的改动，也会清除暂存区中未提交的改动。</p>
+</li>
+</ul>
+<h3 id="7-Git-版本控制-使用命令完成-Git-流水线操作"><a href="#7-Git-版本控制-使用命令完成-Git-流水线操作" class="headerlink" title="7.Git 版本控制 - 使用命令完成 Git 流水线操作"></a>7.Git 版本控制 - 使用命令完成 Git 流水线操作</h3><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>1.初始化新仓库 <code>git init</code> 2.克隆代码 <code>git clone https://gitee.com/houdunwang/hdcms.git</code> 3.克隆指定分支 <code>git clone -b dev git@gitee.com:houdunwang/hdcms.git</code> 4.查看未 commit 之前的状态(包括 git add 之前和 git add 之后的状态) <code>git status</code> 5.提交单个文件 <code>git add index.php</code> 6.提交所有文件 <code>git add -A</code> 7.使用通配符提交 <code>git add *.js</code> 8.提交到仓库中 <code>git commit -m &#39;提示信息&#39;</code> 9.提交已经跟踪过的文件，不需要执行<code>add git commit -a -m &#39;提交信息&#39;</code> 10.查看 commit 记录 <code>git log</code></p>
+<h3 id="8-Git-版本控制-gitignore-详解控制版本库文件管理"><a href="#8-Git-版本控制-gitignore-详解控制版本库文件管理" class="headerlink" title="8.Git 版本控制 - .gitignore 详解控制版本库文件管理"></a>8.Git 版本控制 - .gitignore 详解控制版本库文件管理</h3><p>.gitignore</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">*.txt   //不提交所有的txt后缀文件</span><br><span class="line">!a.txt  //除了a.txt</span><br><span class="line"></span><br><span class="line">/vendor/*.php   //不提交vendor文件夹下所有的php后缀文件</span><br><span class="line">/vendor/**/*.php    //不提交vendor文件夹及其子文件夹下所有的php后缀文件</span><br><span class="line"></span><br><span class="line">node_modules/   //不提交整个node_modules文件夹</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-Git-版本控制-从版本库中删除资源的技巧"><a href="#9-Git-版本控制-从版本库中删除资源的技巧" class="headerlink" title="9.Git 版本控制 - 从版本库中删除资源的技巧"></a>9.Git 版本控制 - 从版本库中删除资源的技巧</h3><p>1.（运行 git add 之后）删除版本库与项目目录中的文件 <code>git rm index.php</code> 2.（运行 git add 之后）只删除版本库中文件但保存项目目录中文件 <code>git rm --cached index.php</code></p>
+<h3 id="10-Git-版本控制-版本库中修改资料名称"><a href="#10-Git-版本控制-版本库中修改资料名称" class="headerlink" title="10.Git 版本控制 - 版本库中修改资料名称"></a>10.Git 版本控制 - 版本库中修改资料名称</h3><p>重命名：<code>git mv a.php b.php</code> &#x2F;&#x2F;将 a.php 重命名为 b.php</p>
+<p><code>git log --name-only</code> &#x2F;&#x2F;查看 log</p>
+<h3 id="11-Git-版本控制-使用-log-日志查看历史-commit-操作行为"><a href="#11-Git-版本控制-使用-log-日志查看历史-commit-操作行为" class="headerlink" title="11.Git 版本控制 - 使用 log 日志查看历史 commit 操作行为"></a>11.Git 版本控制 - 使用 log 日志查看历史 commit 操作行为</h3><p>查看日志：<code>git log</code><br>查看每次提交的文件变动信息【详细显示】<code>git log -p</code><br>查看最近 1 次提交日志并显示文件差异<code>git log -p -1</code><br>查看最近 2 次提交日志并显示文件差异<code>git log -p -2</code><br>一行显示并只显示 SHA-1 的前几个字符【查看简要版文件变动(精简显示)】<code>git log --online</code><br>查看简要版文件修改信息<code>git log --online -2</code><br>查看简要版具体文件变动信息<code>git log --online -p</code><br>显示已修改的文件清单(显示名字)<code>git log --name-only</code><br>显示新增、修改、删除的文件清单【查看文件发生的是什么类型变化(增加，修改…)】<code>git log --name-status</code><br>查看 git log 的帮助 <code>git log --help</code></p>
+<h3 id="12-Git-版本控制-使用-amend-修改最新一次提交事件"><a href="#12-Git-版本控制-使用-amend-修改最新一次提交事件" class="headerlink" title="12.Git 版本控制 - 使用 amend 修改最新一次提交事件"></a>12.Git 版本控制 - 使用 amend 修改最新一次提交事件</h3><p>修改最后一次提交信息 <code>git commit --amend</code><br>使用 vim 命令对提交信息进行修改，修改完成之后，运行<code>git log</code>可查看到这次修改的信息是修改的原来的提交</p>
+<p>如果在提交之后，又对代码进行了操作，然后还想把这个修改也归类到刚刚那次提交，此时<br><code>git add .</code><br><code>git status</code><br><code>git commit --amend</code> 修改提交信息<br><code>git log --name-only</code> 查看最新一次提交修改的所有文件名</p>
+<h3 id="13-Git-版本控制-管理暂存区中的文件"><a href="#13-Git-版本控制-管理暂存区中的文件" class="headerlink" title="13.Git 版本控制 - 管理暂存区中的文件"></a>13.Git 版本控制 - 管理暂存区中的文件</h3><p>第一次的后悔修改方式：<br><code>git add a.php</code><br>如果此时觉得放入到暂存区还为时过早，可以执行撤销<br><code>git rm --cached a.php</code></p>
+<h4 id="【运行-git-add-之后的后悔修改方式】"><a href="#【运行-git-add-之后的后悔修改方式】" class="headerlink" title="【运行 git add 之后的后悔修改方式】"></a>【运行 git add 之后的后悔修改方式】</h4><p>第二次及以后的后悔修改方式：<br>修改 a.php<br><code>git add a.php</code><br><code>git status</code><br><code>git reset HEAD a.php</code> – （在使用 git add 之后，可以使用这个命令进行撤销）撤销提交到暂存区，修改的文件内容还在<br><code>git checkout -- a.php</code> – (在未使用 git add 命令之前可以使用这个命令；使用 git add 之后该命令无法进行撤销)撤销提交到暂存区，且修改的文件内容也撤销</p>
+<h4 id="比较文件内容："><a href="#比较文件内容：" class="headerlink" title="比较文件内容："></a>比较文件内容：</h4><p>git add 之前对工作文件夹比较，可以比较出文件内容变动 <code>git diff</code>；<br>把修改文件追加到索引区 <code>git add index.html</code>，此时运行<code>git diff</code>无法比较工作文件夹的修改文件；<br>如果此时需要对索引区（暂存区）和原先工作区比较，使用 <code>git diff --cached</code>对文件进行比较；</p>
+<h4 id="使用-git-commit-之后，返回过去"><a href="#使用-git-commit-之后，返回过去" class="headerlink" title="使用 git commit 之后，返回过去"></a>使用 git commit 之后，返回过去</h4><p>回到数据库中最新的版本 <code>git reset --hard HEAD</code><br>回到上一个版本 <code>git reset --hard HEAD~</code><br>回到前 2 次提交的版本 <code>git reset --hard HEAD~2</code><br>回到某一次指定的版本 <code>git reset --hard xxxxxx</code><br>提交新的记录之后，又回到过去之前的提交记录，此时新的提交记录只是看不见了，记录其实还是在的，查看命令：<code>git reflog</code>；然后<code>git reset --hard xxxxxx</code>又可以回到最新的记录</p>
+<h3 id="14-Git-版本控制-alias-命令提高操作效率（使用别名）"><a href="#14-Git-版本控制-alias-命令提高操作效率（使用别名）" class="headerlink" title="14.Git 版本控制 - alias 命令提高操作效率（使用别名）"></a>14.Git 版本控制 - alias 命令提高操作效率（使用别名）</h3><p>设置命令别名：<br><code>git config --global alias.a add</code> &#x2F;&#x2F;git a . 来替换 git add .<br>或者直接修改~&#x2F;.gitconfig 文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[user]</span><br><span class="line">    emial = xxxxx@qq.<span class="property">com</span></span><br><span class="line">    name = daykalif</span><br><span class="line">[alias]</span><br><span class="line">    a = add .</span><br><span class="line">    c = commit</span><br><span class="line">    l = log</span><br><span class="line">    s = status</span><br></pre></td></tr></table></figure>
+
+<h3 id="15-Git-版本控制-详解-Git-分支-Branch-存在意义"><a href="#15-Git-版本控制-详解-Git-分支-Branch-存在意义" class="headerlink" title="15.Git 版本控制 - 详解 Git 分支 Branch 存在意义"></a>15.Git 版本控制 - 详解 Git 分支 Branch 存在意义</h3><p>大部分情况下不会直接在 master 分支工作，我们应该保护这个分支是最终开发完成代码健康可交付运行的。</p>
+<p>所以功能和缺陷(bug)修复都会新建分支完成，除了这个概念外与基本流程使用是一样的。</p>
+<h3 id="16-Git-版本控制-实例讲解分支-branch-基本管理操作"><a href="#16-Git-版本控制-实例讲解分支-branch-基本管理操作" class="headerlink" title="16.Git 版本控制 - 实例讲解分支 branch 基本管理操作"></a>16.Git 版本控制 - 实例讲解分支 branch 基本管理操作</h3><p>新建支付功能开发分支<br><code>git branch pay</code></p>
+<p>切换到新分支开始开发，这里的工作内容与上面的基础流程是一样的<br><code>git checkout pay</code></p>
+<blockquote>
+<p>⚠️ 注：以上两句代码可以合并为：git checkout -b pay</p>
+</blockquote>
+<p>开发完成执行提交<br><code>git commit -m &#39;H5 支付功能&#39;</code></p>
+<p>合并分支到 master</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">切换到master分支</span><br><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line">合并pay分支的代码</span><br><span class="line">git merge pay</span><br></pre></td></tr></table></figure>
+
+<p>提交代码到 master 远程分支<br><code>git push</code></p>
+<h3 id="17-Git-版本控制-规范的分支操作流程之分支的合并与删除"><a href="#17-Git-版本控制-规范的分支操作流程之分支的合并与删除" class="headerlink" title="17.Git 版本控制 - 规范的分支操作流程之分支的合并与删除"></a>17.Git 版本控制 - 规范的分支操作流程之分支的合并与删除</h3><p><strong>分支管理</strong><br>分支用于为项目增加新功能或修复 Bug 时使用。</p>
+<p>创建分支 <code>git branch dev</code></p>
+<p>查看分支 <code>git branch</code></p>
+<p>切换分支 <code>git checkout dev</code></p>
+<p>创建并切换分支 <code>git checkout -b feature/bbs</code></p>
+<p>合并 dev 分支到 master</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+
+<h3 id="18-Git-版本控制-正确处理分支冲突实例讲解"><a href="#18-Git-版本控制-正确处理分支冲突实例讲解" class="headerlink" title="18.Git 版本控制 - 正确处理分支冲突实例讲解"></a>18.Git 版本控制 - 正确处理分支冲突实例讲解</h3><p>不同分支修改同一个文件或不同开发者修改同一个分支文件都可能造成冲突，造成无法提交代码。</p>
+<p>使用编辑器修改冲突的文件<br>添加暂存 git add . 表示已经解决冲突<br>git commit 提交完成</p>
+<h3 id="19-Git-版本控制-分支管理–merged-与–no-merged-分支强制删除操作"><a href="#19-Git-版本控制-分支管理–merged-与–no-merged-分支强制删除操作" class="headerlink" title="19.Git 版本控制 - 分支管理–merged 与–no-merged 分支强制删除操作"></a>19.Git 版本控制 - 分支管理–merged 与–no-merged 分支强制删除操作</h3><p>如在 master 分支删除已合并的本地 dev 分支 <code>git branch -d dev</code></p>
+<p>删除没有合并的分支<code>git branch -D dev</code> &#x2F;&#x2F;-D 表示忽略提醒，强制删除</p>
+<p>删除远程分支 <code>git push origin :dev</code></p>
+<p>查看未合并的分支(切换到 master) <code>git branch --no-merged</code></p>
+<p>查看已经合并的分支(切换到 master) <code>git branch --merged</code></p>
+<h3 id="20-Git-版本控制-标准的分支操作工作流"><a href="#20-Git-版本控制-标准的分支操作工作流" class="headerlink" title="20.Git 版本控制 - 标准的分支操作工作流"></a>20.Git 版本控制 - 标准的分支操作工作流</h3><p><strong>Git 工作流是什么</strong><br>其实就是我们使用 git 的时候整个项目的推送克隆修改过程，其实这个过程是随着时间的流动的，每个不同的时间节点发生了不同的事情，所以可以归为流。可能某个时间段弄了新功能弄了分支，然后合并之类其他的。fork 的情况较少也有可能出现。</p>
+<p><strong>分支种类</strong> 1.主干分支 master<br>主要负责管理正在运行的生产环境代码。永远保持与正在运行的生产环境完全一致。</p>
+<p>2.开发分支 develop<br>主要负责管理正在开发过程中的代码。一般情况下应该是最新的代码。</p>
+<p>3.bug 修理分支 hotfix<br>主要负责管理生产环境下出现的紧急修复的代码。 从主干分支分出，修理完毕并测试上线后，并回主干分支。并回后，视情况可以删除该分支。</p>
+<p>4.准生产分支（预发布分支） release<br>较大的版本上线前，会从开发分支中分出准生产分支，进行最后阶段的集成测试。该版本上线后，会合并到主干分支。生产环境运行一段阶段较稳定后可以视情况删除。</p>
+<p>5.功能分支 feature<br>为了不影响较短周期的开发工作，一般把中长期开发模块，会从开发分支中独立出来。 开发完成后会合并到开发分支。</p>
+<p><img src="https://www.daykalif.com/blog_img/git2.png" alt="git"></p>
+<h3 id="21-Git-版本控制-stash-临时暂存区"><a href="#21-Git-版本控制-stash-临时暂存区" class="headerlink" title="21.Git 版本控制 - stash 临时暂存区"></a>21.Git 版本控制 - stash 临时暂存区</h3><p><strong>Stashing</strong><br>当你正在进行项目中某一部分的工作，里面的东西处于一个比较杂乱的状态，而你想转到其他分支上进行一些工作。问题是，你不想提交进行了一半的工作，否则以后你无法回到这个工作点。</p>
+<p>“暂存” 可以获取你工作目录的中间状态——也就是你修改过的被追踪的文件和暂存的变更——并将它保存到一个未完结变更的堆栈中，随时可以重新应用。</p>
+<p><code>git add .</code>，这个时候切换分支会报错；</p>
+<p>储藏工作 <code>git stash</code> &#x2F;&#x2F;只有经过 git add&#x2F;commit 之后的文件才可以进行 stash【只能 stash 提交到暂存区中的文件】<br>查看储藏列表 <code>git stash list</code><br>应用【恢复】最近的储藏 <code>git stash apply</code><br>应用更早的储藏 <code>git stash apply stash@&#123;2&#125;</code><br>删除储藏<code>git stash drop stash@&#123;0&#125;</code><br>应用并删除储藏 <code>git stash pop</code></p>
+<h3 id="22-Git-版本控制-使用-TAG-标签声明项目阶段版本"><a href="#22-Git-版本控制-使用-TAG-标签声明项目阶段版本" class="headerlink" title="22.Git 版本控制 - 使用 TAG 标签声明项目阶段版本"></a>22.Git 版本控制 - 使用 TAG 标签声明项目阶段版本</h3><p>Git 也可以对某一时间点上的版本打上标签 ，用于发布软件版本如 v1.0<br>【git commit 之后，进行打标签】<br>添加标签 <code>git tag v1.0</code><br>列出标签列表 <code>git tag</code><br>推送标签 <code>git push --tags</code><br>删除标签 <code>git tag -d v1.0.1</code><br>删除远程标签 <code>git push origin :v1.0.1</code><br>查看标签修改内容 <code>git show v1.0.1</code></p>
+<h3 id="23-Git-版本控制-生产-zip-代码发布压缩包"><a href="#23-Git-版本控制-生产-zip-代码发布压缩包" class="headerlink" title="23.Git 版本控制 - 生产 zip 代码发布压缩包"></a>23.Git 版本控制 - 生产 zip 代码发布压缩包</h3><p>对 mster 分支代码生成压缩包供使用者下载使用，–prefix 指定目录名</p>
+<p><code>git archive master --prefix=&#39;dist/&#39; --format=zip &gt; dist.zip</code><br>master：需要进行压缩的分支名<br>dist：压缩之后的文件夹名称<br>dist.zip：压缩之后的文件压缩包名称</p>
+<h3 id="24-Git-版本控制-使用系统别名定义-git-全局指令"><a href="#24-Git-版本控制-使用系统别名定义-git-全局指令" class="headerlink" title="24.Git 版本控制 - 使用系统别名定义 git 全局指令"></a>24.Git 版本控制 - 使用系统别名定义 git 全局指令</h3><p><code>cd ~</code><br><code>ls -la</code><br><code>vim .bash_profile</code></p>
+<p>系统配置定义:<br>window 用户可以修改~&#x2F;.bashrc 或 ~&#x2F;.bash_profile 文件。<br>mac&#x2F;linux 修改 ~&#x2F;.zshrc 文件中定义常用的别名指令，需要首先安装 zsh 命令行扩展</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">alias gs=&quot;git status&quot;</span><br><span class="line">alias gc=&quot;git commit -m &quot;</span><br><span class="line">alias gl=&quot;git log --graph --pretty=format:&#x27;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&#x27; --abbrev-commit  &quot;</span><br><span class="line">alias gb=&quot;git branch&quot;</span><br><span class="line">alias ga=&quot;git add .&quot;</span><br><span class="line">alias go=&quot;git checkout&quot;</span><br></pre></td></tr></table></figure>
+
+<p>命令行直接使用 <code>gs</code> 即可以实现 <code>git status</code> 一样的效果了。</p>
+<p>设置 alias 的另一种方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 将checkout命令简化co</span><br><span class="line">git config --global alias.co checkout</span><br><span class="line"></span><br><span class="line"># 将branch命令简化为br</span><br><span class="line">git config --global alias.br branch</span><br><span class="line"></span><br><span class="line"># 将commit命令简化为cm</span><br><span class="line">git config --global alias.cm commit</span><br><span class="line"></span><br><span class="line"># 将status命令简化为st</span><br><span class="line">git config --global alias.st status</span><br></pre></td></tr></table></figure>
+
+<p>查看全局变量：<br><code>git config -l</code></p>
+<blockquote>
+<p>window 系统需要使用 git for window 中的 Git Base 软件</p>
+</blockquote>
+<h3 id="25-Git-版本控制-合并分支产生的实际问题"><a href="#25-Git-版本控制-合并分支产生的实际问题" class="headerlink" title="25.Git 版本控制 - 合并分支产生的实际问题"></a>25.Git 版本控制 - 合并分支产生的实际问题</h3><p>master 分支–&gt;新建文件–&gt;主分支第一次 commit<br>之后再从 master 拉出子分支–&gt;ask<br>在子分支–&gt;新建文件–&gt;子分支第一次 commit<br>切换到 master 主分支–&gt;新建文件–&gt;主分支第二次 commit<br>此时 merge 子分支，会产生分叉的路线</p>
+<h3 id="26-Git-版本控制-rebase-合理优化分支并合并"><a href="#26-Git-版本控制-rebase-合理优化分支并合并" class="headerlink" title="26.Git 版本控制 - rebase 合理优化分支并合并"></a>26.Git 版本控制 - rebase 合理优化分支并合并</h3><p>使用 rebase（可以理解为 replace base）解决合并分支分叉的问题，将子分支的提交记录先存起来，将子分支的提交点移到主分支的最新提交点（改变子分支的基础点）。</p>
+<p>在 ask 子分支：<code>git rebase master</code><br>此时切换到 master,<code>git merge ask</code></p>
+<h3 id="27-Git-版本控制-国内与国外项目托管平台介绍与在-Github-中创建项目"><a href="#27-Git-版本控制-国内与国外项目托管平台介绍与在-Github-中创建项目" class="headerlink" title="27.Git 版本控制 - 国内与国外项目托管平台介绍与在 Github 中创建项目"></a>27.Git 版本控制 - 国内与国外项目托管平台介绍与在 Github 中创建项目</h3><p>国外的速度较慢<br>有些国内项目托管平台私有库免费</p>
+<h3 id="28-Git-版本控制-使用-SSH-与-GITHUB-远程服务器进行无密码连接"><a href="#28-Git-版本控制-使用-SSH-与-GITHUB-远程服务器进行无密码连接" class="headerlink" title="28.Git 版本控制 - 使用 SSH 与 GITHUB 远程服务器进行无密码连接"></a>28.Git 版本控制 - 使用 SSH 与 GITHUB 远程服务器进行无密码连接</h3><h4 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a>SSH</h4><p>生成秘钥</p>
+<p>使用 ssh 连接 Github 发送指令更加安全可靠，也可以免掉每次输入密码的困扰。</p>
+<p>在命令行中输入以下代码（windows 用户使用 Git Bash）</p>
+<p><code>ssh-keygen -t rsa</code><br>一直按回车键直到结束。系统会在~&#x2F;.ssh 目录中生成 id_rsa 和 id_rsa.pub，即密钥 id_rsa 和公钥 id_rsa.pub。</p>
+<p>向 GitHub 添加秘钥</p>
+<p><img src="https://www.daykalif.com/blog_img/git3.png" alt="git"></p>
+<p>如果连接失败：删除~&#x2F;.ssh&#x2F;known_hosts 文件中的内容【这是缓存的内容】</p>
+<h3 id="29-Git-版本控制-本地版本库主动使用-remote-与远程-GITHUB-进行关联"><a href="#29-Git-版本控制-本地版本库主动使用-remote-与远程-GITHUB-进行关联" class="headerlink" title="29.Git 版本控制 - 本地版本库主动使用 remote 与远程 GITHUB 进行关联"></a>29.Git 版本控制 - 本地版本库主动使用 remote 与远程 GITHUB 进行关联</h3><p><strong>关联远程</strong> 1.创建本地库并完成初始提交</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;# hd-xj&quot; &gt;&gt; README.md</span><br><span class="line">git init</span><br><span class="line">git add README.md</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br></pre></td></tr></table></figure>
+
+<p>2.添加远程仓库<br><code>git remote add origin git@github.com:10xxxxxx595/xxxxx.git</code></p>
+<blockquote>
+<p>通过 clone 克隆的仓库，本地与远程已经自动关联，上面几步都可以省略。</p>
+</blockquote>
+<h3 id="30-Git-版本控制-本地分支与-GITHBUB-远程分支同步"><a href="#30-Git-版本控制-本地分支与-GITHBUB-远程分支同步" class="headerlink" title="30.Git 版本控制 - 本地分支与 GITHBUB 远程分支同步"></a>30.Git 版本控制 - 本地分支与 GITHBUB 远程分支同步</h3><p>查看本地分支<br><code>git branch</code></p>
+<p>查看远程分支<br><code>git branch -a</code></p>
+<p>查看远程库<br><code>git remote -v</code></p>
+<p>推送数据到远程仓库<br><code>git push -u origin master</code></p>
+<h3 id="31-Git-版本控制-新入职员工参与项目开发时分支使用"><a href="#31-Git-版本控制-新入职员工参与项目开发时分支使用" class="headerlink" title="31.Git 版本控制 - 新入职员工参与项目开发时分支使用"></a>31.Git 版本控制 - 新入职员工参与项目开发时分支使用</h3><p><strong>pull</strong><br>拉取远程主机某个分支的更新，再与本地的指定分支合并。</p>
+<p>拉取 origin 主机的 ask 分支与本地的 master 分支合并 <code>git pull origin ask:ask</code><br>拉取 origin 主机的 ask 分支与当前分支合并 <code>git pull origin ask</code><br>如果远程分支与当前本地分支同名直接执行 <code>git pull</code></p>
+<p><strong>push</strong><br>git push 命令用于将本地分支的更新，推送到远程主机。它的格式与 git pull 命令相似。</p>
+<p>1.将当前分支推送到 origin 主机的对应分支(如果当前分支只有一个追踪分支 ，可省略主机名)<br><code>git push origin</code></p>
+<p>2.使用-u 选项指定一个默认主机 ,这样以后就可以不加任何参数直播使用 git push。<br><code>$ git push -u origin master</code></p>
+<p>3.本地 ask 分支关联远程分支并推送 <code>git push --set-upstream origin ask</code></p>
+<h3 id="32-Git-版本控制-Github-远程分支的合并"><a href="#32-Git-版本控制-Github-远程分支的合并" class="headerlink" title="32.Git 版本控制 - Github 远程分支的合并"></a>32.Git 版本控制 - Github 远程分支的合并</h3><p><code>git merge xxx</code></p>
+<h3 id="33-Git-版本控制-远程分支删除操作–delete"><a href="#33-Git-版本控制-远程分支删除操作–delete" class="headerlink" title="33.Git 版本控制 - 远程分支删除操作–delete"></a>33.Git 版本控制 - 远程分支删除操作–delete</h3><p>1.删除远程 ask 分支 <code>git push origin --delete ask</code></p>
+<p>2.删除远程仓库关联<code>git remote rm origin</code></p>
+<h3 id="34-Git-版本控制-自动部署之流程分析与创建-WEB-站点"><a href="#34-Git-版本控制-自动部署之流程分析与创建-WEB-站点" class="headerlink" title="34.Git 版本控制 - 自动部署之流程分析与创建 WEB 站点"></a>34.Git 版本控制 - 自动部署之流程分析与创建 WEB 站点</h3><p>GitHub 项目设置 WebHook</p>
+<p><img src="https://www.daykalif.com/blog_img/git4.png" alt="git"></p>
+<p>使用<strong>宝塔 linux</strong>创建一个 web 服务器</p>
+<h3 id="35-Git-版本控制-自动部署之-GITHUB-代码自动推送事件到-WEB-服务器部署完成"><a href="#35-Git-版本控制-自动部署之-GITHUB-代码自动推送事件到-WEB-服务器部署完成" class="headerlink" title="35.Git 版本控制 - 自动部署之 GITHUB 代码自动推送事件到 WEB 服务器部署完成"></a>35.Git 版本控制 - 自动部署之 GITHUB 代码自动推送事件到 WEB 服务器部署完成</h3><p><strong>同步脚本</strong><br>本地工作区拉取 github 项目，项目中添加处理 webhook 的 webhook.php 文件内容如下，并提交到版本库。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// GitHub Webhook Secret.</span></span><br><span class="line"><span class="comment">// GitHub项目 Settings/Webhooks 中的 Secret</span></span><br><span class="line"><span class="variable">$secret</span> = <span class="string">&quot;houdunren&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Path to your respostory on your server.</span></span><br><span class="line"><span class="comment">// e.g. &quot;/var/www/respostory&quot;</span></span><br><span class="line"><span class="comment">// 项目地址</span></span><br><span class="line"><span class="variable">$path</span> = <span class="string">&quot;/www/wwwroot/xj.houdunren.com&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Headers deliveried from GitHub</span></span><br><span class="line"><span class="variable">$signature</span> = <span class="variable">$_SERVER</span>[<span class="string">&#x27;HTTP_X_HUB_SIGNATURE&#x27;</span>];</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (<span class="variable">$signature</span>) &#123;</span><br><span class="line">  <span class="variable">$hash</span> = <span class="string">&quot;sha1=&quot;</span>.<span class="title function_ invoke__">hash_hmac</span>(<span class="string">&#x27;sha1&#x27;</span>, <span class="title function_ invoke__">file_get_contents</span>(<span class="string">&quot;php://input&quot;</span>), <span class="variable">$secret</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_ invoke__">strcmp</span>(<span class="variable">$signature</span>, <span class="variable">$hash</span>) == <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">echo</span> <span class="title function_ invoke__">shell_exec</span>(<span class="string">&quot;cd <span class="subst">&#123;$path&#125;</span> &amp;&amp; /usr/bin/git reset --hard origin/master &amp;&amp; /usr/bin/git clean -f &amp;&amp; /usr/bin/git pull 2&gt;&amp;1&quot;</span>);</span><br><span class="line">    <span class="keyword">exit</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_ invoke__">http_response_code</span>(<span class="number">404</span>);</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>站点配置</strong><br>创建站点：<br>下面示例我使用的是<strong>宝塔</strong>主机面板。</p>
+<p><img src="https://www.daykalif.com/blog_img/git5.png" alt="git"></p>
+<p>现在服务器上生成了站点目录 <code>/www/wwwroot/xj.houdunren.com</code> ，因为目录中存在 .user.ini 文件（定义站点可以访问的目录权限），造成不能 clone 代码，将目录随意改名。</p>
+<p><strong>shell_exec</strong><br>执行 git pull 指令需要使用 shell_exec 函数，删除 shell_exec 禁用函数后重启 PHP。</p>
+<p><img src="https://www.daykalif.com/blog_img/git6.png" alt="git"></p>
+<p>clone<br>登录服务器并使用 https 协议 clone 项目代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh root@xj.houdunren.com -p 22</span><br><span class="line">git clone https://github.com/houdunwang/xj.git xj.houdunren.com</span><br></pre></td></tr></table></figure>
+
+<p>修改远程服务器权限，进入&#x2F;www&#x2F;wwwroot&#x2F;xj.houdunren.com 文件夹：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown -R www .</span><br><span class="line">chmod -R g+s .</span><br><span class="line">sudo -u www git pull</span><br></pre></td></tr></table></figure>
+
+<p>现在向 GitHub 推送代码后，服务器将自动执行代码拉取，自动部署功能设置完成了。</p>
+<hr>
+<p><strong>https 操作</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">复制https地址 例如（https://github.com/xxxxxx/-.git）</span><br><span class="line">命令行  : git clone https://github.com/xxxxxx/-.git //克隆项目文件</span><br><span class="line">git status查看当前文件状态（是否有更改的文件）</span><br><span class="line">git add index.html            从工作区提交新的单独的文件到暂存区</span><br><span class="line">git add .                     提交被修改的和新建的文件，但不包括被删除的文件             </span><br><span class="line">git add -u     --update       update tracked files    更新所有改变的文件，即提交所有变化的文件</span><br><span class="line">git add -A    --all           add changes from all tracked and untracked files   提交已被修改和已                               被删除文件，但是不包括新的文件</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;daykalif最新提交&quot; //将暂存区代码存入本地服务器</span><br><span class="line">git push origin master //提交代码到远程服务器（需要输入用户名和密码）</span><br><span class="line">如果仅仅是文件修改了，一次性到服务器 git commit -a -m &#x27;提交的注释&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>ssh 操作</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">1.配置用户信息和电子邮箱地址 git config --global user.name &#x27;用户名&#x27;</span><br><span class="line">                           git config --global user.email &#x27;邮箱&#x27;</span><br><span class="line">2.查看你的信息              git config --list</span><br><span class="line">3.ssh-keygen -t rsa -C &#x27;xxxxxx@qq.com&#x27;之后会在你的c盘用户里面出现.ssh文件夹（里面的id——rsa是私钥，id_rsa.pub是公钥）</span><br><span class="line">4.查看 cd ~/.ssh  ls</span><br><span class="line">5.查看公钥文件（会出现一堆乱码文件，复制他们） cat ~/.ssh/id_rsa.pub</span><br><span class="line">6.进入github网站 右上角图标找到settings（设置）后左侧菜单SSH and GPG keys点击进入</span><br><span class="line">7.SSH keys创建newkey 把那一堆乱码放进去（title随你取名字 一般用邮箱就行）确认即可</span><br><span class="line"></span><br><span class="line">------上面这些做好之后才能提交代码和其他操作，下面我们就正式开始-----------</span><br><span class="line">获取远程仓库的名称 git remote</span><br><span class="line">获取远程仓库的地址 git remote -v</span><br><span class="line">复制ssh地址 例如（git@github.com:xxxxxx/-.git）</span><br><span class="line">命令行  : git clone git@github.com:xxxxxx/-.git //克隆项目文件</span><br><span class="line">git status查看当前文件状态（是否有更改的文件）</span><br><span class="line"> git commit -am &#x27;提交注释&#x27;  这个比较简便</span><br><span class="line">git add .       提交被修改的和新建的文件，但不包括被删除的文件</span><br><span class="line">git commit -m &quot;daykalif最新提交&quot; //将暂存区代码存入本地服务器</span><br><span class="line">git push origin master //提交代码到远程服务器（需要输入用户名和密码）</span><br><span class="line">如果仅仅是文件修改了，一次性到服务器 git commit -a -m &#x27;提交的注释&#x27;</span><br><span class="line">查看当前项目提交的记录  git log</span><br><span class="line">项目恢复到哪次提交 git checkout &#x27;提交的id&#x27;（git log后的commit加密字符）</span><br><span class="line">返回主分支  git checkout master</span><br><span class="line"></span><br><span class="line">创建分支 git branch new1</span><br><span class="line">查看分支 git branch</span><br><span class="line">提交创建的分支 git push origin new1</span><br><span class="line"></span><br><span class="line">切换到new1分支  git checkout new1</span><br><span class="line">之后再执行上面的提交操作</span><br><span class="line">（如果git checkout master 代码就是master的代码，就相当于存了两种状态的代码）</span><br><span class="line"></span><br><span class="line">拉取master（主分支下面）的代码（可能会失败）  git pull origin master</span><br><span class="line"></span><br><span class="line">如果失败 git checkout master到主分支下面 git merge new1 这时进行代码合并的操作</span><br><span class="line">你会发现子分支把主分支代码替换了 变成了子分支的代码</span><br><span class="line">此时修改子分支代码提交 修改主分支代码后也提交（master） 在进行合并 git merge new1 你会发现代码的文件出现箭头之类的东西 这就是冲突了 把这些箭头删掉在提交一次</span><br><span class="line">之后去子分支new1 git pull origin master 这时子和主分支的代码就一样了</span><br><span class="line"></span><br><span class="line">项目做好了之后要设置版本</span><br><span class="line">git tag v1.0 (假如是1.0版本)</span><br><span class="line">git push origin v1.0（进行提交就可以了）</span><br></pre></td></tr></table></figure>
+
+<p>参考视频：<br><a href="https://www.bilibili.com/video/BV154411g7Wm?p=34">https://www.bilibili.com/video/BV154411g7Wm?p=34</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/%E6%89%93%E5%8C%85%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7/" rel="tag"># 打包构建工具</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/03/20/%20Typescript/TypeScript-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="next" title="TypeScript && 面向对象">
+                <i class="fa fa-chevron-left"></i> TypeScript && 面向对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/03/28/%E8%8B%B1%E8%AF%AD/English%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95/" rel="prev" title="English英语语法">
+                English英语语法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E6%93%8D%E4%BD%9C%E8%AF%A6%E7%BB%86%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text">Git 操作详细步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E5%BC%95%E8%A8%80"><span class="nav-number">1.1.</span> <span class="nav-text">1.Git 版本控制引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E9%9B%86%E4%B8%AD%E5%BC%8F%E4%B8%8E%E5%88%86%E5%B8%83%E5%BC%8F%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90"><span class="nav-number">1.2.</span> <span class="nav-text">2.Git 版本控制-集中式与分布式实例分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-mac-windows-linux-%E5%AE%89%E8%A3%85-git-%E8%BD%AF%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">3.Git 版本控制-mac-windows-linux 安装 git 软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E9%85%8D%E7%BD%AE%E4%BD%9C%E8%80%85%E4%BF%A1%E6%81%AF"><span class="nav-number">1.4.</span> <span class="nav-text">4.Git 版本控制 - 配置作者信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E6%96%B0%E5%BB%BA%E4%BB%93%E5%BA%93%E4%B8%8E%E7%BB%B4%E6%8A%A4%E6%97%A7%E4%BB%93%E5%BA%93"><span class="nav-number">1.5.</span> <span class="nav-text">5.Git 版本控制 - 新建仓库与维护旧仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-Git-%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%93%8D%E4%BD%9C%E5%88%86%E6%9E%90"><span class="nav-number">1.6.</span> <span class="nav-text">6.Git 版本控制 - Git 流水线操作分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Git-%E5%B7%A5%E4%BD%9C%E5%8C%BA%E3%80%81%E6%9A%82%E5%AD%98%E5%8C%BA%E5%92%8C%E7%89%88%E6%9C%AC%E5%BA%93"><span class="nav-number">1.6.1.</span> <span class="nav-text">Git 工作区、暂存区和版本库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4%E5%AE%8C%E6%88%90-Git-%E6%B5%81%E6%B0%B4%E7%BA%BF%E6%93%8D%E4%BD%9C"><span class="nav-number">1.7.</span> <span class="nav-text">7.Git 版本控制 - 使用命令完成 Git 流水线操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">1.7.1.</span> <span class="nav-text">常用命令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-gitignore-%E8%AF%A6%E8%A7%A3%E6%8E%A7%E5%88%B6%E7%89%88%E6%9C%AC%E5%BA%93%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="nav-number">1.8.</span> <span class="nav-text">8.Git 版本控制 - .gitignore 详解控制版本库文件管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E4%BB%8E%E7%89%88%E6%9C%AC%E5%BA%93%E4%B8%AD%E5%88%A0%E9%99%A4%E8%B5%84%E6%BA%90%E7%9A%84%E6%8A%80%E5%B7%A7"><span class="nav-number">1.9.</span> <span class="nav-text">9.Git 版本控制 - 从版本库中删除资源的技巧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E7%89%88%E6%9C%AC%E5%BA%93%E4%B8%AD%E4%BF%AE%E6%94%B9%E8%B5%84%E6%96%99%E5%90%8D%E7%A7%B0"><span class="nav-number">1.10.</span> <span class="nav-text">10.Git 版本控制 - 版本库中修改资料名称</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E4%BD%BF%E7%94%A8-log-%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E5%8E%86%E5%8F%B2-commit-%E6%93%8D%E4%BD%9C%E8%A1%8C%E4%B8%BA"><span class="nav-number">1.11.</span> <span class="nav-text">11.Git 版本控制 - 使用 log 日志查看历史 commit 操作行为</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E4%BD%BF%E7%94%A8-amend-%E4%BF%AE%E6%94%B9%E6%9C%80%E6%96%B0%E4%B8%80%E6%AC%A1%E6%8F%90%E4%BA%A4%E4%BA%8B%E4%BB%B6"><span class="nav-number">1.12.</span> <span class="nav-text">12.Git 版本控制 - 使用 amend 修改最新一次提交事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E7%AE%A1%E7%90%86%E6%9A%82%E5%AD%98%E5%8C%BA%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6"><span class="nav-number">1.13.</span> <span class="nav-text">13.Git 版本控制 - 管理暂存区中的文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E3%80%90%E8%BF%90%E8%A1%8C-git-add-%E4%B9%8B%E5%90%8E%E7%9A%84%E5%90%8E%E6%82%94%E4%BF%AE%E6%94%B9%E6%96%B9%E5%BC%8F%E3%80%91"><span class="nav-number">1.13.1.</span> <span class="nav-text">【运行 git add 之后的后悔修改方式】</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AF%94%E8%BE%83%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%EF%BC%9A"><span class="nav-number">1.13.2.</span> <span class="nav-text">比较文件内容：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-git-commit-%E4%B9%8B%E5%90%8E%EF%BC%8C%E8%BF%94%E5%9B%9E%E8%BF%87%E5%8E%BB"><span class="nav-number">1.13.3.</span> <span class="nav-text">使用 git commit 之后，返回过去</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-alias-%E5%91%BD%E4%BB%A4%E6%8F%90%E9%AB%98%E6%93%8D%E4%BD%9C%E6%95%88%E7%8E%87%EF%BC%88%E4%BD%BF%E7%94%A8%E5%88%AB%E5%90%8D%EF%BC%89"><span class="nav-number">1.14.</span> <span class="nav-text">14.Git 版本控制 - alias 命令提高操作效率（使用别名）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E8%AF%A6%E8%A7%A3-Git-%E5%88%86%E6%94%AF-Branch-%E5%AD%98%E5%9C%A8%E6%84%8F%E4%B9%89"><span class="nav-number">1.15.</span> <span class="nav-text">15.Git 版本控制 - 详解 Git 分支 Branch 存在意义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E5%AE%9E%E4%BE%8B%E8%AE%B2%E8%A7%A3%E5%88%86%E6%94%AF-branch-%E5%9F%BA%E6%9C%AC%E7%AE%A1%E7%90%86%E6%93%8D%E4%BD%9C"><span class="nav-number">1.16.</span> <span class="nav-text">16.Git 版本控制 - 实例讲解分支 branch 基本管理操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E8%A7%84%E8%8C%83%E7%9A%84%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C%E6%B5%81%E7%A8%8B%E4%B9%8B%E5%88%86%E6%94%AF%E7%9A%84%E5%90%88%E5%B9%B6%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="nav-number">1.17.</span> <span class="nav-text">17.Git 版本控制 - 规范的分支操作流程之分支的合并与删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E6%AD%A3%E7%A1%AE%E5%A4%84%E7%90%86%E5%88%86%E6%94%AF%E5%86%B2%E7%AA%81%E5%AE%9E%E4%BE%8B%E8%AE%B2%E8%A7%A3"><span class="nav-number">1.18.</span> <span class="nav-text">18.Git 版本控制 - 正确处理分支冲突实例讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#19-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E5%88%86%E6%94%AF%E7%AE%A1%E7%90%86%E2%80%93merged-%E4%B8%8E%E2%80%93no-merged-%E5%88%86%E6%94%AF%E5%BC%BA%E5%88%B6%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C"><span class="nav-number">1.19.</span> <span class="nav-text">19.Git 版本控制 - 分支管理–merged 与–no-merged 分支强制删除操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E6%A0%87%E5%87%86%E7%9A%84%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="nav-number">1.20.</span> <span class="nav-text">20.Git 版本控制 - 标准的分支操作工作流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-stash-%E4%B8%B4%E6%97%B6%E6%9A%82%E5%AD%98%E5%8C%BA"><span class="nav-number">1.21.</span> <span class="nav-text">21.Git 版本控制 - stash 临时暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E4%BD%BF%E7%94%A8-TAG-%E6%A0%87%E7%AD%BE%E5%A3%B0%E6%98%8E%E9%A1%B9%E7%9B%AE%E9%98%B6%E6%AE%B5%E7%89%88%E6%9C%AC"><span class="nav-number">1.22.</span> <span class="nav-text">22.Git 版本控制 - 使用 TAG 标签声明项目阶段版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E7%94%9F%E4%BA%A7-zip-%E4%BB%A3%E7%A0%81%E5%8F%91%E5%B8%83%E5%8E%8B%E7%BC%A9%E5%8C%85"><span class="nav-number">1.23.</span> <span class="nav-text">23.Git 版本控制 - 生产 zip 代码发布压缩包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E4%BD%BF%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%88%AB%E5%90%8D%E5%AE%9A%E4%B9%89-git-%E5%85%A8%E5%B1%80%E6%8C%87%E4%BB%A4"><span class="nav-number">1.24.</span> <span class="nav-text">24.Git 版本控制 - 使用系统别名定义 git 全局指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E5%90%88%E5%B9%B6%E5%88%86%E6%94%AF%E4%BA%A7%E7%94%9F%E7%9A%84%E5%AE%9E%E9%99%85%E9%97%AE%E9%A2%98"><span class="nav-number">1.25.</span> <span class="nav-text">25.Git 版本控制 - 合并分支产生的实际问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-rebase-%E5%90%88%E7%90%86%E4%BC%98%E5%8C%96%E5%88%86%E6%94%AF%E5%B9%B6%E5%90%88%E5%B9%B6"><span class="nav-number">1.26.</span> <span class="nav-text">26.Git 版本控制 - rebase 合理优化分支并合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#27-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E5%9B%BD%E5%86%85%E4%B8%8E%E5%9B%BD%E5%A4%96%E9%A1%B9%E7%9B%AE%E6%89%98%E7%AE%A1%E5%B9%B3%E5%8F%B0%E4%BB%8B%E7%BB%8D%E4%B8%8E%E5%9C%A8-Github-%E4%B8%AD%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="nav-number">1.27.</span> <span class="nav-text">27.Git 版本控制 - 国内与国外项目托管平台介绍与在 Github 中创建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E4%BD%BF%E7%94%A8-SSH-%E4%B8%8E-GITHUB-%E8%BF%9C%E7%A8%8B%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9B%E8%A1%8C%E6%97%A0%E5%AF%86%E7%A0%81%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.28.</span> <span class="nav-text">28.Git 版本控制 - 使用 SSH 与 GITHUB 远程服务器进行无密码连接</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SSH"><span class="nav-number">1.28.1.</span> <span class="nav-text">SSH</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#29-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E6%9C%AC%E5%9C%B0%E7%89%88%E6%9C%AC%E5%BA%93%E4%B8%BB%E5%8A%A8%E4%BD%BF%E7%94%A8-remote-%E4%B8%8E%E8%BF%9C%E7%A8%8B-GITHUB-%E8%BF%9B%E8%A1%8C%E5%85%B3%E8%81%94"><span class="nav-number">1.29.</span> <span class="nav-text">29.Git 版本控制 - 本地版本库主动使用 remote 与远程 GITHUB 进行关联</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E6%9C%AC%E5%9C%B0%E5%88%86%E6%94%AF%E4%B8%8E-GITHBUB-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%90%8C%E6%AD%A5"><span class="nav-number">1.30.</span> <span class="nav-text">30.Git 版本控制 - 本地分支与 GITHBUB 远程分支同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#31-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E6%96%B0%E5%85%A5%E8%81%8C%E5%91%98%E5%B7%A5%E5%8F%82%E4%B8%8E%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%97%B6%E5%88%86%E6%94%AF%E4%BD%BF%E7%94%A8"><span class="nav-number">1.31.</span> <span class="nav-text">31.Git 版本控制 - 新入职员工参与项目开发时分支使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#32-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-Github-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E7%9A%84%E5%90%88%E5%B9%B6"><span class="nav-number">1.32.</span> <span class="nav-text">32.Git 版本控制 - Github 远程分支的合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#33-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%A0%E9%99%A4%E6%93%8D%E4%BD%9C%E2%80%93delete"><span class="nav-number">1.33.</span> <span class="nav-text">33.Git 版本控制 - 远程分支删除操作–delete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#34-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%B9%8B%E6%B5%81%E7%A8%8B%E5%88%86%E6%9E%90%E4%B8%8E%E5%88%9B%E5%BB%BA-WEB-%E7%AB%99%E7%82%B9"><span class="nav-number">1.34.</span> <span class="nav-text">34.Git 版本控制 - 自动部署之流程分析与创建 WEB 站点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-Git-%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%B9%8B-GITHUB-%E4%BB%A3%E7%A0%81%E8%87%AA%E5%8A%A8%E6%8E%A8%E9%80%81%E4%BA%8B%E4%BB%B6%E5%88%B0-WEB-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2%E5%AE%8C%E6%88%90"><span class="nav-number">1.35.</span> <span class="nav-text">35.Git 版本控制 - 自动部署之 GITHUB 代码自动推送事件到 WEB 服务器部署完成</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

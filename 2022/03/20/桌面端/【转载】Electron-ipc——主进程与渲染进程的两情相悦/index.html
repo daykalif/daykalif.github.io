@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="「主进程与渲染进程的两情相悦」案例版本信息： electron: v13.6.7 Nodejs: v16.13.2 大纲谈到 electron 中进程的通信，就不得不谈到官方提供的 ipc 模块。这种方式的通信主要是依赖 electron 提供的 ipcMain 和 ipcRenderer 两个模块。 关于通信分为以下几部分： 渲染进程发送同步&#x2F;异步消息给主进程  主进程发送同步&amp;#x2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Electron ipc——主进程与渲染进程的两情相悦">
+<meta property="og:url" content="https://daykalif.github.io/2022/03/20/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Electron-ipc%E2%80%94%E2%80%94%E4%B8%BB%E8%BF%9B%E7%A8%8B%E4%B8%8E%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%A4%E6%83%85%E7%9B%B8%E6%82%A6/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="「主进程与渲染进程的两情相悦」案例版本信息： electron: v13.6.7 Nodejs: v16.13.2 大纲谈到 electron 中进程的通信，就不得不谈到官方提供的 ipc 模块。这种方式的通信主要是依赖 electron 提供的 ipcMain 和 ipcRenderer 两个模块。 关于通信分为以下几部分： 渲染进程发送同步&#x2F;异步消息给主进程  主进程发送同步&amp;#x2">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-03-20T12:44:55.000Z">
+<meta property="article:modified_time" content="2022-03-20T13:11:10.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2022/03/20/桌面端/【转载】Electron-ipc——主进程与渲染进程的两情相悦/"/>
+
+
+
+
+
+  <title>Electron ipc——主进程与渲染进程的两情相悦 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2022/03/20/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Electron-ipc%E2%80%94%E2%80%94%E4%B8%BB%E8%BF%9B%E7%A8%8B%E4%B8%8E%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%A4%E6%83%85%E7%9B%B8%E6%82%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Electron ipc——主进程与渲染进程的两情相悦</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-03-20T20:44:55+08:00">
+                2022-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/03/20/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Electron-ipc%E2%80%94%E2%80%94%E4%B8%BB%E8%BF%9B%E7%A8%8B%E4%B8%8E%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%A4%E6%83%85%E7%9B%B8%E6%82%A6/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/03/20/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Electron-ipc%E2%80%94%E2%80%94%E4%B8%BB%E8%BF%9B%E7%A8%8B%E4%B8%8E%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%A4%E6%83%85%E7%9B%B8%E6%82%A6/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2022/03/20/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91Electron-ipc%E2%80%94%E2%80%94%E4%B8%BB%E8%BF%9B%E7%A8%8B%E4%B8%8E%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%A4%E6%83%85%E7%9B%B8%E6%82%A6/" class="leancloud_visitors" data-flag-title="Electron ipc——主进程与渲染进程的两情相悦">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.6k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="「主进程与渲染进程的两情相悦」"><a href="#「主进程与渲染进程的两情相悦」" class="headerlink" title="「主进程与渲染进程的两情相悦」"></a>「主进程与渲染进程的两情相悦」</h2><p>案例版本信息：</p>
+<p>electron: v13.6.7</p>
+<p>Nodejs: v16.13.2</p>
+<h3 id="大纲"><a href="#大纲" class="headerlink" title="大纲"></a>大纲</h3><p>谈到 electron 中进程的通信，就不得不谈到官方提供的 ipc 模块。这种方式的通信主要是依赖 electron 提供的 ipcMain 和 ipcRenderer 两个模块。</p>
+<h4 id="关于通信分为以下几部分："><a href="#关于通信分为以下几部分：" class="headerlink" title="关于通信分为以下几部分："></a>关于通信分为以下几部分：</h4><ul>
+<li><p>渲染进程发送同步&#x2F;异步消息给主进程</p>
+</li>
+<li><p>主进程发送同步&#x2F;异步消息给渲染进程</p>
+</li>
+</ul>
+<h3 id="1-渲染进程发送同步-异步消息给主进程"><a href="#1-渲染进程发送同步-异步消息给主进程" class="headerlink" title="1. 渲染进程发送同步&#x2F;异步消息给主进程"></a>1. 渲染进程发送同步&#x2F;异步消息给主进程</h3><p>渲染进程依赖 ipcRenderer 模块给主进程发送消息，官方提供了三个方法：</p>
+<ul>
+<li><p>「ipcRenderer.send(channel, …args)」</p>
+</li>
+<li><p>「ipcRenderer.invoke(channel, …args)」</p>
+</li>
+<li><p>「ipcRenderer.sendSync(channel, …args)」</p>
+</li>
+</ul>
+<p>channel 表示的就是事件名(消息名称)， args 好理解，也就是参数。<br>这三种方法都可以给主进程发送消息，同时还可以等待主进程的答应，真所谓是 两情相悦，互相来电 ，只是答应的方式不同。</p>
+<h4 id="1-1-「ipcRender-send-案例」"><a href="#1-1-「ipcRender-send-案例」" class="headerlink" title="1.1 「ipcRender.send 案例」"></a>1.1 「ipcRender.send 案例」</h4><p>渲染进程 render.js：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// send 方法发送，并绑定另一个事件接收返回值</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendMessageToMain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  ipcRenderer.<span class="title function_">send</span>(<span class="string">&quot;render-send-to-main&quot;</span>, <span class="string">&quot;我是渲染进程通过 send 发送的消息&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">ipcRenderer.<span class="title function_">on</span>(<span class="string">&quot;main-reply-to-render&quot;</span>, <span class="function">(<span class="params">event, message</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replyMessage&quot;</span>, message); <span class="comment">// &#x27;replyMessage 主进程通过 reply 回复给渲染进程的消息&#x27;</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>主进程 main.js：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcMain &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line">ipcMain.<span class="title function_">on</span>(<span class="string">&quot;render-send-to-main&quot;</span>, <span class="function">(<span class="params">event, message</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`receive message from render: <span class="subst">$&#123;message&#125;</span>`</span>);</span><br><span class="line">  event.<span class="title function_">reply</span>(<span class="string">&quot;main-reply-to-render&quot;</span>, <span class="string">&quot;主进程通过 reply 回复给渲染进程的消息&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>1、主进程通过 ipcMain.on 来监听渲染进程的消息；<br>2、主进程接收到消息后，可以回复消息，也可以不回复。如果回复的话，通过 event.reply 发送另一个事件，渲染进程监听这个事件得到回复结果。如果不回复消息的话，渲染进程将接着执行 ipcRenderer.send 之后的代码。</p>
+<h4 id="1-2-「ipcRender-invoke-案例」"><a href="#1-2-「ipcRender-invoke-案例」" class="headerlink" title="1.2 「ipcRender.invoke 案例」"></a>1.2 「ipcRender.invoke 案例」</h4><p>渲染进程 render.js：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">invokeMessageToMain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> replyMessage = <span class="keyword">await</span> ipcRenderer.<span class="title function_">invoke</span>(</span><br><span class="line">    <span class="string">&quot;render-invoke-to-main&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我是渲染进程通过 invoke 发送的消息&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replyMessage&quot;</span>, replyMessage);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主进程 main.js：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcMain &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line">ipcMain.<span class="title function_">handle</span>(<span class="string">&quot;render-invoke-to-main&quot;</span>, <span class="keyword">async</span> (event, message) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`receive message from render: <span class="subst">$&#123;message&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="title function_">asyncWork</span>();</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">asyncWork</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">resolve</span>(<span class="string">&quot;延迟 2 秒获取到主进程的返回结果&quot;</span>);</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>1、主进程通过 ipcMain.handle 来处理渲染进程发送的消息；<br>2、主进程接收到消息后，可以回复消息，也可以不回复。如果回复消息的话，可以通过 return 给渲染进程回复消息；如果不回复消息的话，渲染进程将接着执行 ipcRenderer.invoke 之后的代码。<br>3、渲染进程异步等待主进程的回应， invoke 的返回值是一个 Promise<code>&lt;pending&gt;</code> 。</p>
+<p>为了验证第三点，我们可以不使用 await 来接收 invoke 的返回结果，看看会是什么样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">invokeMessageToMain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> replyMessage = ipcRenderer.<span class="title function_">invoke</span>(</span><br><span class="line">    <span class="string">&quot;render-invoke-to-main&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我是渲染进程通过 invoke 发送的消息&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replyMessage&quot;</span>, replyMessage); <span class="comment">// 打印的结果符合我们的预期，是一个 Promise&lt;pending&gt;。</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里有小伙伴可能会有疑问了，会不会是因为 ipc.Main 那边是一个异步执行函数才会造成这种情况呢？好的，我们将 main.js 也来改造一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">invokeMessageToMain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> replyMessage = ipcRenderer.<span class="title function_">invoke</span>(</span><br><span class="line">    <span class="string">&quot;render-invoke-to-main&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我是渲染进程通过 invoke 发送的消息&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replyMessage&quot;</span>, replyMessage); <span class="comment">// 我们把 ipcMain.handle 的返回值变为了一个普通的字符串，发现 ipcRender.invoke 那边返回的还是一个 Promise&lt;pending&gt;。这也就验证了我们上面的结论。</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line">ipcMain.<span class="title function_">handle</span>(<span class="string">&quot;render-invoke-to-main&quot;</span>, <span class="function">(<span class="params">event, message</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`receive message from render: <span class="subst">$&#123;message&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">const</span> result = <span class="string">&quot;我是主进程同步的返回结果&quot;</span>;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-「ipcRender-sendSync-案例」"><a href="#1-3-「ipcRender-sendSync-案例」" class="headerlink" title="1.3 「ipcRender.sendSync 案例」"></a>1.3 「ipcRender.sendSync 案例」</h4><p>渲染进程 render.js：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendSyncMessageToMain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> replyMessage = ipcRenderer.<span class="title function_">sendSync</span>(</span><br><span class="line">    <span class="string">&quot;render-send-sync-to-main&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我是渲染进程通过 syncSend 发送给主进程的消息&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replyMessage&quot;</span>, replyMessage); <span class="comment">// &#x27;主进程回复的消息&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>主进程 main.js：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcMain &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line">ipcMain.<span class="title function_">on</span>(<span class="string">&quot;render-send-sync-to-main&quot;</span>, <span class="function">(<span class="params">event, message</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`receive message from render: <span class="subst">$&#123;message&#125;</span>`</span>);</span><br><span class="line">  event.<span class="property">returnValue</span> = <span class="string">&quot;主进程回复的消息&quot;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>1、主进程通过 ipcMain.on 来处理渲染进程发送的消息；<br>2、主进程通过 event.returnValue 回复渲染进程消息；<br>3、如果 event.returnValue 不为 undefined 的话，渲染进程会等待 sendSync 的返回值才执行后面的代码；<br>4、请保证 event.returnValue 是有值的，否则会造成非预期的影响。</p>
+<h5 id="前面两点都好理解，关于第三点，会有点绕，这边我们来再写两个例子帮助你理解。"><a href="#前面两点都好理解，关于第三点，会有点绕，这边我们来再写两个例子帮助你理解。" class="headerlink" title="前面两点都好理解，关于第三点，会有点绕，这边我们来再写两个例子帮助你理解。"></a>前面两点都好理解，关于第三点，会有点绕，这边我们来再写两个例子帮助你理解。</h5><p>上面的案例，主进程绑定的处理函数是一个同步的，我们将它换为异步的来看看：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcMain &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line">ipcMain.<span class="title function_">on</span>(<span class="string">&quot;render-send-sync-to-main&quot;</span>, <span class="keyword">async</span> (event, message) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`receive message from render: <span class="subst">$&#123;message&#125;</span>`</span>);</span><br><span class="line">  <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="title function_">asyncWork</span>();</span><br><span class="line">  event.<span class="property">returnValue</span> = result;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">asyncWork</span> = <span class="keyword">async</span> (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">resolve</span>(<span class="string">&quot;延迟 2 秒获取到主进程的返回结果&quot;</span>);</span><br><span class="line">    &#125;, <span class="number">2000</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>次我们在执行完一个异步函数 asyncWork 之后再给 event.returnValue 赋值。</p>
+<p>结果发现渲染进程那边会在 2 秒之后才打印：</p>
+<blockquote>
+<p>“replyMessage 延迟 2 秒获取到主进程的返回结果”</p>
+</blockquote>
+<p>而且对于渲染进程，以下两种写法，结果都是一样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendSyncMessageToMain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> replyMessage = ipcRenderer.<span class="title function_">sendSync</span>(</span><br><span class="line">    <span class="string">&quot;render-send-sync-to-main&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我是渲染进程通过 syncSend 发送给主进程的消息&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replyMessage&quot;</span>, replyMessage); <span class="comment">// &#x27;replyMessage 延迟 2 秒获取到主进程的返回结果&#x27;&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者改用 async 函数</span></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">sendSyncMessageToMain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> replyMessage = <span class="keyword">await</span> ipcRenderer.<span class="title function_">sendSync</span>(</span><br><span class="line">    <span class="string">&quot;render-send-sync-to-main&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我是渲染进程发送给主进程的同步消息&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replyMessage&quot;</span>, replyMessage); <span class="comment">// &#x27;replyMessage 延迟 2 秒获取到主进程的返回结果&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>也就是说，不论渲染进程在接收 sendSync 结果的时候，是不是用 await 等待，都会等待结果返回后才向下执行。但如果你已经确定你的请求是一个异步的话，建议还是使用 invoke 去发送消息，这里出于两点原因考虑：</p>
+<p>1、方法名 sendSync 就很符合语义，发送同步消息；</p>
+<p>2、请求执行的明明是异步代码，但是如果你用 const replyMessage &#x3D; ipcRenderer.sendSync(‘xxx’) 方式来获取响应信息，会很奇怪。</p>
+<p>OK，上面的第四点谈到了，请保证 event.returnValue 是有值的，否则会造成非预期的影响。让我们也来写个例子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">sendSyncMessageToMain</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> replyMessage = ipcRenderer.<span class="title function_">sendSync</span>(</span><br><span class="line">    <span class="string">&quot;render-send-sync-to-main&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我是渲染进程通过 syncSend 发送给主进程的消息&quot;</span></span><br><span class="line">  );</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;replyMessage&quot;</span>, replyMessage); <span class="comment">// replyMessage &#123;error: &quot;reply was never sent&quot;&#125;</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;next&quot;</span>); <span class="comment">// 这里也会执行</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// main.js</span></span><br><span class="line">ipcMain.<span class="title function_">on</span>(<span class="string">&quot;render-send-sync-to-main&quot;</span>, <span class="keyword">async</span> (event, message) =&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`receive message from render: <span class="subst">$&#123;message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，主进程那边不对 event.returnValue 做处理，在渲染进程这边将会得到一个错误：</p>
+<blockquote>
+<p>{error: “reply was never sent”}</p>
+</blockquote>
+<p>虽然 next 也会打印，但是如果你再想去发送一次 render-send-sync-to-main 你会发现页面已经卡了…</p>
+<h3 id="2-主进程发送同步-异步消息给渲染进程"><a href="#2-主进程发送同步-异步消息给渲染进程" class="headerlink" title="2. 主进程发送同步&#x2F;异步消息给渲染进程"></a>2. 主进程发送同步&#x2F;异步消息给渲染进程</h3><p>与 ipcRenderer 模块对应的就是 ipcMain 了。主进程依赖 ipcMain 模块给渲染进程发送消息，主要有以下几种方式：</p>
+<ul>
+<li>event.reply：主进程通过 on 监听消息，如果渲染进程用 send 发送消息时，可以在 on 的回调函数里获取到事件对象并通过 event.reply 发送另一个事件；</li>
+<li>return ：主进程通过 handle 监听处理消息，如果渲染进程用 invoke 发送消息时，可以在 on 的回调函数里通过 return 回复消息；</li>
+<li>event.returnValue ：主进程通过 on 监听消息，如果渲染进程用 sendSync 发送消息时，可以在 on 的回调函数里通过设置 event.returnValue 回复消息；</li>
+<li>window.webContents.send ：主进程通过窗口实例的 webContents 给本窗口内的渲染进程发送消息。</li>
+</ul>
+<p>前面三种在渲染进程发送消息那一部分已经介绍过了，接下来让我们来看一下 window.webContents 这种方式吧。</p>
+<h4 id="2-1-「window-webContents-send-案例-」"><a href="#2-1-「window-webContents-send-案例-」" class="headerlink" title="2.1 「window.webContents.send 案例 :」"></a>2.1 「window.webContents.send 案例 :」</h4><p>这种方式依赖于 webContents 对象，它是我们在项目中新建窗口时，产生的窗口对象上的一个属性。</p>
+<p>例如我们在一个窗口完成加载时，发送消息：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// main.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createWindow</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="variable language_">window</span> = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">    <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">      <span class="attr">nodeIntegration</span>: <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">contextIsolation</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">window</span>.<span class="title function_">loadFile</span>(<span class="string">&quot;src/index.html&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 窗口在完成加载时，通过 webContents.send 给渲染进程发送消息</span></span><br><span class="line">  <span class="variable language_">window</span>.<span class="property">webContents</span>.<span class="title function_">on</span>(<span class="string">&quot;did-finish-load&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">webContents</span>.<span class="title function_">send</span>(<span class="string">&quot;main-send-to-render&quot;</span>, <span class="string">&quot;启动完成了&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(createWindow);</span><br></pre></td></tr></table></figure>
+
+<p>渲染进程 render.js ：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// render.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line">ipcRenderer.<span class="title function_">on</span>(<span class="string">&quot;main-send-to-render&quot;</span>, <span class="function">(<span class="params">event, message</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`receive message from main: <span class="subst">$&#123;message&#125;</span>`</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>通过以上操作，也可以达到主进程主动给渲染进程发送消息的效果(*￣︶￣)。</p>
+<h3 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h3><p>OK，介绍完了功能，分析完了案例，让我们来加以总结一下吧。</p>
+<p>如果通过 ipcMain 和 ipcRenderer ，渲染进程有三种方式给主进程发送消息，即:</p>
+<p>「ipcRenderer.send(channel, …args)」</p>
+<p>「ipcRenderer.invoke(channel, …args)」</p>
+<p>「ipcRenderer.sendSync(channel, …args)」</p>
+<p>通过上面三种方式，主进程都可以有相应的方法给予渲染进程答应，只是答应的方法不同；</p>
+<p>同步请求建议用 sendSync，异步请求建议用 invoke；</p>
+<p>主进程中还可以获取到某个渲染进程的 window.webContents ，然后通过 window.webContents.send 给这个渲染进程发送消息；</p>
+<p>转载链接：<br><a href="https://blog.csdn.net/qq_39448719/article/details/123081213">https://blog.csdn.net/qq_39448719/article/details/123081213</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/03/06/React/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%914%EF%BC%9AReact-Hooks/" rel="next" title="【专题】4：React Hooks">
+                <i class="fa fa-chevron-left"></i> 【专题】4：React Hooks
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/03/27/JS/%E9%97%AD%E5%8C%85%E5%92%8C%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" rel="prev" title="闭包和垃圾回收机制">
+                闭包和垃圾回收机制 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E3%80%8C%E4%B8%BB%E8%BF%9B%E7%A8%8B%E4%B8%8E%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E7%9A%84%E4%B8%A4%E6%83%85%E7%9B%B8%E6%82%A6%E3%80%8D"><span class="nav-number">1.</span> <span class="nav-text">「主进程与渲染进程的两情相悦」</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E7%BA%B2"><span class="nav-number">1.1.</span> <span class="nav-text">大纲</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E9%80%9A%E4%BF%A1%E5%88%86%E4%B8%BA%E4%BB%A5%E4%B8%8B%E5%87%A0%E9%83%A8%E5%88%86%EF%BC%9A"><span class="nav-number">1.1.1.</span> <span class="nav-text">关于通信分为以下几部分：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E5%8F%91%E9%80%81%E5%90%8C%E6%AD%A5-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF%E7%BB%99%E4%B8%BB%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.2.</span> <span class="nav-text">1. 渲染进程发送同步&#x2F;异步消息给主进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E3%80%8CipcRender-send-%E6%A1%88%E4%BE%8B%E3%80%8D"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.1 「ipcRender.send 案例」</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E3%80%8CipcRender-invoke-%E6%A1%88%E4%BE%8B%E3%80%8D"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2 「ipcRender.invoke 案例」</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E3%80%8CipcRender-sendSync-%E6%A1%88%E4%BE%8B%E3%80%8D"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.3 「ipcRender.sendSync 案例」</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E9%9D%A2%E4%B8%A4%E7%82%B9%E9%83%BD%E5%A5%BD%E7%90%86%E8%A7%A3%EF%BC%8C%E5%85%B3%E4%BA%8E%E7%AC%AC%E4%B8%89%E7%82%B9%EF%BC%8C%E4%BC%9A%E6%9C%89%E7%82%B9%E7%BB%95%EF%BC%8C%E8%BF%99%E8%BE%B9%E6%88%91%E4%BB%AC%E6%9D%A5%E5%86%8D%E5%86%99%E4%B8%A4%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%B8%AE%E5%8A%A9%E4%BD%A0%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">前面两点都好理解，关于第三点，会有点绕，这边我们来再写两个例子帮助你理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%BB%E8%BF%9B%E7%A8%8B%E5%8F%91%E9%80%81%E5%90%8C%E6%AD%A5-%E5%BC%82%E6%AD%A5%E6%B6%88%E6%81%AF%E7%BB%99%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">2. 主进程发送同步&#x2F;异步消息给渲染进程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E3%80%8Cwindow-webContents-send-%E6%A1%88%E4%BE%8B-%E3%80%8D"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.1 「window.webContents.send 案例 :」</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E6%80%BB%E7%BB%93"><span class="nav-number">1.4.</span> <span class="nav-text">3. 总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

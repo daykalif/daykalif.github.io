@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Electron 介绍 Electron 是由 Github 开发，用 HTML，CSS 和 JavaScript 来构建跨平台桌面应用程序的一个开源库。Electron 通过将 Chromium 和 Node.js 合并到同一个运行时环境中，并将其打包为 Mac，Windows 和 Linux 系统下的应用来实现这一目的。 网站：https:&#x2F;&#x2F;www.electronjs.org&#x2F; 使用 el">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【搬】Electron">
+<meta property="og:url" content="https://daykalif.github.io/2022/02/28/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E6%90%AC%E3%80%91Electron/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="Electron 介绍 Electron 是由 Github 开发，用 HTML，CSS 和 JavaScript 来构建跨平台桌面应用程序的一个开源库。Electron 通过将 Chromium 和 Node.js 合并到同一个运行时环境中，并将其打包为 Mac，Windows 和 Linux 系统下的应用来实现这一目的。 网站：https:&#x2F;&#x2F;www.electronjs.org&#x2F; 使用 el">
+<meta property="og:locale">
+<meta property="og:image" content="https://daykalif.github.io/source/_posts/img/electron1.png">
+<meta property="og:image" content="https://daykalif.github.io/source/_posts/img/electron2.png">
+<meta property="og:image" content="https://daykalif.github.io/source/_posts/img/electron3.png">
+<meta property="og:image" content="https://daykalif.github.io/source/_posts/img/electron4.png">
+<meta property="og:image" content="https://daykalif.github.io/source/_posts/img/electron5.png">
+<meta property="og:image" content="https://daykalif.github.io/source/_posts/img/electron6.png">
+<meta property="article:published_time" content="2022-02-28T13:05:21.000Z">
+<meta property="article:modified_time" content="2022-03-19T07:28:35.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://daykalif.github.io/source/_posts/img/electron1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2022/02/28/桌面端/【搬】Electron/"/>
+
+
+
+
+
+  <title>【搬】Electron | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2022/02/28/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E6%90%AC%E3%80%91Electron/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【搬】Electron</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-02-28T21:05:21+08:00">
+                2022-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/02/28/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E6%90%AC%E3%80%91Electron/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/02/28/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E6%90%AC%E3%80%91Electron/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2022/02/28/%E6%A1%8C%E9%9D%A2%E7%AB%AF/%E3%80%90%E6%90%AC%E3%80%91Electron/" class="leancloud_visitors" data-flag-title="【搬】Electron">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  5.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  25
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="Electron-介绍"><a href="#Electron-介绍" class="headerlink" title="Electron 介绍"></a>Electron 介绍</h2><ul>
+<li>Electron 是由 Github 开发，用 HTML，CSS 和 JavaScript 来构建跨平台桌面应用程序的一个开源库。Electron 通过将 Chromium 和 Node.js 合并到同一个运行时环境中，并将其打包为 Mac，Windows 和 Linux 系统下的应用来实现这一目的。</li>
+<li>网站：<a href="https://www.electronjs.org/">https://www.electronjs.org/</a></li>
+<li>使用 electron 的项目：<a href="https://www.electronjs.org/apps">https://www.electronjs.org/apps</a></li>
+<li>特点：<ul>
+<li>上手简单：只要会前端的知识就可以做桌面应用</li>
+<li>跨平台：Mac，Linux，Windows</li>
+<li>自动更新</li>
+</ul>
+</li>
+</ul>
+<p>Hello World</p>
+<p>1.克隆实例项目的仓库<br>git clone <a href="https://github.com/electron/electron-quick-start">https://github.com/electron/electron-quick-start</a></p>
+<p>2.进入这个仓库<br>cd electron-quick-start</p>
+<p>3.安装依赖<br>npm install</p>
+<p>4.运行<br>npm start</p>
+<p>如果下载比较慢的话，推荐使用淘宝镜像。<br>npm config set ELECTRON_MIRROR <a href="https://npm.taobao.org/mirrors/electron/">https://npm.taobao.org/mirrors/electron/</a></p>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><h3 id="react-和-electron-配合使用"><a href="#react-和-electron-配合使用" class="headerlink" title="react 和 electron 配合使用"></a>react 和 electron 配合使用</h3><ul>
+<li><p>安装 react 依赖：<br>tnpm i react<br>tnpm i react-dom</p>
+</li>
+<li><p>项目中无法使用 import，需要安装以下依赖：<br>tnpm i @babel&#x2F;core @babel&#x2F;preset-env @babel&#x2F;preset-react css-loader style-loader sass-loader sass webpack webpack-cli babel-loader</p>
+</li>
+<li><p>启动项目：<br>tnpm run watch<br>tnpm start</p>
+</li>
+</ul>
+<p>package.json:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span>: <span class="string">&quot;electron-quick-start&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;description&quot;</span>: <span class="string">&quot;A minimal Electron application&quot;</span>,</span><br><span class="line">  <span class="string">&quot;main&quot;</span>: <span class="string">&quot;main.js&quot;</span>,</span><br><span class="line">  <span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;watch&quot;</span>: <span class="string">&quot;webpack --config webpack.common.js --watch&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>: <span class="string">&quot;electron .&quot;</span>	<span class="comment">// 此处的点其实就是启动的&quot;main&quot;: &quot;main.js&quot;,</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;repository&quot;</span>: <span class="string">&quot;https://github.com/electron/electron-quick-start&quot;</span>,</span><br><span class="line">  <span class="string">&quot;keywords&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;Electron&quot;</span>,</span><br><span class="line">    <span class="string">&quot;quick&quot;</span>,</span><br><span class="line">    <span class="string">&quot;start&quot;</span>,</span><br><span class="line">    <span class="string">&quot;tutorial&quot;</span>,</span><br><span class="line">    <span class="string">&quot;demo&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;author&quot;</span>: <span class="string">&quot;GitHub&quot;</span>,</span><br><span class="line">  <span class="string">&quot;license&quot;</span>: <span class="string">&quot;CC0-1.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;electron&quot;</span>: <span class="string">&quot;^17.0.1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;dependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;@babel/core&quot;</span>: <span class="string">&quot;^7.17.5&quot;</span>,</span><br><span class="line">    <span class="string">&quot;@babel/preset-env&quot;</span>: <span class="string">&quot;^7.16.11&quot;</span>,</span><br><span class="line">    <span class="string">&quot;@babel/preset-react&quot;</span>: <span class="string">&quot;^7.16.7&quot;</span>,</span><br><span class="line">    <span class="string">&quot;babel-loader&quot;</span>: <span class="string">&quot;^8.2.3&quot;</span>,</span><br><span class="line">    <span class="string">&quot;css-loader&quot;</span>: <span class="string">&quot;^6.6.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;react&quot;</span>: <span class="string">&quot;^17.0.2&quot;</span>,</span><br><span class="line">    <span class="string">&quot;react-dom&quot;</span>: <span class="string">&quot;^17.0.2&quot;</span>,</span><br><span class="line">    <span class="string">&quot;sass&quot;</span>: <span class="string">&quot;^1.49.8&quot;</span>,</span><br><span class="line">    <span class="string">&quot;sass-loader&quot;</span>: <span class="string">&quot;^12.6.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;style-loader&quot;</span>: <span class="string">&quot;^3.3.1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;webpack&quot;</span>: <span class="string">&quot;^5.69.1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^4.9.2&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="进行介绍"><a href="#进行介绍" class="headerlink" title="进行介绍"></a>进行介绍</h2><p>Electron 分为渲染进程和主进程。</p>
+<ul>
+<li>渲染进程：用户所看到的 web 界面就是由渲染进程描绘出来的。包括 html，css 和 js。</li>
+<li>主进程：Electron 运行 package.json 的 main 脚本进程被称为主进程。在主进程中运行的脚本通过创建 web 页面来展示用户界面。一个 Electron 应用总是有且只有一个主进程。</li>
+</ul>
+<h2 id="渲染进程调试"><a href="#渲染进程调试" class="headerlink" title="渲染进程调试"></a>渲染进程调试</h2><p>渲染进程的调试就是我们熟悉的网页的调试。<br>（Command+shift+i，打开控制台）</p>
+<h2 id="主进程调试"><a href="#主进程调试" class="headerlink" title="主进程调试"></a>主进程调试</h2><p>命令行开关：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">--inspect=[port]</span><br><span class="line"></span><br><span class="line">例如：electron --inspect=<span class="number">6868</span> your/app</span><br><span class="line"></span><br><span class="line">打开浏览器输入：<span class="title class_">Chrome</span>:<span class="comment">//inspect</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>示例：</p>
+</blockquote>
+<p>修改 package.json</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;scripts&quot;</span>: &#123;</span><br><span class="line"><span class="string">&quot;start&quot;</span>: <span class="string">&quot;electron . --inspect=6868&quot;</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>打开浏览器输入：Chrome:&#x2F;&#x2F;inspect，进行如下设置</p>
+<p><img src="/source/_posts/img/electron1.png" alt="Electron1"></p>
+<p>重新启动项目</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tnpm start</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>1、使用浏览器做 Debug：<br>打开 inspect，按 Command+p，搜索 main.js 即可看到 electron 项目的 main.js 文件</p>
+<p><img src="/source/_posts/img/electron2.png" alt="Electron2"></p>
+</li>
+<li><p>2、使用 vscode 调试<br>点击 vscode 左侧第四个图标（Debug），新增 launch.json 文件，粘贴如下代码，点击运行 Debug Main Process</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">  <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="string">&quot;name&quot;</span>: <span class="string">&quot;Debug Main Process&quot;</span>,</span><br><span class="line">      <span class="string">&quot;type&quot;</span>: <span class="string">&quot;node&quot;</span>,</span><br><span class="line">      <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">      <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceRoot&#125;&quot;</span>,</span><br><span class="line">      <span class="string">&quot;runtimeExecutable&quot;</span>: <span class="string">&quot;$&#123;workspaceRoot&#125;/node_modules/.bin/electron&quot;</span>,</span><br><span class="line">      <span class="string">&quot;windows&quot;</span>: &#123;</span><br><span class="line">        <span class="string">&quot;runtimeExecutable&quot;</span>: <span class="string">&quot;$&#123;workspaceRoot&#125;/node_modules/.bin/electron.cmd&quot;</span></span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="string">&quot;args&quot;</span>: [<span class="string">&quot;.&quot;</span>],</span><br><span class="line">      <span class="string">&quot;outputCapture&quot;</span>: <span class="string">&quot;std&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="/source/_posts/img/electron3.png" alt="Electron3"></p>
+<p>此时可以进行断点调试：</p>
+<p><img src="/source/_posts/img/electron4.png" alt="Electron4"></p>
+<h3 id="app-常用事件"><a href="#app-常用事件" class="headerlink" title="app 常用事件"></a>app 常用事件</h3><p>文档地址：<a href="https://www.electronjs.org/docs/latest/api/app#event-before-quit">https://www.electronjs.org/docs/latest/api/app#event-before-quit</a><br>中文文档：<a href="https://www.electronjs.org/zh/docs/latest/api/app#event-before-quit">https://www.electronjs.org/zh/docs/latest/api/app#event-before-quit</a></p>
+<ul>
+<li>ready：当 Electron 完成初始化时被触发。</li>
+<li>window-all-closed：所有窗口被关闭。</li>
+<li>before-quit：在应用程序开始关闭窗口之前触发。</li>
+<li>will-quit：当所有窗口都已关闭并且应用程序将退出时发出。</li>
+<li>quit：在应用程序退出时发出。</li>
+</ul>
+<h3 id="webContents-常用事件"><a href="#webContents-常用事件" class="headerlink" title="webContents 常用事件"></a>webContents 常用事件</h3><p>文档地址：<a href="https://www.electronjs.org/docs/latest/api/webview-tag/#event-did-finish-load">https://www.electronjs.org/docs/latest/api/webview-tag/#event-did-finish-load</a><br>中文文档：<a href="https://www.electronjs.org/zh/docs/latest/api/web-contents#event-did-finish-load">https://www.electronjs.org/zh/docs/latest/api/web-contents#event-did-finish-load</a></p>
+<ul>
+<li>did-finish-load：导航完成式触发，即选项卡的旋转器将停止旋转，并指派 onload 事件后。</li>
+<li>dom-ready：一个框架中的文本加载完成后触发该事件。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&quot;path&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">createWindow</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">    <span class="attr">webPreferences</span>: &#123; <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;preload.js&quot;</span>) &#125;,</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">// 本地的react文件内容</span></span><br><span class="line">  mainWindow.<span class="title function_">loadFile</span>(<span class="string">&quot;index.html&quot;</span>);</span><br><span class="line"></span><br><span class="line">  mainWindow.<span class="property">webContents</span>.<span class="title function_">openDevTools</span>();</span><br><span class="line">  mainWindow.<span class="property">webContents</span>.<span class="title function_">on</span>(<span class="string">&quot;did-finish-load&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;did-finish-load...&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">  mainWindow.<span class="property">webContents</span>.<span class="title function_">on</span>(<span class="string">&quot;dom-ready&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;dom-ready...&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;ready...&quot;</span>);</span><br><span class="line">  <span class="title function_">createWindow</span>();</span><br><span class="line"></span><br><span class="line">  app.<span class="title function_">on</span>(<span class="string">&quot;activate&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="title class_">BrowserWindow</span>.<span class="title function_">getAllWindows</span>().<span class="property">length</span> === <span class="number">0</span>) <span class="title function_">createWindow</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">on</span>(<span class="string">&quot;window-all-closed&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (process.<span class="property">platform</span> !== <span class="string">&quot;darwin&quot;</span>) app.<span class="title function_">quit</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="api-进程对象"><a href="#api-进程对象" class="headerlink" title="api-进程对象"></a>api-进程对象</h2><p><a href="https://www.electronjs.org/zh/docs/latest/api/process#sandbox">https://www.electronjs.org/zh/docs/latest/api/process#sandbox</a><br>示例：<br>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span></span></span><br><span class="line"><span class="tag">      <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">content</span>=<span class="string">&quot;default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;&quot;</span></span></span><br><span class="line"><span class="tag">    /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">&quot;./styles.css&quot;</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Process<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 渲染进程的方法：getProcessInfo，不能在主进程mian.js中编写，在渲染进程renderer.js中编写 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;getProcessInfo()&quot;</span>&gt;</span>查看process信息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;root&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- You can also require other files to run in this process --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./renderer.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./build/js/app.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// This file is required by the index.html file and will</span></span><br><span class="line"><span class="comment">// be executed in the renderer process for that window.</span></span><br><span class="line"><span class="comment">// No Node.js APIs are available in this process because</span></span><br><span class="line"><span class="comment">// `nodeIntegration` is turned off. Use `preload.js` to</span></span><br><span class="line"><span class="comment">// selectively enable features needed in the rendering</span></span><br><span class="line"><span class="comment">// process.</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getProcessInfo</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;getCCPUUsage:&quot;</span>, <span class="title function_">getCCPUUsage</span>());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>重新启动项目</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tnpm start</span><br></pre></td></tr></table></figure>
+
+<p>点击按钮，这时候出现了以下错误：<br>error1：Refused to execute inline event handler because it violates the following Content Security Policy directive: “script-src ‘self’”. Either the ‘unsafe-inline’ keyword, a hash (‘sha256-…’), or a nonce (‘nonce-…’) is required to enable inline execution.<br>这时候查阅资料，在 <a href="https://stackoverflow.com/questions/36324333/refused-to-execute-inline-event-handler-because-it-violates-csp-sandbox">https://stackoverflow.com/questions/36324333/refused-to-execute-inline-event-handler-because-it-violates-csp-sandbox</a> 中找到答案。</p>
+<p>解决方法：<br>首先修改 index.html 文件: 把 <button onclick="getProcessInfo()">查看 preocess 信息</button> 改成 <button id="btn">查看 preocess 信息</button><br>其次修改 renderer.js 文件: 在 function getProcessInfo() 这一句上面添加上 ： document.getElementById(“btn”).addEventListener(“click”, getProcessInfo);<br>修改好后，再次编译运行就没有以上错误了。</p>
+<p>但是当按下 “查看 preocess 信息” 的按钮时，又出现了以下错误：<br>error2 ：renderer.js:10 Uncaught ReferenceError: process is not defined<br>查阅资料，找到了答案 <a href="https://stackoverflow.com/questions/30239060/uncaught-referenceerror-process-is-not-defined">https://stackoverflow.com/questions/30239060/uncaught-referenceerror-process-is-not-defined</a></p>
+<p>解决方法：<br>打开 main.js 文件，在 function createWindow() 里面加上一行： nodeIntegration: true ，如下图所示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">createWindow</span> () &#123;</span><br><span class="line">  <span class="comment">// Create the browser window.</span></span><br><span class="line">  <span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">    <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">    <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">    <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">      <span class="attr">nodeIntegration</span>: <span class="literal">true</span>, <span class="comment">// 这个属性非常重要，用户的require和process等变量的使用需要事先设定上这个属性</span></span><br><span class="line">      <span class="attr">contextIsolation</span>: <span class="literal">false</span>, <span class="comment">// 另外还需要设置这个属性，详细介绍：https://www.electronjs.org/docs/latest/tutorial/context-isolation</span></span><br><span class="line">      <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;preload.js&quot;</span>),</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意，这个 nodeIntegration: true 的添加非常重要，只有添加了它，才能使 require 和 process 等变量有效。<br>把这两个 bug 都去除后，在 vscode 上按下 F5 运行代码，再按下 “查看 preocess 信息” 的按钮时就可以正常看到输出结果了：</p>
+<p><img src="/source/_posts/img/electron5.png" alt="Electron5"></p>
+<h2 id="File-对象"><a href="#File-对象" class="headerlink" title="File 对象"></a>File 对象</h2><p>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;for_file_drag&quot;</span> <span class="attr">id</span>=<span class="string">&quot;drag_test&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span>&gt;</span>拖动文件到此处，打印路径<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 拖动文件到区域，展示路径</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> dragWraper = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;drag_test&quot;</span>);</span><br><span class="line">dragWraper.<span class="title function_">addEventListener</span>(<span class="string">&quot;drop&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>();</span><br><span class="line">  <span class="keyword">const</span> files = e.<span class="property">dataTransfer</span>.<span class="property">files</span>;</span><br><span class="line">  <span class="keyword">if</span> (files &amp;&amp; files.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> path = files[<span class="number">0</span>].<span class="property">path</span>;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;path:&quot;</span>, path);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 读取本地文件</span></span><br><span class="line">    <span class="keyword">const</span> content = fs.<span class="title function_">readFileSync</span>(path);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;content:&quot;</span>, content.<span class="title function_">toString</span>());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">dragWraper.<span class="title function_">addEventListener</span>(<span class="string">&quot;dragover&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="标签"><a href="#标签" class="headerlink" title="&lt;webview&gt;标签"></a><code>&lt;webview&gt;</code>标签</h2><p>官方文档：<a href="https://www.electronjs.org/docs/latest/api/webview-tag">https://www.electronjs.org/docs/latest/api/webview-tag</a><br>main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">  <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">  <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">  <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">    <span class="attr">nodeIntegration</span>: <span class="literal">true</span>, <span class="comment">// 是否开启nodejs功能。 这个属性非常重要，用户的require和process等变量的使用需要事先设定上这个属性</span></span><br><span class="line">    <span class="attr">contextIsolation</span>: <span class="literal">false</span>, <span class="comment">// 另外还需要设置这个属性，详细介绍：https://www.electronjs.org/docs/latest/tutorial/context-isolation</span></span><br><span class="line">    <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;preload.js&quot;</span>),</span><br><span class="line">    <span class="attr">webviewTag</span>: <span class="literal">true</span>, <span class="comment">// 支持webview</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>webview_test&#x2F;preload.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 读取百度logo图片的src路径</span></span><br><span class="line">  <span class="title function_">alert</span>(<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;.index-logo-src&quot;</span>).<span class="property">src</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 向dom注入自己的事件</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#su&quot;</span>).<span class="property">onclick</span> = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">alert</span>(<span class="string">&quot;您点击了搜索按钮&quot;</span>);</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- webview --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>webview<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;loading&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">webview</span></span></span><br><span class="line"><span class="tag">  <span class="attr">id</span>=<span class="string">&quot;wb&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">src</span>=<span class="string">&quot;https://www.baidu.com&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">style</span>=<span class="string">&quot;height: 400px&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">preload</span>=<span class="string">&quot;./webview_test/preload.js&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">webview</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// webview</span></span><br><span class="line"><span class="keyword">const</span> wb = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#wb&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> loading = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#loading&quot;</span>);</span><br><span class="line">wb.<span class="title function_">addEventListener</span>(<span class="string">&quot;did-start-loading&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  loading.<span class="property">innerHTML</span> = <span class="string">&quot;loading...&quot;</span>;</span><br><span class="line">&#125;);</span><br><span class="line">wb.<span class="title function_">addEventListener</span>(<span class="string">&quot;did-stop-loading&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  loading.<span class="property">innerHTML</span> = <span class="string">&quot;ok.&quot;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 修改百度搜索按钮为红色</span></span><br><span class="line">  wb.<span class="title function_">insertCSS</span>(<span class="string">`</span></span><br><span class="line"><span class="string">		#su&#123;</span></span><br><span class="line"><span class="string">			background:red !important</span></span><br><span class="line"><span class="string">		&#125;</span></span><br><span class="line"><span class="string">	`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 执行脚本</span></span><br><span class="line">  wb.<span class="title function_">executeJavaScript</span>(<span class="string">`</span></span><br><span class="line"><span class="string">		setTimeout(()=&gt;&#123;</span></span><br><span class="line"><span class="string">			alert(document.getElementById(&quot;su&quot;).value)</span></span><br><span class="line"><span class="string">		&#125;,1000)</span></span><br><span class="line"><span class="string">	`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 打开控制台脚本</span></span><br><span class="line">  wb.<span class="title function_">openDevTools</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="window-open-副窗口和主窗口通信"><a href="#window-open-副窗口和主窗口通信" class="headerlink" title="window.open 副窗口和主窗口通信"></a>window.open 副窗口和主窗口通信</h2><p>官方文档：<a href="https://www.electronjs.org/docs/latest/api/window-open/#windowopenurl-framename-features">https://www.electronjs.org/docs/latest/api/window-open/#windowopenurl-framename-features</a></p>
+<p>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 弹出子窗口 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;openNewWindow()&quot;</span>&gt;</span>弹出<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 关闭子窗口 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;closeWindow()&quot;</span>&gt;</span>关闭子窗口<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> subwin; <span class="comment">// BrowserWindowProxy</span></span><br><span class="line"><span class="comment">// 弹出子窗口</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">openNewWindow</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// window.open(&quot;https://www.youtube.com&quot;, &quot;_blank&quot;, &quot;nodeIntegration=no&quot;)</span></span><br><span class="line">  subwin = <span class="variable language_">window</span>.<span class="title function_">open</span>(<span class="string">&quot;popup_page.html&quot;</span>, <span class="string">&quot;popup&quot;</span>); <span class="comment">// 第一个参数：打开的页面；第二个参数：别名</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 接收子窗口信息</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;message&quot;</span>, <span class="function">(<span class="params">msg</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;父窗口接收到的消息：&quot;</span>, msg);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 关闭子窗口</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">closeWindow</span>(<span class="params"></span>) &#123;</span><br><span class="line">  subwin.<span class="title function_">close</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>popup_page.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;X-UA-Compatible&quot;</span> <span class="attr">content</span>=<span class="string">&quot;IE=edge&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span>&gt;</span>这是弹出的子窗口<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;sendMsgToParrent()&quot;</span>&gt;</span>向父窗口传递信息<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">sendMsgToParrent</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">      <span class="comment">// 向父窗口传递信息,可以接收字符串，也可以接收对象</span></span></span><br><span class="line"><span class="language-javascript">      <span class="variable language_">window</span>.<span class="property">opener</span>.<span class="title function_">postMessage</span>(&#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">type</span>: <span class="number">1</span>,</span></span><br><span class="line"><span class="language-javascript">        <span class="attr">message</span>: <span class="string">&quot;这是来自于子窗口的问候&quot;</span>,</span></span><br><span class="line"><span class="language-javascript">      &#125;);</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果点击按钮报错：<br><img src="/source/_posts/img/electron6.png" alt="Electron6"></p>
+<p>则删除 index.html 下面部分：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span></span></span><br><span class="line"><span class="tag">  <span class="attr">http-equiv</span>=<span class="string">&quot;Content-Security-Policy&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">content</span>=<span class="string">&quot;default-src &#x27;self&#x27;; script-src &#x27;self&#x27;; style-src &#x27;self&#x27; &#x27;unsafe-inline&#x27;&quot;</span></span></span><br><span class="line"><span class="tag">/&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="BrowserWindow-主-子窗口"><a href="#BrowserWindow-主-子窗口" class="headerlink" title="BrowserWindow 主&#x2F;子窗口"></a>BrowserWindow 主&#x2F;子窗口</h2><p>属性 frame: false</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">  <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">  <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">  <span class="attr">frame</span>: <span class="literal">false</span>, <span class="comment">// 窗口去除边框</span></span><br><span class="line">  <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">    <span class="attr">nodeIntegration</span>: <span class="literal">true</span>, <span class="comment">// 这个属性非常重要，用户的require和process等变量的使用需要事先设定上这个属性</span></span><br><span class="line">    <span class="attr">contextIsolation</span>: <span class="literal">false</span>, <span class="comment">// 另外还需要设置这个属性，详细介绍：https://www.electronjs.org/docs/latest/tutorial/context-isolation</span></span><br><span class="line">    <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;preload.js&quot;</span>),</span><br><span class="line">    <span class="attr">webviewTag</span>: <span class="literal">true</span>, <span class="comment">// 支持webview</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">  <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">  <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">  <span class="comment">// frame: false, // 窗口去除边框</span></span><br><span class="line">  <span class="attr">show</span>: <span class="literal">false</span>, <span class="comment">// 是否展示窗口</span></span><br><span class="line">  <span class="attr">backgroundColor</span>: <span class="string">&quot;#ff0000&quot;</span>,</span><br><span class="line">  <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">    <span class="attr">nodeIntegration</span>: <span class="literal">true</span>, <span class="comment">// 这个属性非常重要，用户的require和process等变量的使用需要事先设定上这个属性</span></span><br><span class="line">    <span class="attr">contextIsolation</span>: <span class="literal">false</span>, <span class="comment">// 另外还需要设置这个属性，详细介绍：https://www.electronjs.org/docs/latest/tutorial/context-isolation</span></span><br><span class="line">    <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;preload.js&quot;</span>),</span><br><span class="line">    <span class="attr">webviewTag</span>: <span class="literal">true</span>, <span class="comment">// 支持webview</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 只执行一次ready-to-show</span></span><br><span class="line">mainWindow.<span class="title function_">once</span>(<span class="string">&quot;ready-to-show&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  mainWindow.<span class="title function_">show</span>();</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 父子窗口</span></span><br><span class="line">childWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">  <span class="attr">parent</span>: mainWindow,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>模态窗口：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">// 父子窗口</span></span><br><span class="line">  childWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">    <span class="attr">parent</span>: mainWindow,</span><br><span class="line">    <span class="comment">// 模态窗口是禁用父窗口的子窗口，创建模态窗口必须设置parent和modal选项</span></span><br><span class="line">    <span class="attr">modal</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">// 控制子窗口弹出的坐标</span></span><br><span class="line">    <span class="attr">x</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">y</span>: <span class="number">0</span>,</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="BrowserView"><a href="#BrowserView" class="headerlink" title="BrowserView"></a>BrowserView</h2><p>BrowserView 被用来让 BrowserWindow 嵌入更多的 web 内容。它就像一个子窗口，除了它的未知相对于父窗口。这意味着可以替代 webview 标签。<br>官方文档：<a href="https://www.electronjs.org/docs/latest/api/browser-view#class-browserview">https://www.electronjs.org/docs/latest/api/browser-view#class-browserview</a><br>main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span>, <span class="title class_">BrowserView</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> mainWindow = <span class="keyword">new</span> <span class="title class_">BrowserWindow</span>(&#123;</span><br><span class="line">  <span class="attr">width</span>: <span class="number">800</span>,</span><br><span class="line">  <span class="attr">height</span>: <span class="number">600</span>,</span><br><span class="line">  <span class="comment">// frame: false, // 窗口去除边框</span></span><br><span class="line">  <span class="attr">show</span>: <span class="literal">false</span>, <span class="comment">// 是否展示窗口</span></span><br><span class="line">  <span class="attr">backgroundColor</span>: <span class="string">&quot;#ff0000&quot;</span>,</span><br><span class="line">  <span class="attr">webPreferences</span>: &#123;</span><br><span class="line">    <span class="attr">nodeIntegration</span>: <span class="literal">true</span>, <span class="comment">// 这个属性非常重要，用户的require和process等变量的使用需要事先设定上这个属性</span></span><br><span class="line">    <span class="attr">contextIsolation</span>: <span class="literal">false</span>, <span class="comment">// 另外还需要设置这个属性，详细介绍：https://www.electronjs.org/docs/latest/tutorial/context-isolation</span></span><br><span class="line">    <span class="attr">preload</span>: path.<span class="title function_">join</span>(__dirname, <span class="string">&quot;preload.js&quot;</span>),</span><br><span class="line">    <span class="attr">webviewTag</span>: <span class="literal">true</span>, <span class="comment">// 支持webview</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">mainWindow.<span class="title function_">loadFile</span>(<span class="string">&quot;index.html&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> view = <span class="keyword">new</span> <span class="title class_">BrowserView</span>();</span><br><span class="line">view.<span class="title function_">setBounds</span>(&#123;</span><br><span class="line">  <span class="attr">x</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">y</span>: <span class="number">10</span>,</span><br><span class="line">  <span class="attr">width</span>: <span class="number">300</span>,</span><br><span class="line">  <span class="attr">height</span>: <span class="number">200</span>,</span><br><span class="line">&#125;);</span><br><span class="line">view.<span class="property">webContents</span>.<span class="title function_">loadURL</span>(<span class="string">&quot;https://www.baidu.com&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// BrowserWindow中设置BrowserView</span></span><br><span class="line">mainWindow.<span class="title function_">setBrowserView</span>(view);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 5秒后销毁BrowserView</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// https://www.electronjs.org/zh/docs/latest/breaking-changes</span></span><br><span class="line">  <span class="comment">// ⚠️经查阅，下面的方法已经废弃</span></span><br><span class="line">  <span class="comment">// view.destroy()</span></span><br><span class="line">&#125;, <span class="number">5000</span>);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Dialog-对话框"><a href="#Dialog-对话框" class="headerlink" title="Dialog 对话框"></a>Dialog 对话框</h2><blockquote>
+<p>显示用于打开和保存文件、警报等的本机系统对话框</p>
+</blockquote>
+<p>官方文档：<a href="https://www.electronjs.org/docs/latest/api/dialog">https://www.electronjs.org/docs/latest/api/dialog</a></p>
+<p>显示用于选择多个文件和目录的对话框的示例：【这个对话框是从 Electron 主线程上打开的】</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; dialog &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">  dialog.<span class="title function_">showOpenDialog</span>(&#123; <span class="attr">properties</span>: [<span class="string">&quot;openFile&quot;</span>, <span class="string">&quot;multiSelections&quot;</span>] &#125;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>如果要使用渲染进程中的对话框对象，可以使用 remote 来获得。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; dialog &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>).<span class="property">remote</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(dialog);</span><br></pre></td></tr></table></figure>
+
+<p>示例：<br>index.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- dialog --&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>打开文件选择框<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;openDialog()&quot;</span>&gt;</span>打开<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;saveDialog()&quot;</span>&gt;</span>保存<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;showMessageDialog()&quot;</span>&gt;</span>弹出消息提示<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&quot;fs&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; dialog &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>).<span class="property">remote</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 打开文件选择框</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">openDialog</span>(<span class="params"></span>) &#123;</span><br><span class="line">  dialog.<span class="title function_">showOpenDialog</span>(</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;请选择您喜欢的文件&quot;</span>,</span><br><span class="line">      <span class="attr">buttonLabel</span>: <span class="string">&quot;走你&quot;</span>,</span><br><span class="line">      <span class="attr">filters</span>: [</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">&quot;Custom File Type&quot;</span>, <span class="attr">extensions</span>: [<span class="string">&quot;js&quot;</span>, <span class="string">&quot;html&quot;</span>, <span class="string">&quot;json&quot;</span>] &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>, result);</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 保存文件</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">saveDialog</span>(<span class="params"></span>) &#123;</span><br><span class="line">  dialog.<span class="title function_">showSaveDialog</span>(</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;请选择要保存的文件名&quot;</span>,</span><br><span class="line">      <span class="attr">buttonLabel</span>: <span class="string">&quot;保存&quot;</span>,</span><br><span class="line">      <span class="attr">filters</span>: [</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">&quot;Custom File Type&quot;</span>, <span class="attr">extensions</span>: [<span class="string">&quot;js&quot;</span>, <span class="string">&quot;html&quot;</span>, <span class="string">&quot;json&quot;</span>] &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;result:&quot;</span>, result);</span><br><span class="line">      fs.<span class="title function_">writeFileSync</span>(result, <span class="string">&quot;会向第一个参数的路径保存这行内容&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 消息弹框</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">showMessageDialog</span>(<span class="params"></span>) &#123;</span><br><span class="line">  dialog.<span class="title function_">showMessageBox</span>(</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&quot;warning&quot;</span>,</span><br><span class="line">      <span class="attr">title</span>: <span class="string">&quot;您确定吗？&quot;</span>,</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&quot;您的真的想要删除这条信息吗？&quot;</span>,</span><br><span class="line">      <span class="attr">buttons</span>: [<span class="string">&quot;ok&quot;</span>, <span class="string">&quot;cancel&quot;</span>],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function">(<span class="params">result</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;您的选择是：&quot;</span>, result);</span><br><span class="line">    &#125;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="系统快捷键"><a href="#系统快捷键" class="headerlink" title="系统快捷键"></a>系统快捷键</h2><blockquote>
+<p>应用程序没有键盘焦点时，监听键盘事件。</p>
+</blockquote>
+<p>globalShortcut 模块可以在操作系统中注册&#x2F;注销全局快捷键，一边可以为操作定制各种快捷键。<br>注意：快捷键方式是全局的，即使应用程序没有键盘焦点，它也仍然在持续监听键盘事件。在应用程序模块发出 ready 事件之前，不应使用此模块。</p>
+<p>主进程注册快捷键：<br>main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span>, globalShortcut &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">whenReady</span>().<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="title function_">createWindow</span>();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 主进程注册快捷键</span></span><br><span class="line">  globalShortcut.<span class="title function_">register</span>(<span class="string">&quot;CommandOrControl+I&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;您按下了command+i&quot;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 判断快捷键是否被注册上</span></span><br><span class="line">  <span class="keyword">const</span> isRegistered = globalShortcut.<span class="title function_">isRegistered</span>(<span class="string">&quot;CommandOrControl+I&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(isRegistered);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.<span class="title function_">on</span>(<span class="string">&quot;window-all-closed&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">// 注销所有快捷键</span></span><br><span class="line">  globalShortcut.<span class="title function_">unregisterAll</span>();</span><br><span class="line">  <span class="keyword">if</span> (process.<span class="property">platform</span> !== <span class="string">&quot;darwin&quot;</span>) app.<span class="title function_">quit</span>();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>渲染进程注册快捷键：<br>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 渲染进程注册快捷键</span></span><br><span class="line"><span class="keyword">const</span> &#123; remote &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line">remote.<span class="property">globalShortcut</span>.<span class="title function_">register</span>(<span class="string">&quot;CommandOrControl+G&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;您按下了command+g&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="主进程与渲染进程之间通信（推荐使用异步）"><a href="#主进程与渲染进程之间通信（推荐使用异步）" class="headerlink" title="主进程与渲染进程之间通信（推荐使用异步）"></a>主进程与渲染进程之间通信（推荐使用异步）</h2><h3 id="ipcMain"><a href="#ipcMain" class="headerlink" title="ipcMain"></a>ipcMain</h3><p>从主进程到渲染进程的异步通信。<br>ipcMain 模块是 EventEmitter 类的一个实例。当在主进程中使用时，它处理从渲染器进程（网页）发出来的异步和同步信息。从渲染器进程发送的消息将被发送到该模块。<br>main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; ipcMain &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步</span></span><br><span class="line">ipcMain.<span class="title function_">on</span>(<span class="string">&#x27;asynchronous-message&#x27;</span>,(event,arg)=&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg) <span class="comment">// print &quot;ping&quot;</span></span><br><span class="line">  event.<span class="title function_">reply</span>(<span class="string">&#x27;asynchronous-reply&#x27;</span>,<span class="string">&#x27;pong&#x27;</span>）</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同步</span></span><br><span class="line">ipcMain.<span class="title function_">on</span>(<span class="string">&#x27;synchronous-message&#x27;</span>,(event,arg)=&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg) <span class="comment">// print &quot;ping&quot;</span></span><br><span class="line">  event.<span class="property">returnValue</span> = <span class="string">&#x27;pong&#x27;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="ipcRenderer"><a href="#ipcRenderer" class="headerlink" title="ipcRenderer"></a>ipcRenderer</h3><blockquote>
+<p>从渲染器进程到主进程的异步通信。</p>
+</blockquote>
+<p>ipcRenderer 是一个 EventEmitter 的实例。你可以使用它提供的一些方法从渲染进程（web 页面）发送同步或异步的消息到主进程。也可以接收主进程回复的消息。<br>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 异步</span></span><br><span class="line">ipcRenderer.<span class="title function_">send</span>(<span class="string">&#x27;asynchronous-message&#x27;</span>,<span class="string">&#x27;ping&#x27;</span>)</span><br><span class="line">ipcRenderer.<span class="title function_">on</span>(<span class="string">&#x27;asynchronous-reply&#x27;</span>,(event,arg)=&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg) <span class="comment">// print &quot;pong&quot;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 同步</span></span><br><span class="line"><span class="keyword">const</span> response = ipcRenderer.<span class="title function_">sendSync</span>(<span class="string">&#x27;synchronous-message&#x27;</span>,<span class="string">&#x27;ping&#x27;</span>)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(response) <span class="comment">// prints &quot;pong&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="主进程主动和渲染进程通信"><a href="#主进程主动和渲染进程通信" class="headerlink" title="主进程主动和渲染进程通信"></a>主进程主动和渲染进程通信</h3><p>main.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  mainWindow.<span class="property">webContents</span>.<span class="title function_">send</span>(</span><br><span class="line">    <span class="string">&quot;send-message-to-renderer&quot;</span>,</span><br><span class="line">    <span class="string">&quot;我是主进程，主动和渲染进程搭讪&quot;</span></span><br><span class="line">  );</span><br><span class="line">&#125;, <span class="number">5000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; ipcRenderer &#125; = <span class="built_in">require</span>(<span class="string">&#x27;electron&#x27;</span>)</span><br><span class="line"></span><br><span class="line">ipcRenderer.<span class="title function_">on</span>(<span class="string">&#x27;send-message-to-renderer&#x27;</span>,(event,arg)=&#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg) <span class="comment">// print &quot;我是主进程，主动和渲染进程搭讪&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="菜单"><a href="#菜单" class="headerlink" title="菜单"></a>菜单</h2><blockquote>
+<p>创建原生应用菜单和上下文菜单</p>
+</blockquote>
+<p>main.js 【注意 ⚠️：主进程很少有需求需要弹出菜单】</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; app, <span class="title class_">BrowserWindow</span>, <span class="title class_">Menu</span> &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 主进程很少有需求需要弹出菜单</span></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> template = [</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;第一个菜单项&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;第二个菜单项&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">role</span>: <span class="string">&quot;undo&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">type</span>: <span class="string">&quot;separator&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;第三个菜单项&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;第四个菜单项&quot;</span> &#125;,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">const</span> menu = <span class="title class_">Menu</span>.<span class="title function_">buildFromTemplate</span>(template);</span><br><span class="line">  <span class="title class_">Menu</span>.<span class="title function_">setApplicationMenu</span>(menu);</span><br><span class="line">  menu.<span class="title function_">popup</span>();</span><br><span class="line">&#125;, <span class="number">2000</span>);</span><br></pre></td></tr></table></figure>
+
+<p>渲染进程自定义菜单：</p>
+<p>renderer.js 【该方式已失效】</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; remote &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>);</span><br><span class="line"><span class="keyword">const</span> &#123; <span class="title class_">Menu</span>, <span class="title class_">MenuItem</span> &#125; = remote;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">openMenu</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> template = [</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;第一个菜单项&quot;</span> &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;点击测试&quot;</span>,</span><br><span class="line">      <span class="attr">click</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;点击事件ok&quot;</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; <span class="attr">role</span>: <span class="string">&quot;undo&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;旅游&quot;</span>, <span class="attr">type</span>: <span class="string">&quot;checkbox&quot;</span>, <span class="attr">checked</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;吃&quot;</span>, <span class="attr">type</span>: <span class="string">&quot;checkbox&quot;</span>, <span class="attr">checked</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;逛街&quot;</span>, <span class="attr">type</span>: <span class="string">&quot;checkbox&quot;</span>, <span class="attr">checked</span>: <span class="literal">false</span> &#125;,</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">MenuItem</span>(&#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;这是MenuItem生成的菜单&quot;</span>,</span><br><span class="line">      <span class="attr">click</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;您点击的MenuItem的菜单&quot;</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;),</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;子菜单测试&quot;</span>,</span><br><span class="line">      <span class="attr">submenu</span>: [</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&quot;子菜单-1&quot;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&quot;子菜单-2&quot;</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">label</span>: <span class="string">&quot;子菜单-3&quot;</span> &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">const</span> menu = <span class="title class_">Menu</span>.<span class="title function_">buildFromTemplate</span>(template);</span><br><span class="line">  <span class="comment">// 改变横向菜单</span></span><br><span class="line">  <span class="comment">// Menu.setApplicationMenu(menu)</span></span><br><span class="line">  menu.<span class="title function_">popup</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>要创建由渲染器启动的菜单，请通过 IPC 发送所需的信息到主过程，并让主过程代替渲染器显示菜单。<br>详细见文档地址：<a href="https://www.electronjs.org/zh/docs/latest/api/menu#%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B">https://www.electronjs.org/zh/docs/latest/api/menu#%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// renderer</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;contextmenu&quot;</span>, <span class="function">(<span class="params">e</span>) =&gt;</span> &#123;</span><br><span class="line">  e.<span class="title function_">preventDefault</span>();</span><br><span class="line">  ipcRenderer.<span class="title function_">send</span>(<span class="string">&quot;show-context-menu&quot;</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ipcRenderer.<span class="title function_">on</span>(<span class="string">&quot;context-menu-command&quot;</span>, <span class="function">(<span class="params">e, command</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// main</span></span><br><span class="line">ipcMain.<span class="title function_">on</span>(<span class="string">&quot;show-context-menu&quot;</span>, <span class="function">(<span class="params">event</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> template = [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">label</span>: <span class="string">&quot;Menu Item 1&quot;</span>,</span><br><span class="line">      <span class="attr">click</span>: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        event.<span class="property">sender</span>.<span class="title function_">send</span>(<span class="string">&quot;context-menu-command&quot;</span>, <span class="string">&quot;menu-item-1&quot;</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123; <span class="attr">type</span>: <span class="string">&quot;separator&quot;</span> &#125;,</span><br><span class="line">    &#123; <span class="attr">label</span>: <span class="string">&quot;Menu Item 2&quot;</span>, <span class="attr">type</span>: <span class="string">&quot;checkbox&quot;</span>, <span class="attr">checked</span>: <span class="literal">true</span> &#125;,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">const</span> menu = <span class="title class_">Menu</span>.<span class="title function_">buildFromTemplate</span>(template);</span><br><span class="line">  menu.<span class="title function_">popup</span>(<span class="title class_">BrowserWindow</span>.<span class="title function_">fromWebContents</span>(event.<span class="property">sender</span>));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="net"><a href="#net" class="headerlink" title="net"></a>net</h2><p>官方文档：<a href="https://www.electronjs.org/zh/docs/latest/api/net">https://www.electronjs.org/zh/docs/latest/api/net</a><br>index.html</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- net --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;accessBaidu()&quot;</span>&gt;</span>访问百度<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>renderer.js</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// net</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">accessBaidu</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; net &#125; = <span class="built_in">require</span>(<span class="string">&quot;electron&quot;</span>).<span class="property">remote</span>;</span><br><span class="line">  <span class="comment">// 网络访问的情况下，这里的request并没有做封装，可以使用npm.js.org上面公开的库如axios</span></span><br><span class="line">  <span class="comment">// 如果想使用系统代理的时候，推荐使用net.request</span></span><br><span class="line">  <span class="keyword">const</span> request = net.<span class="title function_">request</span>(<span class="string">&quot;https://www.baidu.com&quot;</span>);</span><br><span class="line">  request.<span class="title function_">on</span>(<span class="string">&quot;response&quot;</span>, <span class="function">(<span class="params">response</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`**statusCode:<span class="subst">$&#123;response.statusCode&#125;</span>`</span>);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`**header:<span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(response.headers)&#125;</span>`</span>);</span><br><span class="line">    response.<span class="title function_">on</span>(<span class="string">&quot;data&quot;</span>, <span class="function">(<span class="params">chunk</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;接收到的数据：&quot;</span>, chunk.<span class="title function_">toString</span>());</span><br><span class="line">    &#125;);</span><br><span class="line">    response.<span class="title function_">on</span>(<span class="string">&quot;end&quot;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;数据接收完成&quot;</span>);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">  request.<span class="title function_">end</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="与-react-结合以及打包"><a href="#与-react-结合以及打包" class="headerlink" title="与 react 结合以及打包"></a>与 react 结合以及打包</h2><ul>
+<li><p>下载示例工程</p>
+<ul>
+<li>git clone –depth 1 –single-branch –branch master <a href="https://github.com/electron-react-boilerplate/electron-react-boilerplate.git">https://github.com/electron-react-boilerplate/electron-react-boilerplate.git</a> electron-react-start</li>
+</ul>
+</li>
+<li><p>进入工程安装依赖</p>
+<ul>
+<li>cd electron-react-start</li>
+<li>yarn</li>
+</ul>
+</li>
+<li><p>启动开发模式</p>
+<ul>
+<li>yarn dev</li>
+</ul>
+</li>
+<li><p>可能出现的问题：网速太慢，yarn 总是不成功</p>
+<ul>
+<li>安装 yrm 并切换镜像<br>■ npm install yrm -g</li>
+<li>查看所有镜像<br>■ yrm ls</li>
+<li>切换镜像<br>■ yrm use taobao</li>
+</ul>
+</li>
+<li><p>打包命令</p>
+<ul>
+<li>yarn package</li>
+</ul>
+</li>
+<li><p>升级</p>
+<ul>
+<li>yarn add electron-updater@latest</li>
+<li>yarn add electron-builder@latest</li>
+</ul>
+</li>
+</ul>
+<p>resources:<br>icon.icns–&gt;mac 下的图标<br>icon.ico–&gt;windows 下的图标</p>
+<h2 id="与-Vue-结合以及打包"><a href="#与-Vue-结合以及打包" class="headerlink" title="与 Vue 结合以及打包"></a>与 Vue 结合以及打包</h2><ul>
+<li>安装 vue 脚手架<ul>
+<li>npm install -g vue-cli</li>
+</ul>
+</li>
+<li>创建工程<ul>
+<li>vue init simulatedgreg&#x2F;electron-vue electron-vue-start</li>
+</ul>
+</li>
+<li>进入工程安装依赖<ul>
+<li>cd electron-vue-start</li>
+<li>yarn</li>
+</ul>
+</li>
+<li>启动开发模式<ul>
+<li>yarn dev</li>
+</ul>
+</li>
+<li>常见问题<ul>
+<li>windows 无法编辑 node-sass</li>
+</ul>
+</li>
+<li>解决方案<ul>
+<li>npm install -g node-gyp</li>
+<li>npm install –global –production windows-build-tools</li>
+</ul>
+</li>
+<li>可以自动安装跨平台的编译器：gym</li>
+<li>打包命令<ul>
+<li>yarn build</li>
+</ul>
+</li>
+</ul>
+<p>给命令行设置科学上网代理<br>如：”<a href="https://127.0.0.1:1080"本地代理服务器地址和端口号">https://127.0.0.1:1080&quot;本地代理服务器地址和端口号</a><br>set http_proxy&#x3D;<a href="https://127.0.0.1:1080/">https://127.0.0.1:1080</a><br>set https_proxy&#x3D;<a href="https://127.0.0.1:1080/">https://127.0.0.1:1080</a></p>
+<p>参考视频：<br><a href="https://www.bilibili.com/video/BV1nE41117t3?p=1">千锋教育 Electron-HTML+CSS+JS 构建跨平台桌面应用程序教程</a></p>
+<p>参考文档：<br><a href="https://blog.csdn.net/qq_39448719/article/details/123081213">https://blog.csdn.net/qq_39448719/article/details/123081213</a><br><a href="https://www.cnblogs.com/makalochen/p/14363333.html">https://www.cnblogs.com/makalochen/p/14363333.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/02/22/Node/%E3%80%90%E6%90%AC%E3%80%91npm%E6%89%93%E5%8C%85/" rel="next" title="【搬】npm打包">
+                <i class="fa fa-chevron-left"></i> 【搬】npm打包
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/03/06/React/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%914%EF%BC%9AReact-Hooks/" rel="prev" title="【专题】4：React Hooks">
+                【专题】4：React Hooks <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Electron-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">Electron 介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#react-%E5%92%8C-electron-%E9%85%8D%E5%90%88%E4%BD%BF%E7%94%A8"><span class="nav-number">2.1.</span> <span class="nav-text">react 和 electron 配合使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9B%E8%A1%8C%E4%BB%8B%E7%BB%8D"><span class="nav-number">3.</span> <span class="nav-text">进行介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E8%B0%83%E8%AF%95"><span class="nav-number">4.</span> <span class="nav-text">渲染进程调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%BF%9B%E7%A8%8B%E8%B0%83%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">主进程调试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#app-%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.1.</span> <span class="nav-text">app 常用事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#webContents-%E5%B8%B8%E7%94%A8%E4%BA%8B%E4%BB%B6"><span class="nav-number">5.2.</span> <span class="nav-text">webContents 常用事件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#api-%E8%BF%9B%E7%A8%8B%E5%AF%B9%E8%B1%A1"><span class="nav-number">6.</span> <span class="nav-text">api-进程对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#File-%E5%AF%B9%E8%B1%A1"><span class="nav-number">7.</span> <span class="nav-text">File 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE"><span class="nav-number">8.</span> <span class="nav-text">&lt;webview&gt;标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#window-open-%E5%89%AF%E7%AA%97%E5%8F%A3%E5%92%8C%E4%B8%BB%E7%AA%97%E5%8F%A3%E9%80%9A%E4%BF%A1"><span class="nav-number">9.</span> <span class="nav-text">window.open 副窗口和主窗口通信</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BrowserWindow-%E4%B8%BB-%E5%AD%90%E7%AA%97%E5%8F%A3"><span class="nav-number">10.</span> <span class="nav-text">BrowserWindow 主&#x2F;子窗口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BrowserView"><span class="nav-number">11.</span> <span class="nav-text">BrowserView</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dialog-%E5%AF%B9%E8%AF%9D%E6%A1%86"><span class="nav-number">12.</span> <span class="nav-text">Dialog 对话框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">13.</span> <span class="nav-text">系统快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%BF%9B%E7%A8%8B%E4%B8%8E%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E4%B9%8B%E9%97%B4%E9%80%9A%E4%BF%A1%EF%BC%88%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E5%BC%82%E6%AD%A5%EF%BC%89"><span class="nav-number">14.</span> <span class="nav-text">主进程与渲染进程之间通信（推荐使用异步）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ipcMain"><span class="nav-number">14.1.</span> <span class="nav-text">ipcMain</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ipcRenderer"><span class="nav-number">14.2.</span> <span class="nav-text">ipcRenderer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%BF%9B%E7%A8%8B%E4%B8%BB%E5%8A%A8%E5%92%8C%E6%B8%B2%E6%9F%93%E8%BF%9B%E7%A8%8B%E9%80%9A%E4%BF%A1"><span class="nav-number">14.3.</span> <span class="nav-text">主进程主动和渲染进程通信</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8F%9C%E5%8D%95"><span class="nav-number">15.</span> <span class="nav-text">菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#net"><span class="nav-number">16.</span> <span class="nav-text">net</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E-react-%E7%BB%93%E5%90%88%E4%BB%A5%E5%8F%8A%E6%89%93%E5%8C%85"><span class="nav-number">17.</span> <span class="nav-text">与 react 结合以及打包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8E-Vue-%E7%BB%93%E5%90%88%E4%BB%A5%E5%8F%8A%E6%89%93%E5%8C%85"><span class="nav-number">18.</span> <span class="nav-text">与 Vue 结合以及打包</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

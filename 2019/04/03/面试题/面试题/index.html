@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="前端,js," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="面试题什么是纯函数123456789101112简单来说，一个函数的返回结果只依赖于它的参数，并且在执行过程里面没有副作用，我们就把这个函数叫做纯函数。这么说肯定比较抽象，我们把它掰开来看：函数的返回结果只依赖于它的参数。函数执行过程里面没有副作用。const a &#x3D; 1const foo &#x3D; (b) &#x3D;&gt; a + bfoo(2) &#x2F;&#x2F; &#x3D;&gt; 3foo 函数不是一个纯函数，因为它返回的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试真题">
+<meta property="og:url" content="https://daykalif.github.io/2019/04/03/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="面试题什么是纯函数123456789101112简单来说，一个函数的返回结果只依赖于它的参数，并且在执行过程里面没有副作用，我们就把这个函数叫做纯函数。这么说肯定比较抽象，我们把它掰开来看：函数的返回结果只依赖于它的参数。函数执行过程里面没有副作用。const a &#x3D; 1const foo &#x3D; (b) &#x3D;&gt; a + bfoo(2) &#x2F;&#x2F; &#x3D;&gt; 3foo 函数不是一个纯函数，因为它返回的">
+<meta property="og:locale">
+<meta property="article:published_time" content="2019-04-03T13:01:18.000Z">
+<meta property="article:modified_time" content="2024-03-22T23:49:43.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta property="article:tag" content="前端">
+<meta property="article:tag" content="js">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2019/04/03/面试题/面试题/"/>
+
+
+
+
+
+  <title>面试真题 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2019/04/03/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试真题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-04-03T21:01:18+08:00">
+                2019-04-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/03/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%98/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/03/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%98/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/04/03/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="leancloud_visitors" data-flag-title="面试真题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  13.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  49
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="面试题"><a href="#面试题" class="headerlink" title="面试题"></a>面试题</h1><h6 id="什么是纯函数"><a href="#什么是纯函数" class="headerlink" title="什么是纯函数"></a>什么是纯函数</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">简单来说，一个函数的返回结果只依赖于它的参数，并且在执行过程里面没有副作用，我们就把这个函数叫做纯函数。这么说肯定比较抽象，我们把它掰开来看：</span><br><span class="line"></span><br><span class="line">函数的返回结果只依赖于它的参数。</span><br><span class="line">函数执行过程里面没有副作用。</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">foo</span> = (<span class="params">b</span>) =&gt; a + b</span><br><span class="line"><span class="title function_">foo</span>(<span class="number">2</span>) <span class="comment">// =&gt; 3</span></span><br><span class="line"></span><br><span class="line">foo 函数不是一个纯函数，因为它返回的结果依赖于外部变量 a</span><br><span class="line"></span><br><span class="line">为什么要煞费苦心地构建纯函数？因为纯函数非常“靠谱”，执行一个纯函数你不用担心它会干什么坏事，它不会产生不可预料的行为，也不会对外部产生影响。不管何时何地，你给它什么它就会乖乖地吐出什么。如果你的应用程序大多数函数都是由纯函数组成，那么你的程序测试、调试起来会非常方便</span><br></pre></td></tr></table></figure>
+
+<h6 id="什么是-ajax"><a href="#什么是-ajax" class="headerlink" title="什么是 ajax"></a>什么是 ajax</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">首先，speak with me, 诶债克斯，别读成阿贾克斯了哦~。</span><br><span class="line"></span><br><span class="line">AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。</span><br><span class="line"></span><br><span class="line">AJAX 不是新的编程语言，而是一种使用现有标准的新方法。</span><br><span class="line"></span><br><span class="line">AJAX 最大的优点是在不重新加载整个页面的情况下，可以与服务器交换数据并更新部分网页内容。</span><br><span class="line"></span><br><span class="line">AJAX 不需要任何浏览器插件，但需要用户允许JavaScript在浏览器上执行。</span><br><span class="line"></span><br><span class="line">Ajax就是用 JS 发起一个请求，并得到服务器返回的内容。这跟以前的技术最大的不同点在于「页面没有刷新」，改善了用户体验，仅此而已。</span><br><span class="line"></span><br><span class="line">1. 创建一个对象 XMLHttpRequest</span><br><span class="line">var xhr = new XMLHttpRequest();为了支持ie6以及更早的版本，要 var xhr=new ActiveXObject()</span><br><span class="line">2.监听请求成功后的状态变化</span><br><span class="line">3.设置请求参数</span><br><span class="line">4.发起请求</span><br><span class="line">5.操作DOM，实现动态局部刷新</span><br><span class="line"></span><br><span class="line">一个完整的请求由四部分组成</span><br><span class="line"></span><br><span class="line">onreadystatechange：用来监听readyState的变化的</span><br><span class="line"></span><br><span class="line">readyState：表示当前请求的后台的状态</span><br><span class="line"></span><br><span class="line">status：表示处理的结果</span><br><span class="line"></span><br><span class="line">其中readyState：表示当前请求的后台的状态</span><br><span class="line"></span><br><span class="line">0：请求未初始化(还没有调用open())</span><br><span class="line"></span><br><span class="line">1：请求已经建立，但是还没有发送(还没有调用send())</span><br><span class="line"></span><br><span class="line">2：请求已经发送，正在处理中</span><br><span class="line"></span><br><span class="line">3：请求正在处理中，通常响应中已经有部分数据可以用了</span><br><span class="line"></span><br><span class="line">4：响应已经完成，可以获取并使用服务器的响应了</span><br><span class="line"></span><br><span class="line">而status：表示处理的结果(状态码)</span><br><span class="line"></span><br><span class="line">1XX，表示收到请求正在处理中</span><br><span class="line"></span><br><span class="line">status == 200 是表示处理的结果是OK的</span><br><span class="line"></span><br><span class="line">状态码:200到300是指服务端正常返回</span><br><span class="line"></span><br><span class="line">304:如果网页自请求者上次请求后再也没有更改过，应将服务器配置为返回此响应，进而节省带宽和开销</span><br><span class="line"></span><br><span class="line">404:找不到对象（404 not found)</span><br><span class="line"></span><br><span class="line">503:服务器超时</span><br><span class="line"></span><br><span class="line">设置请求参数</span><br><span class="line"></span><br><span class="line">Get和post方法的区别：</span><br><span class="line"></span><br><span class="line">get是获取数据，get的send方法的参数可以是null或者空，对发送信息有限制，一般在2000个字符，一般是用来查询（幂等） </span><br><span class="line">post可以发送数据，但是在使用post方法发送数据，需要使用setRequestHeader()来添加HTTP头，同时，post的send()方法需要写入要发送的数据的值, 一般用于修改服务器上的资源，对信息数量无限制，也更安全</span><br><span class="line"></span><br><span class="line">ajax.open(&quot;post&quot;, &quot;/carrots-admin-ajax/a/login&quot;,true);</span><br><span class="line">ajax.setRequestHeader(&quot;Content-Type&quot;, &quot;application/x-www-form-urlencoded&quot;);</span><br><span class="line">ajax.send(&quot;name=&quot; + name + &quot;&amp;pwd=&quot; + code);</span><br><span class="line">Content-type要作为请求头放在open和send之间</span><br></pre></td></tr></table></figure>
+
+<h6 id="ajax-的优缺点"><a href="#ajax-的优缺点" class="headerlink" title="ajax 的优缺点"></a>ajax 的优缺点</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">总结——AJAX的优点与缺点：</span><br><span class="line">优点：</span><br><span class="line">1、实现了异步交互，提高了用户体验。</span><br><span class="line">2、无需重新加载整个网页，只需要与服务器进行少量的数据交换，就能够实现对网页中的某一部分进行更新，从而减少了带宽的占用。</span><br><span class="line">3、AJAX是在客户端运行的，它承载了一部分本来由服务器承担的工作，减少了大用户量下的服务器负载。</span><br><span class="line">缺点：</span><br><span class="line">1、安全性问题，大量的使用AJAX暴露了服务器交互的细节。</span><br><span class="line">2、不容易调试。</span><br><span class="line">3、对搜索引擎的支持比较弱。</span><br></pre></td></tr></table></figure>
+
+<h6 id="web-前端页面加载及性能优化"><a href="#web-前端页面加载及性能优化" class="headerlink" title="web 前端页面加载及性能优化"></a>web 前端页面加载及性能优化</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br></pre></td><td class="code"><pre><span class="line">一、减少HTTP请求</span><br><span class="line">上面说到80%~90%时间花在了下载页面中的所有组件进行的HTTP请求上。因此，改善响应时间最简单的途径就是减</span><br><span class="line">少HTTP请求的数量。</span><br><span class="line">假设导航栏上有五幅图片，点击每张图片都会进入一个链接，这样五张导航的图片在加载时会产生5个HTTP请求。</span><br><span class="line">然而，使用一个图片地图可以提高效率，这样就只需要一个HTTP请求。 CSS</span><br><span class="line">Sprites直译过来就是CSS精灵，但是这种翻译显然是不够的，其实就是通过将多个图片融合到一副图里面，</span><br><span class="line">然后通过CSS的一些技术布局到网页上。特别是图片特别多的网站，如果能用css</span><br><span class="line">sprites降低图片数量，带来的 将是速度的提升。 字体图标</span><br><span class="line">在可以大量使用字体图标的地方我们可以尽可能使用字体图标，字体图标可以减少很多图片的使用，从而减少http</span><br><span class="line">请求，字体图标还可以通过CSS来设置颜色、大小等样式，何乐而不为。 合并脚本</span><br><span class="line">和样式表</span><br><span class="line">将多个样式表或者脚本文件合并到一个文件中，可以减少HTTP请求的数量从而缩短效应时间。</span><br><span class="line">然而合并所有文件对许多人尤其是编写模块化代码的人来说是不能忍的，而且合并所有的样式文件或者脚本文件可</span><br><span class="line">能会导致在一个页面加载时加载了多于自己所需要的样式或者脚本，对于只访问该网站一个（或几个）页面的人来</span><br><span class="line">说反而增加了下载量，所以大家应该自己权衡利弊。 二、使用CDN</span><br><span class="line">如果应用程序web服务器离用户更近，那么一个HTTP请求的响应时间将缩短。另一方面，如果组件web服务器</span><br><span class="line">离用户更近，则多个HTTP请求的响应时间将缩短。</span><br><span class="line">CDN（内容发布网络）是一组分布在多个不同地理位置的Web服务器，用于更加有效地向用户发布内容。在优化性</span><br><span class="line">能时，向特定用户发布内容的服务器的选择基于对网络慕课拥堵的测量。例如，CDN可能选择网络阶跃数最小的服务</span><br><span class="line">器，或者具有最短响应时间的服务器。</span><br><span class="line">CDN还可以进行数据备份、扩展存储能力，进行缓存，同时有助于缓和Web流量峰值压力。</span><br><span class="line">CDN的缺点：</span><br><span class="line">1、响应时间可能会受到其他网站流量的影响。CDN服务提供商在其所有客户之间共享Web服务器组。</span><br><span class="line">2、如果CDN服务质量下降了，那么你的工作质量也将下降 3、无法直接控制组件服务器</span><br><span class="line">三、添加Expires头</span><br><span class="line">页面的初次访问者会进行很多HTTP请求，但是通过使用一个长久的Expires头，可以使这些组件被缓存，下次访问</span><br><span class="line">的时候，就可以减少不必要的HTPP请求，从而提高加载速度。</span><br><span class="line">Web服务器通过Expires头告诉客户端可以使用一个组件的当前副本，直到指定的时间为止。例如：</span><br><span class="line">Expires: Fri, 18 Mar 2016 07:41:53 GMT Expires缺点：</span><br><span class="line">它要求服务器和客户端时钟严格同步；过期日期需要经常检查</span><br><span class="line">HTTP1.1中引入Cache-Control来克服Expires头的限制，使用max-age指定组件被缓存多久。</span><br><span class="line">Cache-Control： max-age=12345600</span><br><span class="line">若同时制定Cache-Control和Expires，则max-age将覆盖Expires头 四、压缩组件</span><br><span class="line">从HTTP1.1开始，Web客户端可以通过HTTP请求中的Accept-Encoding头来表示对压缩的支持</span><br><span class="line">Accept-Encoding: gzip,deflate</span><br><span class="line">如果Web服务器看到请求中有这个头，就会使用客户端列出来的方法中的一种来进行压缩。Web服务器通过响应中的</span><br><span class="line">Content-Encoding来通知 Web客户端。 Content-Encoding: gzip 代理缓存</span><br><span class="line">当浏览器通过代理来发送请求时，情况会不一样。假设针对某个URL发送到代理的第一个请求来自于一个不支持</span><br><span class="line">gzip的浏览器。这是代理的第一个请求，缓存为空。代理将请求转发给服务器。此时响应是未压缩的，代理缓存同</span><br><span class="line">时发送给浏览器。现在，假设到达代理的请求是同一个url，来自于一个支持gzip的浏览器。代理会使用缓存中未</span><br><span class="line">压缩的内容进行响应，从而失去了压缩的机会。相反，如果第一个浏览器支持gzip，第二个不支持，你们代理缓存</span><br><span class="line">中的压缩版本将会提供给后续的浏览器，而不管它们是否支持gzip。</span><br><span class="line">解决办法：在web服务器的响应中添加vary头Web服务器可以告诉代理根据一个或多个请求头来改变缓存的响应。因</span><br><span class="line">为压缩的决定是基于Accept-Encoding请求头的，因此需要在vary响应头中包含Accept-Encoding。</span><br><span class="line">vary: Accept-Encoding 五、将样式表放在头部</span><br><span class="line">首先说明一下，将样式表放在头部对于实际页面加载的时间并不能造成太大影响，但是这会减少页面首屏出现的时</span><br><span class="line">间，使页面内容逐步呈现，改善用户体验，防止“白屏”。</span><br><span class="line">我们总是希望页面能够尽快显示内容，为用户提供可视化的回馈，这对网速慢的用户来说是很重要的。</span><br><span class="line">将样式表放在文档底部会阻止浏览器中的内容逐步出现。为了避免当样式变化时重绘页面元素，浏览器会阻塞内容</span><br><span class="line">逐步呈现，造成“白屏”。这源自浏览器的行为：如果样式表仍在加载，构建呈现树就是一种浪费，因为所有样式表</span><br><span class="line">加载解析完毕之前务虚会之任何东西 六、将脚本放在底部</span><br><span class="line">更样式表相同，脚本放在底部对于实际页面加载的时间并不能造成太大影响，但是这会减少页面首屏出现的时间，</span><br><span class="line">使页面内容逐步呈现</span><br><span class="line">js的下载和执行会阻塞Dom树的构建（严谨地说是中断了Dom树的更新），所以script标签放在首屏范围内的HTML</span><br><span class="line">代码段里会截断首屏的内容。</span><br><span class="line">下载脚本时并行下载是被禁用的——即使使用了不同的主机名，也不会启用其他的下载。因为脚本可能修改页面内</span><br><span class="line">容，因此浏览器会等待；另外，也是为了保证脚本能够按照正确的顺序执行，因为后面的脚本可能与前面的脚本存</span><br><span class="line">在依赖关系，不按照顺序执行可能会产生错误。 七、避免CSS表达式</span><br><span class="line">CSS表达式是动态设置CSS属性的一种强大并且危险的方式，它受到了IE5以及之后版本、IE8之前版本的支持。</span><br><span class="line">p &#123; width: expression(func(),document.body.clientWidth &gt; 400 ? &quot;400px&quot; :</span><br><span class="line">&quot;auto&quot;); height: 80px; border: 1px solid #f00; &#125;</span><br><span class="line">鼠标移动了几次，函数的运行次数轻而易举的达到了几千次，危险性显而易见。</span><br><span class="line">八、使用外部的JavaScript和CSS</span><br><span class="line">内联脚本或者样式可以减少HTTP请求，按理来说可以提高页面加载的速度。然而在实际情况中，当脚本或者样式是</span><br><span class="line">从外部引入的文件，浏览器就有可能缓存它们，从而在以后加载的时候能够直接使用缓存，而HTML文档的大小减</span><br><span class="line">小，从而提高加载速度。 影响因素：</span><br><span class="line">1、每个用户产生的页面浏览量越少，内联脚本和样式的论据越强势。譬如一个用户每个月只访问你的网站一两次，</span><br><span class="line">那么这种情况下内联将会更好。而如果该用户能够产生很多页面浏览量，那么缓存的样式和脚本将会极大减少下</span><br><span class="line">载的时间，提交页面加载速度。</span><br><span class="line">2、如果你的网站不同的页面之间使用的组件大致相同，那么使用外部文件可以提高这些组件的重用率。</span><br><span class="line">加载后下载</span><br><span class="line">有时候我们希望内联样式和脚本，但又可以为接下来的页面提供外部文件。那么我们可以在页面加载完成止呕动态</span><br><span class="line">加载外部组件，以便用户接下来的访问。 九、减少DNS查找</span><br><span class="line">当我们在浏览器的地址栏输入网址（譬如： www.linux178.com）</span><br><span class="line">，然后回车，回车这一瞬间到看到页面到底发 生了什么呢？ 域名解析 --&gt;</span><br><span class="line">发起TCP的3次握手 --&gt; 建立TCP连接后发起http请求 --&gt;</span><br><span class="line">服务器响应http请求，浏览器得到 html代码 --&gt;</span><br><span class="line">浏览器解析html代码，并请求html代码中的资源（如js、css、图片等） --&gt;</span><br><span class="line">浏览器对页面进行 渲染呈现给用户</span><br><span class="line">DNS也是开销，通常浏览器查找一个给定域名的IP地址要花费20~120毫秒，在完成域名解析之前，浏览器不能从服</span><br><span class="line">务器加载到任何东西。那么如何减少域名解析时间，加快页面加载速度呢？</span><br><span class="line">当客户端DNS缓存（浏览器和操作系统）缓存为空时，DNS查找的数量与要加载的Web页面中唯一主机名的数量相</span><br><span class="line">同，包括页面URL、脚本、样式表、图片、Flash对象等的主机名。减少主机名的</span><br><span class="line">数量就可以减少DNS查找的数量。</span><br><span class="line">减少唯一主机名的数量会潜在减少页面中并行下载的数量（HTTP</span><br><span class="line">1.1规范建议从每个主机名并行下载两个组件，但</span><br><span class="line">实际上可以多个），这样减少主机名和并行下载的方案会产生矛盾，需要大家自己权衡。建议将组件放到至少两</span><br><span class="line">个但不多于4个主机名下，减少DNS查找的同时也允许高度并行下载。 十、精简JavaScript</span><br><span class="line">精简</span><br><span class="line">精简就是从代码中移除不必要的字符以减少文件大小，降低加载的时间。代码精简的时候会移除不必要的空白字符</span><br><span class="line">（空格，换行、制表符），这样整个文件的大小就变小了。 混淆</span><br><span class="line">混淆是应用在源代码上的另外一种方式，它会移除注释和空白符，同时它还会改写代码。在混淆的时候，函数和变</span><br><span class="line">量名将会被转换成更短的字符串，这时代码会更加精炼同时难以阅读。通常这样做是为了增加对代码进行反向工程</span><br><span class="line">的难度，这也同时提高了性能。 缺点： 混淆本身比较复杂，可能会引入错误。</span><br><span class="line">需要对不能改变的符号做标记，防止JavaScript符号（譬如关键字、保留字）被修改。</span><br><span class="line">混淆会使代码难以阅读，这使得在产品环境中调试问题更加困难。</span><br><span class="line">在以上提到了关于用gzip之类的压缩方式来压缩文件，这边说明一下，就算使用gzip等方式来压缩文件，精简代码</span><br><span class="line">依然是有必要的。一般来说，压缩产生的节省是高于精简的，在生产环境中，精简和压缩同时使用能够最大限度的</span><br><span class="line">获得更多的节省。 十一、避免重定向 什么是重定向？</span><br><span class="line">重定向用于将用户从一个URL重新路由到另一个URL。 常用重定向的类型</span><br><span class="line">301：永久重定向，主要用于当网站的域名发生变更之后，告诉搜索引擎域名已经变更了，应该把旧域名的的数据和</span><br><span class="line">链接数转移到新域名下，从而不会让网站的排名因域名变更而受到影响。</span><br><span class="line">302：临时重定向，主要实现post请求后告知浏览器转移到新的URL。 304：Not</span><br><span class="line">Modified，主要用于当浏览器在其缓存中保留了组件的一个副本，同时组件已经过期了，这是浏览器就</span><br><span class="line">会生成一个条件GET请求，如果服务器的组件并没有修改过，则会返回304状态码，同时不携带主体，告知浏览器可</span><br><span class="line">以重用这个副本，减少响应大小。 十二、删除重复脚本</span><br><span class="line">在团队开发一个项目时，由于不同开发者之间都可能会向页面中添加页面或组件，因此可能相同的脚本会被添加多</span><br><span class="line">次。</span><br><span class="line">重复的脚本会造成不必要的HTTP请求（如果没有缓存该脚本的话），并且执行多余的JavaScript浪费时间，还有</span><br><span class="line">可能造成错误。 如何避免重复脚本呢？ 1.</span><br><span class="line">形成良好的脚本组织。重复脚本有可能出现在不同的脚本包含同一段脚本的情况，有些是必要的，但有些却不是</span><br><span class="line">必要的，所以需要对脚本进行一个良好的组织。 2. 实现脚本管理器模块。</span><br><span class="line">十三、配置ETag 以前浏览器缓存的就会失效。 什么是ETag？</span><br><span class="line">实体标签(EntityTag)是唯一标识了一个组件的一个特定版本的字符串，是web服务器用于确认缓存组件的有效性</span><br><span class="line">的一种机制，通常可以使用组件的某些属性来构造它。 条件GET请求</span><br><span class="line">如果组件过期了，浏览器在重用它之前必须首先检查它是否有效。浏览器将发送一个条件GET请求到服务器，服务器</span><br><span class="line">判断缓存还有效，则发送一个304响应，告诉浏览器可以重用缓存组件。</span><br><span class="line">那么服务器是根据什么判断缓存是否还有效呢?有两种方式： ETag（实体标签）；</span><br><span class="line">最新修改日期； 最新修改日期</span><br><span class="line">原始服务器通过Last-Modified响应头来返回组件的最新修改日期 十四、使Ajax可缓存</span><br><span class="line">异步与即时</span><br><span class="line">Ajax的一个明显的有点就是向用户提供了即时反馈，因为它异步的从后端web服务器请求信息。</span><br><span class="line">用户是否需要等待的关键因素在于Ajax请求是被动的还是主动的。被动请求是为了将来来使用而预先发起的，主动</span><br><span class="line">请求是基于用户当前的操作而发起的 什么样的AJAX请求可以被缓存？</span><br><span class="line">POST的请求，是不可以在客户端缓存的，每次请求都需要发送给服务器进行处理，每次都会返回状态码200。（可</span><br><span class="line">以在服务器端对数据进行缓存，以便提高处理速度）</span><br><span class="line">GET的请求，是可以（而且默认）在客户端进行缓存的，除非指定了不同的地址，否则同一个地址的AJAX请求，不</span><br><span class="line">会重复在服务器执行，而是返回304。 Ajax请求使用缓存</span><br><span class="line">在进行Ajax请求的时候，可以选择尽量使用get方法，这样可以使用客户端的缓存，提高请求速度</span><br><span class="line">参考文献：https://www.cnblogs.com/MarcoHan/p/5295398.html</span><br></pre></td></tr></table></figure>
+
+<h6 id="get-和-post-的请求区别"><a href="#get-和-post-的请求区别" class="headerlink" title="get 和 post 的请求区别"></a>get 和 post 的请求区别</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">request获取请求参数</span><br><span class="line">最为常见的客户端传递参数方式有两种：</span><br><span class="line"></span><br><span class="line">浏览器地址栏直接输入：一定是GET请求；</span><br><span class="line"></span><br><span class="line">超链接：一定是GET请求；</span><br><span class="line"></span><br><span class="line">表单：可以是GET，也可以是POST，这取决与&lt;form&gt;的method属性值；</span><br><span class="line"></span><br><span class="line">GET请求和POST请求的区别：</span><br><span class="line"></span><br><span class="line">1.效率</span><br><span class="line">GET的意思是『得』，从服务器获取数据（也可以上传数据，参数就是），效率较高</span><br><span class="line">POST的意思是『给』，但可以向服务器发送数据和下载数据，效率不如GET</span><br><span class="line">2.缓存</span><br><span class="line">GET 请求能够被缓存，默认的请求方式也是有缓存的</span><br><span class="line">POST请求默认不会缓存</span><br><span class="line">缓存是针对URL来进行缓存的，GET请求由于其参数是直接加在URL上-的，一种参数组合就有一种URL的缓存，可以根据参数来进行一一对应，重复请求是幂等的（不论请求多少次，结果都一样）;</span><br><span class="line">而POST请求的URL没有参数,每次请求的URL都相同，数据体（HTTPBody）可能不同，无法一一对应，所以缓存没有意义</span><br><span class="line">3.安全性</span><br><span class="line">GET的所有参数全部包装在URL中，明文显示，且服务器的访问日志会记录，非常不安全</span><br><span class="line">POST的URL中只有资源路径，不包含参数，参数封装在二进制的数据体中，服务器也不会记录参数，相对安全。所有涉及用户隐私的数据都要用POST传输</span><br><span class="line">POST的安全是相对的，对于普通用户来说他们看不到明文，数据封装对他们来说就是屏障。但是对于专业人士，它们会抓包会分析，没有加密的数据包对他们来说也是小case。所以POST仅仅是相对安全，唯有对数据进行加密才会更安全。当然加密也有被破解的可能性，理论上所有的加密方式都可以破解，只是时间长短的问题。而加密算法要做的就是使得破解需要的时间尽量长，越长越安全。由于我们也需要解密，加密算法太过复杂也并非好事，这就要结合使用情况进行折中或者足够实际使用即可。绕的有点远，具体的话，我将在后续的文章之中介提及，并介绍一些常用的加密算法。</span><br><span class="line"></span><br><span class="line">4.数据量</span><br><span class="line">HTTP协议中均没有对GET和POST请求的数据大小进行限制，但是实际应用中它们通常受限于软硬件平台的设计和性能。</span><br><span class="line"></span><br><span class="line">GET：不同的浏览器和服务器不同，一般限制在2~8K之间，更加常见的是1k以内</span><br><span class="line">POST方法提交的数据比较大，大小靠服务器的设定值限制，PHP默认是2M（具体的话大家以后看后端给的开发文档就行了）</span><br><span class="line"></span><br><span class="line">post传送变化的数据显示，变动性访问；</span><br><span class="line">get通过url地址传送数据，数据量不能超过1024byte；</span><br><span class="line">post作为http消息的实体内容传送到服务器中，传送数据量可以很大；</span><br><span class="line">get传送数据要经过encodeURIComponent编码，防止乱码。</span><br><span class="line">get方式，服务器端用Request.QueryString获取变量的值；</span><br><span class="line">post方式，服务器端用Request.Form获取提交的数据</span><br></pre></td></tr></table></figure>
+
+<h6 id="get-和-post-的使用场景"><a href="#get-和-post-的使用场景" class="headerlink" title="get 和 post 的使用场景"></a>get 和 post 的使用场景</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">GET和POST两种方法都是将数据送到服务器。HTTP标准包含这两种方法是为了达到不同的目的。</span><br><span class="line"></span><br><span class="line">POST用于创建资源，资源的内容会被编入HTTP请示的内容中。例如，处理订货表单、在数据库中加入新数据行等。</span><br><span class="line"></span><br><span class="line">当请求无副作用时（如进行搜索），便可使用GET方法；当请求有副作用时（如添加数据行），则用POST方法。一个比较实际的问题是：GET方法可能会产生很长的URL，或许会超过某些浏览器与服务器对URL长度的限制。</span><br><span class="line"></span><br><span class="line">若符合下列任一情况，则用POST方法：</span><br><span class="line"></span><br><span class="line">* 请求的结果有持续性的副作用，例如，数据库内添加新的数据行。</span><br><span class="line">* 若使用GET方法，则表单上收集的数据可能让URL过长。</span><br><span class="line">* 要传送的数据不是采用7位的ASCII编码。</span><br><span class="line"></span><br><span class="line">若符合下列任一情况，则用GET方法：</span><br><span class="line"></span><br><span class="line">* 请求是为了查找资源，HTML表单数据仅用来帮助搜索。</span><br><span class="line">* 请求结果无持续性的副作用。</span><br><span class="line">* 收集的数据及HTML表单内的输入字段名称的总长不超过1024个字符。</span><br></pre></td></tr></table></figure>
+
+<h6 id="前端优化调试工具"><a href="#前端优化调试工具" class="headerlink" title="前端优化调试工具"></a>前端优化调试工具</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.jianshu.com/p/b63e6b7df8bf 自己看</span><br></pre></td></tr></table></figure>
+
+<h6 id="什么是-sql-注入，xss-攻击"><a href="#什么是-sql-注入，xss-攻击" class="headerlink" title="什么是 sql 注入，xss 攻击"></a>什么是 sql 注入，xss 攻击</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">所谓SQL注入，就是通过把SQL命令插入到Web表单提交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的SQL命令。具体来说，它是利用现有应用程序，将（恶意的）SQL命令注入到后台数据库引擎执行的能力，它可以通过在Web表单中输入（恶意）SQL语句得到一个存在安全漏洞的网站上的数据库，而不是按照设计者意图去执行SQL语句。比如先前的很多影视网站泄露VIP会员密码大多就是通过WEB表单递交查询字符暴出的，这类表单特别容易受到SQL注入式攻击．</span><br><span class="line"></span><br><span class="line">https://blog.csdn.net/ideality_hunter/article/details/80623526</span><br><span class="line"></span><br><span class="line">XSS攻击全称跨站脚本攻击，是为不和层叠样式表(Cascading Style Sheets, CSS)的缩写混淆，故将跨站脚本攻击缩写为XSS，XSS是一种在web应用中的计算机安全漏洞，它允许恶意web用户将代码植入到提供给其它用户使用的页面中。</span><br><span class="line"></span><br><span class="line">预防xss</span><br><span class="line">1、编码，就是转义用户的输入，把用户的输入解读为数据而不是代码</span><br><span class="line">2、校验，对用户的输入及请求都进行过滤检查，如对特殊字符进行过滤，设置输入域的匹配规则等</span><br></pre></td></tr></table></figure>
+
+<h6 id="判断-js-变量是不是数组"><a href="#判断-js-变量是不是数组" class="headerlink" title="判断 js 变量是不是数组"></a>判断 js 变量是不是数组</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">方法一： 使用instanceof方法</span><br><span class="line">console.log(arr instanceof Array) //返回true</span><br><span class="line"></span><br><span class="line">方法二： 使用constructor方法</span><br><span class="line">console.log([].constructor == Array);  //true</span><br><span class="line"></span><br><span class="line">方法三： 使用Object.prototype.toString.call(arr) === &#x27;[object Array]&#x27;方法</span><br><span class="line"></span><br><span class="line">方法四：ES5定义了Array.isArray:</span><br><span class="line">Array.isArray([]) //true</span><br></pre></td></tr></table></figure>
+
+<h6 id="HTTP-状态消息-200-302-304-403-404-500-分别表示什么"><a href="#HTTP-状态消息-200-302-304-403-404-500-分别表示什么" class="headerlink" title="HTTP 状态消息 200 302 304 403 404 500 分别表示什么"></a>HTTP 状态消息 200 302 304 403 404 500 分别表示什么</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">200：请求已成功，请求所希望的响应头或数据体将随此响应返回。</span><br><span class="line"></span><br><span class="line">302：请求的资源临时从不同的 URI响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求。只有在Cache-Control或Expires中进行了指定的情况下，这个响应才是可缓存的</span><br><span class="line"></span><br><span class="line">304：如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个状态码。304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾。</span><br><span class="line"></span><br><span class="line">403：服务器已经理解请求，但是拒绝执行它。</span><br><span class="line"></span><br><span class="line">404：请求失败，请求所希望得到的资源未被在服务器上发现。</span><br><span class="line"></span><br><span class="line">500：服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。一般来说，这个问题都会在服务器端的源代码出现错误时出现。</span><br></pre></td></tr></table></figure>
+
+<h6 id="HTTP-协议中，header-信息里面，怎么控制页面失效时间（last-modified-cache-control-Expires-分别代表什么）"><a href="#HTTP-协议中，header-信息里面，怎么控制页面失效时间（last-modified-cache-control-Expires-分别代表什么）" class="headerlink" title="HTTP 协议中，header 信息里面，怎么控制页面失效时间（last-modified,cache-control,Expires 分别代表什么）"></a>HTTP 协议中，header 信息里面，怎么控制页面失效时间（last-modified,cache-control,Expires 分别代表什么）</h6><table>
+<thead>
+<tr>
+<th>Last-Modified</th>
+<th>文 档的最后改动时间。客户可以通过 If-Modified-Since 请求头提供一个日期，该请求将被视为一个条件 GET，只有改动时间迟于指定时间的文档 才会返回，否则返回一个 304（Not Modified）状态。Last-Modified 也可用 setDateHeader 方法来设置。</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Expires</td>
+<td>应该在什么时候认为文档已经过期，从而不再缓存它？</td>
+</tr>
+</tbody></table>
+<h6 id="列举常用的-js-框架以及分别适用的领域"><a href="#列举常用的-js-框架以及分别适用的领域" class="headerlink" title="列举常用的 js 框架以及分别适用的领域"></a>列举常用的 js 框架以及分别适用的领域</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">jquery：简化了js的一些操作，并且提供了一些非常好用的API</span><br><span class="line"></span><br><span class="line">jquery ui、jquery-easyui：在jqeury的基础上提供了一些常用的组件 日期，下拉框，表格这些组件</span><br><span class="line"></span><br><span class="line">require.js、sea.js（阿里的玉帛）+》模块化开发使用的</span><br><span class="line"></span><br><span class="line">jquery mobile：是jquery自己出的支持移动端网页开发，不过非常笨重，但是功能非常强大</span><br><span class="line"></span><br><span class="line">zepto：精简版的jquery，常用于手机web前端开发 提供了一些手机页面实用功能,touch</span><br><span class="line"></span><br><span class="line">ext.js：跟jquery差不多，但是不开源，也没有jquery轻量</span><br><span class="line"></span><br><span class="line">angular、knockoutjs、avalon(去哪儿前端总监，作者：司徒正美)：MV*框架，适合用于单页应用开发(SPA)</span><br><span class="line"></span><br><span class="line">Vue.js（读音 /vjuː/, 类似于view）是一套构建用户界面的渐进式框架。与其他重量级框架不同的是，Vue 采用自底向上增量开发的设计。Vue 的核心库只关注视图层，并且非常容易学习，非常容易与其它库或已有项目整合。另一方面，Vue 完全有能力驱动采用单文件组件和Vue生态系统支持的库开发的复杂单页应用。简单小巧的核心，渐进式技术栈，足以应付任何规模的应用。</span><br><span class="line"></span><br><span class="line">react 是一个用于构建用户界面的 JAVASCRIPT 库。</span><br><span class="line">React主要用于构建UI，很多人认为 React 是 MVC 中的 V（视图）。</span><br><span class="line">React 起源于 Facebook 的内部项目，用来架设 Instagram 的网站，并于 2013 年 5 月开源。</span><br><span class="line">React 拥有较高的性能，代码逻辑非常简单，越来越多的人已开始关注和使用它。</span><br><span class="line">React 特点</span><br><span class="line">1.声明式设计 −React采用声明范式，可以轻松描述应用。</span><br><span class="line">2.高效 −React通过对DOM的模拟，最大限度地减少与DOM的交互。</span><br><span class="line">3.灵活 −React可以与已知的库或框架很好地配合。</span><br><span class="line">4.JSX − JSX 是 JavaScript 语法的扩展。React 开发不一定使用 JSX ，但我们建议使用它。</span><br><span class="line">5.组件 − 通过 React 构建组件，使得代码更加容易得到复用，能够很好的应用在大项目的开发中。</span><br><span class="line">6.单向响应的数据流 − React 实现了单向响应的数据流，从而减少了重复代码，这也是它为什么比传统数据绑定更简单。</span><br><span class="line">JSX就是Javascript和XML结合的一种格式。React发明了JSX，利用HTML语法来创建虚拟DOM。当遇到&lt;，JSX就当HTML解析，遇到&#123;就当JavaScript解析。</span><br></pre></td></tr></table></figure>
+
+<h6 id="有-1-到-10w-这个-10w-个数，去除-2-个并打乱次序，如何找出那两个数"><a href="#有-1-到-10w-这个-10w-个数，去除-2-个并打乱次序，如何找出那两个数" class="headerlink" title="有 1 到 10w 这个 10w 个数，去除 2 个并打乱次序，如何找出那两个数"></a>有 1 到 10w 这个 10w 个数，去除 2 个并打乱次序，如何找出那两个数</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arrA = [];</span><br><span class="line"><span class="keyword">var</span> arrB = [];</span><br><span class="line"><span class="keyword">var</span> arrC = [];</span><br><span class="line"></span><br><span class="line"><span class="comment">//求出A数组的值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10000</span>; i++) &#123;</span><br><span class="line">  arrA.<span class="title function_">push</span>(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//A排序</span></span><br><span class="line">arrA.<span class="title function_">sort</span>(<span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">random</span>() - <span class="number">0.5</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arrA);</span><br><span class="line"><span class="comment">//求出B数组的值</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arrA.<span class="property">length</span> - <span class="number">2</span>; i++) &#123;</span><br><span class="line">  arrB[arrA[i]] = arrA[i];</span><br><span class="line">  <span class="comment">//console.log(arrB);</span></span><br><span class="line">&#125; <span class="comment">//如果B数组里的第i项为undefind，打印出i放在arrC</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arrA.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (arrB[i] == <span class="literal">undefined</span>) &#123;</span><br><span class="line">    arrC.<span class="title function_">push</span>(i);</span><br><span class="line">    <span class="keyword">if</span> (arrC.<span class="property">length</span> == <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arrC);</span><br></pre></td></tr></table></figure>
+
+<h6 id="JS-继承的六种方式"><a href="#JS-继承的六种方式" class="headerlink" title="JS 继承的六种方式"></a>JS 继承的六种方式</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">// 父类</span><br><span class="line">function Super()&#123;</span><br><span class="line">  this.property = &#x27;Super Property&#x27;</span><br><span class="line">&#125;</span><br><span class="line">Super.prototype.getProperty = function()&#123;</span><br><span class="line">  return this.property</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">一.构造继承</span><br><span class="line">function Sub()&#123;</span><br><span class="line">  Super.call(this)</span><br><span class="line">  this.property = &#x27;Sub Property&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">二.原型链继承</span><br><span class="line">// 子类</span><br><span class="line">function Sub()&#123;</span><br><span class="line">  this.property = &#x27;Sub Property&#x27;</span><br><span class="line">&#125;</span><br><span class="line">Sub.prototype = new Super()</span><br><span class="line">// 注意这里new Super()生成的超类对象并没有constructor属性,故需添加上</span><br><span class="line">Sub.prototype.constructor = Sub</span><br><span class="line"></span><br><span class="line">三.组合继承</span><br><span class="line">// 子类</span><br><span class="line">function Sub()&#123;</span><br><span class="line">  Super.call(this)</span><br><span class="line">  this.property = &#x27;Sub Property&#x27;</span><br><span class="line">&#125;</span><br><span class="line">Sub.prototype = new Super()</span><br><span class="line">// 注意这里new Super()生成的超类对象并没有constructor属性,故需添加上</span><br><span class="line">Sub.prototype.constructor = Sub</span><br><span class="line"></span><br><span class="line">四.原型式继承</span><br><span class="line">function objectCreate(obj)&#123;</span><br><span class="line">  function F()&#123;&#125;</span><br><span class="line">  F.prototype = obj</span><br><span class="line">  return new F()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">五.寄生式继承</span><br><span class="line">function objectCreate(obj)&#123;</span><br><span class="line">  function F()&#123;&#125;</span><br><span class="line">  F.prototype = obj</span><br><span class="line">  return new F()</span><br><span class="line">&#125;</span><br><span class="line">function createSubObj(superInstance)&#123;</span><br><span class="line">  var clone = objectCreate(superInstance)</span><br><span class="line">  clone.property = &#x27;Sub Property&#x27;</span><br><span class="line">  return clone</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">六.寄生组合式继承</span><br><span class="line">function inheritPrototype(Super,Sub)&#123;</span><br><span class="line">  var superProtoClone = Object.Create(Super.prototype)</span><br><span class="line">  superProtoClone.constructor = Sub</span><br><span class="line">  Sub.prototype = Super</span><br><span class="line">&#125;</span><br><span class="line">function Sub()&#123;</span><br><span class="line">  Super.call()</span><br><span class="line">  Sub.property = &#x27;Sub Property&#x27;</span><br><span class="line">&#125;</span><br><span class="line">inheritPrototype(Super,Sub)</span><br></pre></td></tr></table></figure>
+
+<h6 id="实现-html-的-bfc"><a href="#实现-html-的-bfc" class="headerlink" title="实现 html 的 bfc"></a>实现 html 的 bfc</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.column</span><span class="selector-pseudo">:nth-of-type</span>(<span class="number">1</span>) &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">float</span>: left;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">width</span>: <span class="number">200px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">margin-right</span>: <span class="number">10px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: red;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span></span><br><span class="line"><span class="language-css">  <span class="selector-class">.column</span><span class="selector-pseudo">:nth-of-type</span>(<span class="number">2</span>) &#123;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">overflow</span>: hidden; <span class="comment">/*创建bfc */</span></span></span><br><span class="line"><span class="language-css">    <span class="attribute">height</span>: <span class="number">300px</span>;</span></span><br><span class="line"><span class="language-css">    <span class="attribute">background-color</span>: purple;</span></span><br><span class="line"><span class="language-css">  &#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;script src=&quot;./js/require.js&quot; type=&quot;text/javascript&quot; defer async=&#x27;true&#x27; data-main=&#x27;../dist/main-build.js&#x27;&gt;&lt;/script&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;column&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="http-请求的几种方式"><a href="#http-请求的几种方式" class="headerlink" title="http 请求的几种方式"></a>http 请求的几种方式</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1协议中共定义了八种方法（也叫“动作”）来以不同方式操作指定的资源：</span><br><span class="line">OPTIONS：</span><br><span class="line">这个方法可使服务器传回该资源所支持的所有HTTP请求方法。用&#x27;*&#x27;来代替资源名称，向Web服务器发送OPTIONS请求，可以测试服务器功能是否正常运作。</span><br><span class="line"></span><br><span class="line">HEAD：</span><br><span class="line">与GET方法一样，都是向服务器发出指定资源的请求。只不过服务器将不传回资源的本文部分。它的好处在于，使用这个方法可以在不必传输全部内容的情况下，就可以获取其中“关于该资源的信息”（元信息或称元数据）。</span><br><span class="line"></span><br><span class="line">GET：</span><br><span class="line">向指定的资源发出“显示”请求。使用GET方法应该只用在读取数据，而不应当被用于产生“副作用”的操作中，例如在Web Application中。其中一个原因是GET可能会被网络蜘蛛等随意访问。参见安全方法</span><br><span class="line"></span><br><span class="line">POST：</span><br><span class="line">向指定资源提交数据，请求服务器进行处理（例如提交表单或者上传文件）。数据被包含在请求本文中。这个请求可能会创建新的资源或修改现有资源，或二者皆有。</span><br><span class="line"></span><br><span class="line">PUT：</span><br><span class="line">向指定资源位置上传其最新内容。</span><br><span class="line"></span><br><span class="line">DELETE：</span><br><span class="line">请求服务器删除Request-URI所标识的资源。</span><br><span class="line"></span><br><span class="line">TRACE：</span><br><span class="line">回显服务器收到的请求，主要用于测试或诊断。</span><br><span class="line"></span><br><span class="line">CONNECT：</span><br><span class="line">HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。通常用于SSL加密服务器的链接（经由非加密的HTTP代理服务器）。</span><br><span class="line">方法名称是区分大小写的。当某个请求所针对的资源不支持对应的请求方法的时候，服务器应当返回状态码405（Method Not Allowed），当服务器不认识或者不支持对应的请求方法的时候，应当返回状态码501（Not Implemented）。</span><br><span class="line">通常我们用的也都是 GET 和 POST 方法，如果要实现其他的方法，需要在服务器做相应的配置。</span><br><span class="line">但是我们应该清楚，有这些个动作的存在。</span><br><span class="line">而且，其他请求方式也都可以通过这两种方式间接的来实现。</span><br><span class="line"></span><br><span class="line">链接：https://www.jianshu.com/p/562aa3baa9b8</span><br></pre></td></tr></table></figure>
+
+<h6 id="面向对象的三大基本特征"><a href="#面向对象的三大基本特征" class="headerlink" title="面向对象的三大基本特征"></a>面向对象的三大基本特征</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">1.封装</span><br><span class="line"></span><br><span class="line">封装最好理解了。封装是面向对象的特征之一，是对象和类概念的主要特性。</span><br><span class="line">封装，也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，对不可信的进行信息隐藏。</span><br><span class="line"></span><br><span class="line">2.继承</span><br><span class="line"></span><br><span class="line">面向对象编程 (OOP) 语言的一个主要功能就是“继承”。继承是指这样一种能力：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下对这些功能进行扩展。</span><br><span class="line">通过继承创建的新类称为“子类”或“派生类”。</span><br><span class="line">被继承的类称为“基类”、“父类”或“超类”。</span><br><span class="line">继承的过程，就是从一般到特殊的过程。</span><br><span class="line">要实现继承，可以通过“继承”（Inheritance）和“组合”（Composition）来实现。</span><br><span class="line">在某些 OOP 语言中，一个子类可以继承多个基类。但是一般情况下，一个子类只能有一个基类，要实现多重继承，可以通过多级继承来实现。</span><br><span class="line"></span><br><span class="line">继承概念的实现方式有三类：实现继承、接口继承和可视继承。</span><br><span class="line">Ø         实现继承是指使用基类的属性和方法而无需额外编码的能力；</span><br><span class="line">Ø         接口继承是指仅使用属性和方法的名称、但是子类必须提供实现的能力；</span><br><span class="line">Ø         可视继承是指子窗体（类）使用基窗体（类）的外观和实现代码的能力。</span><br><span class="line">在考虑使用继承时，有一点需要注意，那就是两个类之间的关系应该是“属于”关系。例如，Employee 是一个人，Manager 也是一个人，因此这两个类都可以继承 Person 类。但是 Leg 类却不能继承 Person 类，因为腿并不是一个人。</span><br><span class="line">抽象类仅定义将由子类创建的一般属性和方法，创建抽象类时，请使用关键字 Interface 而不是 Class。</span><br><span class="line">OO开发范式大致为：划分对象→抽象类→将类组织成为层次化结构(继承和合成) →用类与实例进行设计和实现几个阶段。</span><br><span class="line"></span><br><span class="line">3.多态</span><br><span class="line"></span><br><span class="line">多态性（polymorphisn）是允许你将父对象设置成为和一个或更多的他的子对象相等的技术，赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作。简单的说，就是一句话：允许将子类类型的指针赋值给父类类型的指针。</span><br><span class="line">实现多态，有二种方式，覆盖，重载。</span><br><span class="line">覆盖，是指子类重新定义父类的虚函数的做法。</span><br><span class="line">重载，是指允许存在多个同名函数，而这些函数的参数表不同（或许参数个数不同，或许参数类型不同，或许两者都不同）。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">面向对象的基本特征</span><br><span class="line"></span><br><span class="line">      1.封装</span><br><span class="line"></span><br><span class="line">　　　　简单来讲: 将现实世界的事物抽象成计算机领域中的对象,对象同时具有属性和行为,这种抽象就是封装.</span><br><span class="line"></span><br><span class="line">　　　　封装的一个重要特性: 数据隐藏. 对象只对外提供与其它对象交互的必要接口,而将自身的某些属性和实现细节对外隐藏,</span><br><span class="line"></span><br><span class="line">　　　　通过这种方式，对象对内部数据提供了不同级别的保护，以防止程序中无关的部分意外的改变或错误的使用了对象的私有部分。</span><br><span class="line"></span><br><span class="line">　　　　这样就在确保正常交互的前提下,保证了安全性.</span><br><span class="line"></span><br><span class="line">      2.继承</span><br><span class="line"></span><br><span class="line">　　　　面向对象的一个重要特性是复用性.继承是实现复用性的一个重要手段.</span><br><span class="line"></span><br><span class="line">　　　　可以在不重复编写以实现的功能的前提下,对功能进行复用和拓展.</span><br><span class="line"></span><br><span class="line">　　　　继承概念的实现方式有二类：实现继承与接口继承。</span><br><span class="line"></span><br><span class="line">　　　　　　*实现继承是指直接使用基类的属性和方法而无需额外编码的能力</span><br><span class="line"></span><br><span class="line">　　　　　　*接口继承是指仅使用属性和方法的名称、但是子类必须提供实现的能力</span><br><span class="line"></span><br><span class="line">      3.多态</span><br><span class="line"></span><br><span class="line">　　　　当存在继承关系时,允许将父类对象看成为和它的一个或多个子类对象等同.</span><br><span class="line"></span><br><span class="line">　　　　这样,可以根据当前赋给父类对象的子对象的具体特性以不同的方式进行运行.</span><br><span class="line"></span><br><span class="line"> 　　　　多态的几个前提</span><br><span class="line"></span><br><span class="line">　　　　　　* a:要有继承关系。</span><br><span class="line"></span><br><span class="line">　　　　　　* b:要有方法重写。</span><br><span class="line"></span><br><span class="line">　　　　　　* c:要有父类引用指向子类对象。</span><br><span class="line"></span><br><span class="line">        　　多态的好处</span><br><span class="line"></span><br><span class="line">　　　　　　* a:提高了代码的维护性(继承保证)</span><br><span class="line"></span><br><span class="line">　　　　　　* b:提高了代码的扩展性(由多态保证)</span><br><span class="line"></span><br><span class="line">　　　　多态的限制</span><br><span class="line"></span><br><span class="line">          　　  * 不能使用子类的特有属性和行为。</span><br><span class="line"></span><br><span class="line">五大基本原则</span><br><span class="line">单一职责原则SRP(Single Responsibility Principle)</span><br><span class="line">　　是指一个类的功能要单一，不能包罗万象。</span><br><span class="line"></span><br><span class="line">开放封闭原则OCP(Open－Close Principle)</span><br><span class="line">　　一个模块在扩展性方面应该是开放的,而在更改性方面应该是封闭的。</span><br><span class="line"></span><br><span class="line">　　比如：一个网络模块，原来只服务端功能，而现在要加入客户端功能，那么应当在不用修改服务端功能代码的前提下，就能够增加客户端功能的实现代码</span><br><span class="line"></span><br><span class="line">　　这要求在设计之初，就应当将服务端和客户端分开，公共部分抽象出来。</span><br><span class="line"></span><br><span class="line">替换原则(the Liskov Substitution Principle LSP)</span><br><span class="line">　　子类应当可以替换父类并出现在父类能够出现的任何地方。</span><br><span class="line"></span><br><span class="line">　　比如：公司搞年度晚会，所有员工可以参加抽奖，那么不管是老员工还是新员工，也不管是总部员工还是外派员工，都应当可以参加抽奖，否则这公司就不和谐了。</span><br><span class="line"></span><br><span class="line">依赖原则(the Dependency Inversion Principle DIP)</span><br><span class="line"></span><br><span class="line">　　具体依赖抽象，上层依赖下层。</span><br><span class="line"></span><br><span class="line">　　假设B是较A低的模块，但B需要使用到A的功能，这个时候，B不应当直接使用A中的具体类： 而应当由B定义一抽象接口，并由A来实现这个抽象接口，B只使用这个抽象接口：　　这样就达到了依赖倒置的目的，B也解除了对A的依赖，反过来是A依赖于B定义的抽象接口。</span><br><span class="line"></span><br><span class="line">　　通过上层模块难以避免依赖下层模块，假如B也直接依赖A的实现，那么就可能造成循环依赖。　　</span><br><span class="line"></span><br><span class="line">接口分离原则(the Interface Segregation Principle ISP)</span><br><span class="line">　　模块间要通过抽象接口隔离开，而不是通过具体的类强耦合起来</span><br></pre></td></tr></table></figure>
+
+<h6 id="什么是面向对象"><a href="#什么是面向对象" class="headerlink" title="什么是面向对象"></a>什么是面向对象</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">面向对象是一种思想，是基于面向过程而言的，就是说面向对象是将功能等通过对象来实现，将功能封装进对象之中，让对象去实现具体的细节；这种思想是将数据作为第一位，而方法或者说是算法作为其次，这是对数据一种优化，操作起来更加的方便，简化了过程。面向对象有三大特征：封装性、继承性、多态性，其中封装性指的是隐藏了对象的属性和实现细节，仅对外提供公共的访问方式，这样就隔离了具体的变化，便于使用，提高了复用性和安全性。对于继承性，就是两种事物间存在着一定的所属关系，那么继承的类就可以从被继承的类中获得一些属性和方法；这就提高了代码的复用性。继承是作为多态的前提的。多态是说父类或接口的引用指向了子类对象，这就提高了程序的扩展性，也就是说只要实现或继承了同一个接口或类，那么就可以使用父类中相应的方法，提高程序扩展性，但是多态有一点不好之处在于：父类引用不能访问子类中的成员。</span><br><span class="line"></span><br><span class="line">举例来说：就是：比如说你要去饭店吃饭，你只需要饭店，找到饭店的服务员，跟她说你要吃什么，然后就会给你做出来让你吃，你并不需要知道这个饭是怎么错做的，你只需要面向这个服务员，告诉他你要吃什么，然后他也只需要面向你吃完收到钱就好，不需要知道你怎么对这个饭进行吃。</span><br><span class="line"></span><br><span class="line">1、特点：</span><br><span class="line"></span><br><span class="line">1：将复杂的事情简单化。</span><br><span class="line"></span><br><span class="line">2：面向对象将以前的过程中的执行者，变成了指挥者。</span><br><span class="line"></span><br><span class="line">3：面向对象这种思想是符合现在人们思考习惯的一种思想。</span><br><span class="line"></span><br><span class="line">2、面向对象的三大特征：封装，继承、多态</span><br><span class="line"></span><br><span class="line">1.封装：只隐藏对象的属性和实现细节，仅对外提供公共访问方式</span><br><span class="line"></span><br><span class="line">好处：将变化隔离、便于使用、提高复用性、提高安全性</span><br><span class="line"></span><br><span class="line">原则：将不需要对外提供的内容隐藏起来；把属性隐藏，提供公共方法对其访问</span><br><span class="line"></span><br><span class="line">2.继承：提高代码复用性；继承是多态的前提</span><br><span class="line"></span><br><span class="line">注：</span><br><span class="line"></span><br><span class="line">①子类中所有的构造函数都会默认访问父类中的空参数的构造函数，默认第一行有super()；若无空参数构造函数，子类中需指定；另外，子类构造函数中可自己用this指定自身的其他构造函数。</span><br><span class="line"></span><br><span class="line">3.多态</span><br><span class="line"></span><br><span class="line">是父类或接口定义的引用变量可以指向子类或具体实现类的实例对象</span><br><span class="line"></span><br><span class="line">好处：提高了程序的扩展性</span><br><span class="line"></span><br><span class="line">弊端：当父类引用指向子类对象时，虽提高了扩展性，但只能访问父类中具备的方法，不可访问子类中的方法；即访问的局限性。</span><br><span class="line"></span><br><span class="line">前提：实现或继承关系；覆写父类方法。</span><br><span class="line">---------------------</span><br><span class="line">作者：史努比程序媛</span><br><span class="line">来源：CSDN</span><br><span class="line">原文：https://blog.csdn.net/chenqiuping_ls/article/details/53609807</span><br><span class="line">版权声明：本文为博主原创文章，转载请附上博文链接！</span><br></pre></td></tr></table></figure>
+
+<h6 id="什么是闭包"><a href="#什么是闭包" class="headerlink" title="什么是闭包"></a>什么是闭包</h6><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">3、闭包的概念</span><br><span class="line"></span><br><span class="line">上面代码中的f2函数，就是闭包。</span><br><span class="line"></span><br><span class="line">各种专业文献的闭包定义都非常抽象，我的理解是: 闭包就是能够读取其他函数内部变量的函数。</span><br><span class="line"></span><br><span class="line">由于在javascript中，只有函数内部的子函数才能读取局部变量，所以说，闭包可以简单理解成“定义在一个函数内部的函数“。</span><br><span class="line"></span><br><span class="line">所以，在本质上，闭包是将函数内部和函数外部连接起来的桥梁。</span><br><span class="line"></span><br><span class="line"> 4、闭包的用途</span><br><span class="line"></span><br><span class="line">闭包可以用在许多地方。它的最大用处有两个，一个是前面提到的可以读取函数内部的变量，另一个就是让这些变量的值始终保持在内存中，不会在f1调用后被自动清除。</span><br><span class="line"></span><br><span class="line">为什么会这样呢？原因就在于f1是f2的父函数，而f2被赋给了一个全局变量，这导致f2始终在内存中，而f2的存在依赖于f1，因此f1也始终在内存中，不会在调用结束后，被垃圾回收机制（garbage collection）回收。</span><br><span class="line"></span><br><span class="line">这段代码中另一个值得注意的地方，就是&quot;nAdd=function()&#123;n+=1&#125;&quot;这一行，首先在nAdd前面没有使用var关键字，因此nAdd是一个全局变量，而不是局部变量。其次，nAdd的值是一个匿名函数（anonymous function），而这个匿名函数本身也是一个闭包，所以nAdd相当于是一个setter，可以在函数外部对函数内部的局部变量进行操作。</span><br><span class="line"></span><br><span class="line">5、使用闭包的注意点</span><br><span class="line"></span><br><span class="line">（1）由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。</span><br><span class="line"></span><br><span class="line">（2）闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。</span><br></pre></td></tr></table></figure>
+
+<h6 id="Promise-介绍"><a href="#Promise-介绍" class="headerlink" title="Promise 介绍"></a>Promise 介绍</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">promise是es6的语法</span><br><span class="line"><span class="title class_">Promise</span> 对象代表了未来将要发生的事件，用来传递异步操作的消息。</span><br><span class="line"></span><br><span class="line"><span class="title class_">Promise</span> 对象有以下两个特点:</span><br><span class="line"></span><br><span class="line"><span class="number">1</span>、对象的状态不受外界影响。<span class="title class_">Promise</span> 对象代表一个异步操作，有三种状态：</span><br><span class="line"></span><br><span class="line"><span class="attr">pending</span>: 初始状态，不是成功或失败状态。</span><br><span class="line"><span class="attr">fulfilled</span>: 意味着操作成功完成。</span><br><span class="line"><span class="attr">rejected</span>: 意味着操作失败。</span><br><span class="line"></span><br><span class="line">只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。这也是 <span class="title class_">Promise</span> 这个名字的由来，它的英语意思就是「承诺」，表示其他手段无法改变。</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、一旦状态改变，就不会再变，任何时候都可以得到这个结果。<span class="title class_">Promise</span> 对象的状态改变，只有两种可能：从 <span class="title class_">Pending</span> 变为 <span class="title class_">Resolved</span> 和从 <span class="title class_">Pending</span> 变为 <span class="title class_">Rejected</span>。只要这两种情况发生，状态就凝固了，不会再变了，会一直保持这个结果。就算改变已经发生了，你再对 <span class="title class_">Promise</span> 对象添加回调函数，也会立即得到这个结果。这与事件（<span class="title class_">Event</span>）完全不同，事件的特点是，如果你错过了它，再去监听，是得不到结果的。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> <span class="keyword">function</span> <span class="title function_">get</span>(<span class="params">src</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">res,err</span>)=&gt;</span>&#123;</span><br><span class="line">                <span class="keyword">let</span> img = <span class="keyword">new</span> <span class="title class_">Image</span>()</span><br><span class="line">                img.<span class="property">src</span>=src</span><br><span class="line">                img.<span class="property">onload</span> = <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span><br><span class="line">                    <span class="title function_">res</span>(img)</span><br><span class="line">                &#125;;</span><br><span class="line">                img.<span class="property">onerr</span> = <span class="keyword">function</span>(<span class="params">e</span>)&#123;</span><br><span class="line">                    <span class="title function_">err</span>(<span class="string">&#x27;错误&#x27;</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// get(&#x27;img.jpg&#x27;).then(function(img)&#123;</span></span><br><span class="line">        <span class="comment">//     console.log(img)</span></span><br><span class="line">        <span class="comment">// &#125;,function(err)&#123;</span></span><br><span class="line">        <span class="comment">//     console.log(err)</span></span><br><span class="line">        <span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line">        <span class="title function_">get</span>(<span class="string">&#x27;img.jpg&#x27;</span>).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">img</span>)&#123;<span class="comment">//链式加载</span></span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(img)</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">get</span>(<span class="string">&#x27;img1.jpg&#x27;</span>)</span><br><span class="line">        &#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">img</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(img)</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">get</span>(<span class="string">&#x27;img2.jpg&#x27;</span>)</span><br><span class="line">        &#125;).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">img</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(img)</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">get</span>(<span class="string">&#x27;img3.jpg&#x27;</span>)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="title class_">Promise</span>.<span class="title function_">all</span>([<span class="title function_">get</span>(<span class="string">&#x27;img.jgp&#x27;</span>),<span class="title function_">get</span>(<span class="string">&#x27;img1.jgp&#x27;</span>),<span class="title function_">get</span>(<span class="string">&#x27;img2.jgp&#x27;</span>)]).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">list</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(list) <span class="comment">//all方法将所有执行完的一起返回回来数组</span></span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line">        <span class="title class_">Promise</span>.<span class="title function_">race</span>([<span class="title function_">get</span>(<span class="string">&#x27;img.jgp&#x27;</span>),<span class="title function_">get</span>(<span class="string">&#x27;img1.jgp&#x27;</span>),<span class="title function_">get</span>(<span class="string">&#x27;img2.jgp&#x27;</span>)]).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">list</span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(list) <span class="comment">//race方法是返回先执行完的那个</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="title class_">Promise</span> 优缺点</span><br><span class="line"></span><br><span class="line">        有了 <span class="title class_">Promise</span> 对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。此外，           <span class="title class_">Promise</span> 对象提供统一的接口，使得控制异步操作更加容易。</span><br><span class="line"></span><br><span class="line">        <span class="title class_">Promise</span> 也有一些缺点。首先，无法取消 <span class="title class_">Promise</span>，一旦新建它就会立即执行，无法中途取消。其次，如果		   不设置回调函数，<span class="title class_">Promise</span> 内部抛出的错误，不会反应到外部。第三，当处于 <span class="title class_">Pending</span> 状态时，无法得知目         前进展到哪一个阶段（刚刚开始还是即将完成）。</span><br></pre></td></tr></table></figure>
+
+<h6 id="防抖和节流"><a href="#防抖和节流" class="headerlink" title="防抖和节流"></a>防抖和节流</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">callback,time</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> a = <span class="literal">null</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">                <span class="built_in">clearInterval</span>(a);</span><br><span class="line">                a = <span class="built_in">setTimeout</span>(callback,time)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">onscroll</span> = <span class="title function_">fn</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;执行了&#x27;</span>)</span><br><span class="line">        &#125;,<span class="number">500</span>)</span><br><span class="line"></span><br><span class="line">------------------------------上面是防抖，下面是节流--------------------------------------</span><br><span class="line">        <span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">callback,time</span>)&#123;</span><br><span class="line">            <span class="keyword">var</span> lasttime = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">                <span class="keyword">var</span> newtime = <span class="keyword">new</span> <span class="title class_">Date</span>().<span class="title function_">getTime</span>()</span><br><span class="line">                <span class="keyword">if</span>(newtime-lasttime&gt;<span class="number">500</span>)&#123;</span><br><span class="line">                    <span class="title function_">callback</span>();</span><br><span class="line">                    lasttime = newtime</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="variable language_">window</span>.<span class="property">onscroll</span> = <span class="title function_">fn</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;执行了&#x27;</span>)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h6 id="Es6-Set-方法数组去重"><a href="#Es6-Set-方法数组去重" class="headerlink" title="Es6 Set 方法数组去重"></a>Es6 Set 方法数组去重</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">[...<span class="keyword">new</span> <span class="title class_">Set</span>(array)]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例一</span></span><br><span class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">4</span>]);</span><br><span class="line">[...set]</span><br><span class="line"><span class="comment">// [1, 2, 3, 4]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 例二</span></span><br><span class="line"><span class="keyword">const</span> items = <span class="keyword">new</span> <span class="title class_">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>, <span class="number">5</span>]);</span><br><span class="line">items.<span class="property">size</span> <span class="comment">// 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 例三</span></span><br><span class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="title class_">Set</span>(<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;div&#x27;</span>));</span><br><span class="line">set.<span class="property">size</span> <span class="comment">// 56</span></span><br><span class="line"></span><br><span class="line">set实例属性和方法</span><br><span class="line"></span><br><span class="line">        <span class="attr">size</span>: 返回<span class="title class_">Set</span>实例的成员总数。</span><br><span class="line">        <span class="title function_">add</span>(value)：添加某个值，返回 <span class="title class_">Set</span> 结构本身。</span><br><span class="line">        <span class="title function_">delete</span>(value)：删除某个值，返回一个布尔值，表示删除是否成功。</span><br><span class="line">        <span class="title function_">has</span>(value)：返回一个布尔值，表示该值是否为<span class="title class_">Set</span>的成员。</span><br><span class="line">        <span class="title function_">clear</span>()：清除所有成员，没有返回值。</span><br><span class="line">---------------------</span><br><span class="line">作者：xuxu_qkz</span><br><span class="line">来源：<span class="variable constant_">CSDN</span></span><br><span class="line">原文：<span class="attr">https</span>:<span class="comment">//blog.csdn.net/xuxu_qkz/article/details/80998141</span></span><br><span class="line">版权声明：本文为博主原创文章，转载请附上博文链接！</span><br></pre></td></tr></table></figure>
+
+<h6 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> oldobj = &#123;</span><br><span class="line">  <span class="attr">a</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="attr">b</span>: <span class="number">2</span>,</span><br><span class="line">  <span class="attr">c</span>: <span class="number">3</span>,</span><br><span class="line">  <span class="attr">d</span>: &#123;</span><br><span class="line">    <span class="attr">d1</span>: <span class="string">&quot;d1&quot;</span>,</span><br><span class="line">    <span class="attr">d2</span>: <span class="string">&quot;d2&quot;</span>,</span><br><span class="line">    <span class="keyword">set</span> <span class="title function_">f</span>(<span class="params">value</span>) &#123;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">a</span> = value;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="keyword">get</span> <span class="title function_">f</span>() &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">a</span>;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">arr</span>: [, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>],</span><br><span class="line">&#125;;</span><br><span class="line"><span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(oldobj, <span class="string">&quot;h&quot;</span>, &#123; <span class="attr">value</span>: <span class="number">10</span> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newobj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">cloneObj</span>(newobj, oldobj);</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">cloneObj</span>(<span class="params">target, source</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> names = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyNames</span>(source); <span class="comment">//是oldobj的最外层的每一项的属性名 [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;arr&quot;, &quot;h&quot;]</span></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; names.<span class="property">length</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> desc = <span class="title class_">Object</span>.<span class="title function_">getOwnPropertyDescriptor</span>(source, names[i]);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(desc);</span><br><span class="line">    <span class="comment">// configurable : desc.configurable,</span></span><br><span class="line">    <span class="comment">// enumerable : desc.enumerable,</span></span><br><span class="line">    <span class="comment">// value : obj,</span></span><br><span class="line">    <span class="comment">// writable : desc.writable</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> desc.<span class="property">value</span> === <span class="string">&quot;object&quot;</span> &amp;&amp; desc.<span class="property">value</span> !== <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> obj;</span><br><span class="line">      <span class="keyword">if</span> (<span class="title class_">Array</span>.<span class="title function_">isArray</span>(desc.<span class="property">value</span>)) &#123;</span><br><span class="line">        obj = [];</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        obj = &#123;&#125;;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(target, names[i], &#123;</span><br><span class="line">        <span class="attr">configurable</span>: desc.<span class="property">configurable</span>, <span class="comment">//不可删除</span></span><br><span class="line">        <span class="attr">enumerable</span>: desc.<span class="property">enumerable</span>, <span class="comment">//是否可遍历</span></span><br><span class="line">        <span class="attr">value</span>: obj, <span class="comment">//值</span></span><br><span class="line">        <span class="attr">writable</span>: desc.<span class="property">writable</span>, <span class="comment">//是否可修改</span></span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="title function_">cloneObj</span>(obj, desc.<span class="property">value</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(target, names[i], desc);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="Proxy（代理）"><a href="#Proxy（代理）" class="headerlink" title="Proxy（代理）"></a>Proxy（代理）</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span> &#125;;</span><br><span class="line"><span class="keyword">var</span> handler = &#123;</span><br><span class="line">  <span class="attr">set</span>: <span class="keyword">function</span> (<span class="params">target, key, value</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;这里设置了属性&quot;</span>);</span><br><span class="line">    target[key] = value;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">get</span>: <span class="keyword">function</span> (<span class="params">target, key</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;这里获取了属性&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> target[key];</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">has</span>: <span class="keyword">function</span> (<span class="params">target, key</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;这里判断了属性&quot;</span>); <span class="comment">//true 或 false</span></span><br><span class="line">    <span class="keyword">return</span> key <span class="keyword">in</span> target;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> <span class="title class_">Proxy</span>(obj, handler);</span><br><span class="line">(p.<span class="property">c</span> = <span class="number">20</span>), <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;b&quot;</span> <span class="keyword">in</span> p); <span class="comment">//true</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(&#123; ...p &#125;);</span><br></pre></td></tr></table></figure>
+
+<h6 id="window-onload-与-window-ready-区别"><a href="#window-onload-与-window-ready-区别" class="headerlink" title="window.onload 与$(window).ready 区别"></a>window.onload 与$(window).ready 区别</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">两者都是加载后执行</span><br><span class="line">html加载顺序:</span><br><span class="line">	html结构</span><br><span class="line">	加载外部样式表和执行文件</span><br><span class="line">	解析执行脚本代码</span><br><span class="line">	构造<span class="title class_">Dom</span>模型（样式应用）<span class="comment">//这里ready就开始执行</span></span><br><span class="line">	加载图片文件等</span><br><span class="line">	页面加载完毕</span><br></pre></td></tr></table></figure>
+
+<h6 id="事件循环-EventLoop"><a href="#事件循环-EventLoop" class="headerlink" title="事件循环 EventLoop"></a>事件循环 EventLoop</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">代码的执行顺序</span><br><span class="line">	<span class="comment">//js是事件驱动，因此最底层都是以事件驱动完成函数的毁掉执行，例如当有触发某个事件的启动因素时，就会抛出事件，调用回调函数，但这个过程并不是函数可以自己去回调，而是抛出事件后，将在任务列中等待下一个执行时间立即调用函数</span></span><br><span class="line"><span class="comment">//即使在同一个任务队列中俄又先后顺序，主要分宏观任务和微观任务</span></span><br><span class="line"></span><br><span class="line">宏观任务 : <span class="built_in">setTimeout</span> ， <span class="built_in">setInterval</span></span><br><span class="line">微观任务 : process,nextTick,<span class="title class_">Promise</span></span><br><span class="line"></span><br><span class="line">微观任务一般是在当前任务的尾部，下一次任务执行时间之前执行</span><br><span class="line"></span><br><span class="line">宏观任务一般是在当前任务的尾部抛出事件，等待下一次任务队列执行时间开始的时候执行</span><br><span class="line"></span><br><span class="line">这样任务队列就在一个个时间段内不停的循环执行下去</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%89%8D%E7%AB%AF/" rel="tag"># 前端</a>
+          
+            <a href="/tags/js/" rel="tag"># js</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/27/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF%E4%B8%93%E9%A2%98/%E3%80%90%E4%B8%93%E9%A2%98%E3%80%9113%EF%BC%9A%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="next" title="开发环境">
+                <i class="fa fa-chevron-left"></i> 开发环境
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/05/JS/%E6%A8%A1%E5%9D%97%E5%8C%96%E5%BC%80%E5%8F%91/" rel="prev" title="模块化开发">
+                模块化开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%BA%AF%E5%87%BD%E6%95%B0"><span class="nav-number">1.0.0.0.0.1.</span> <span class="nav-text">什么是纯函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-ajax"><span class="nav-number">1.0.0.0.0.2.</span> <span class="nav-text">什么是 ajax</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#ajax-%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="nav-number">1.0.0.0.0.3.</span> <span class="nav-text">ajax 的优缺点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#web-%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E5%8A%A0%E8%BD%BD%E5%8F%8A%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">1.0.0.0.0.4.</span> <span class="nav-text">web 前端页面加载及性能优化</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#get-%E5%92%8C-post-%E7%9A%84%E8%AF%B7%E6%B1%82%E5%8C%BA%E5%88%AB"><span class="nav-number">1.0.0.0.0.5.</span> <span class="nav-text">get 和 post 的请求区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#get-%E5%92%8C-post-%E7%9A%84%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.0.0.0.0.6.</span> <span class="nav-text">get 和 post 的使用场景</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="nav-number">1.0.0.0.0.7.</span> <span class="nav-text">前端优化调试工具</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-sql-%E6%B3%A8%E5%85%A5%EF%BC%8Cxss-%E6%94%BB%E5%87%BB"><span class="nav-number">1.0.0.0.0.8.</span> <span class="nav-text">什么是 sql 注入，xss 攻击</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%A4%E6%96%AD-js-%E5%8F%98%E9%87%8F%E6%98%AF%E4%B8%8D%E6%98%AF%E6%95%B0%E7%BB%84"><span class="nav-number">1.0.0.0.0.9.</span> <span class="nav-text">判断 js 变量是不是数组</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#HTTP-%E7%8A%B6%E6%80%81%E6%B6%88%E6%81%AF-200-302-304-403-404-500-%E5%88%86%E5%88%AB%E8%A1%A8%E7%A4%BA%E4%BB%80%E4%B9%88"><span class="nav-number">1.0.0.0.0.10.</span> <span class="nav-text">HTTP 状态消息 200 302 304 403 404 500 分别表示什么</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E4%B8%AD%EF%BC%8Cheader-%E4%BF%A1%E6%81%AF%E9%87%8C%E9%9D%A2%EF%BC%8C%E6%80%8E%E4%B9%88%E6%8E%A7%E5%88%B6%E9%A1%B5%E9%9D%A2%E5%A4%B1%E6%95%88%E6%97%B6%E9%97%B4%EF%BC%88last-modified-cache-control-Expires-%E5%88%86%E5%88%AB%E4%BB%A3%E8%A1%A8%E4%BB%80%E4%B9%88%EF%BC%89"><span class="nav-number">1.0.0.0.0.11.</span> <span class="nav-text">HTTP 协议中，header 信息里面，怎么控制页面失效时间（last-modified,cache-control,Expires 分别代表什么）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%97%E4%B8%BE%E5%B8%B8%E7%94%A8%E7%9A%84-js-%E6%A1%86%E6%9E%B6%E4%BB%A5%E5%8F%8A%E5%88%86%E5%88%AB%E9%80%82%E7%94%A8%E7%9A%84%E9%A2%86%E5%9F%9F"><span class="nav-number">1.0.0.0.0.12.</span> <span class="nav-text">列举常用的 js 框架以及分别适用的领域</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%9C%89-1-%E5%88%B0-10w-%E8%BF%99%E4%B8%AA-10w-%E4%B8%AA%E6%95%B0%EF%BC%8C%E5%8E%BB%E9%99%A4-2-%E4%B8%AA%E5%B9%B6%E6%89%93%E4%B9%B1%E6%AC%A1%E5%BA%8F%EF%BC%8C%E5%A6%82%E4%BD%95%E6%89%BE%E5%87%BA%E9%82%A3%E4%B8%A4%E4%B8%AA%E6%95%B0"><span class="nav-number">1.0.0.0.0.13.</span> <span class="nav-text">有 1 到 10w 这个 10w 个数，去除 2 个并打乱次序，如何找出那两个数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#JS-%E7%BB%A7%E6%89%BF%E7%9A%84%E5%85%AD%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.0.0.0.14.</span> <span class="nav-text">JS 继承的六种方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0-html-%E7%9A%84-bfc"><span class="nav-number">1.0.0.0.0.15.</span> <span class="nav-text">实现 html 的 bfc</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#http-%E8%AF%B7%E6%B1%82%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">1.0.0.0.0.16.</span> <span class="nav-text">http 请求的几种方式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E5%A4%A7%E5%9F%BA%E6%9C%AC%E7%89%B9%E5%BE%81"><span class="nav-number">1.0.0.0.0.17.</span> <span class="nav-text">面向对象的三大基本特征</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.0.0.0.0.18.</span> <span class="nav-text">什么是面向对象</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%97%AD%E5%8C%85"><span class="nav-number">1.0.0.0.0.19.</span> <span class="nav-text">什么是闭包</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Promise-%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.0.0.0.0.20.</span> <span class="nav-text">Promise 介绍</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%98%B2%E6%8A%96%E5%92%8C%E8%8A%82%E6%B5%81"><span class="nav-number">1.0.0.0.0.21.</span> <span class="nav-text">防抖和节流</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Es6-Set-%E6%96%B9%E6%B3%95%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="nav-number">1.0.0.0.0.22.</span> <span class="nav-text">Es6 Set 方法数组去重</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%B7%B1%E6%8B%B7%E8%B4%9D"><span class="nav-number">1.0.0.0.0.23.</span> <span class="nav-text">深拷贝</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Proxy%EF%BC%88%E4%BB%A3%E7%90%86%EF%BC%89"><span class="nav-number">1.0.0.0.0.24.</span> <span class="nav-text">Proxy（代理）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#window-onload-%E4%B8%8E-window-ready-%E5%8C%BA%E5%88%AB"><span class="nav-number">1.0.0.0.0.25.</span> <span class="nav-text">window.onload 与$(window).ready 区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF-EventLoop"><span class="nav-number">1.0.0.0.0.26.</span> <span class="nav-text">事件循环 EventLoop</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

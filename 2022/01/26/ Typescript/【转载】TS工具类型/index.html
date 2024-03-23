@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、类型别名TypeScript 提供了为类型注解设置别名的便捷语法，你可以使用 type SomeName &#x3D; someValidTypeAnnotation 来创建别名，比如： 123456type Pet &#x3D; &quot;cat&quot; | &quot;dog&quot;;let pet: Pet;pet &#x3D; &quot;cat&quot;; &#x2F;&#x2F; Okpet &#x3D; &quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转载】TS工具类型">
+<meta property="og:url" content="https://daykalif.github.io/2022/01/26/%20Typescript/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91TS%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="一、类型别名TypeScript 提供了为类型注解设置别名的便捷语法，你可以使用 type SomeName &#x3D; someValidTypeAnnotation 来创建别名，比如： 123456type Pet &#x3D; &quot;cat&quot; | &quot;dog&quot;;let pet: Pet;pet &#x3D; &quot;cat&quot;; &#x2F;&#x2F; Okpet &#x3D; &quot;">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-01-26T13:25:02.000Z">
+<meta property="article:modified_time" content="2022-01-26T13:42:47.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2022/01/26/ Typescript/【转载】TS工具类型/"/>
+
+
+
+
+
+  <title>【转载】TS工具类型 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2022/01/26/%20Typescript/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91TS%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%9E%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【转载】TS工具类型</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-26T21:25:02+08:00">
+                2022-01-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/01/26/%20Typescript/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91TS%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%9E%8B/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/01/26/%20Typescript/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91TS%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%9E%8B/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2022/01/26/%20Typescript/%E3%80%90%E8%BD%AC%E8%BD%BD%E3%80%91TS%E5%B7%A5%E5%85%B7%E7%B1%BB%E5%9E%8B/" class="leancloud_visitors" data-flag-title="【转载】TS工具类型">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2.2k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、类型别名"><a href="#一、类型别名" class="headerlink" title="一、类型别名"></a>一、类型别名</h3><p>TypeScript 提供了为类型注解设置别名的便捷语法，你可以使用 type SomeName &#x3D; someValidTypeAnnotation 来创建别名，比如：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">type <span class="title class_">Pet</span> = <span class="string">&quot;cat&quot;</span> | <span class="string">&quot;dog&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> <span class="attr">pet</span>: <span class="title class_">Pet</span>;</span><br><span class="line"></span><br><span class="line">pet = <span class="string">&quot;cat&quot;</span>; <span class="comment">// Ok</span></span><br><span class="line">pet = <span class="string">&quot;dog&quot;</span>; <span class="comment">// Ok</span></span><br><span class="line">pet = <span class="string">&quot;zebra&quot;</span>; <span class="comment">// Compiler error</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="二、基础知识"><a href="#二、基础知识" class="headerlink" title="二、基础知识"></a>二、基础知识</h3><p>为了让大家能更好地理解并掌握 TypeScript 内置类型别名，我们先来介绍一下相关的一些基础知识。</p>
+<h4 id="2-1-typeof"><a href="#2-1-typeof" class="headerlink" title="2.1 typeof"></a>2.1 typeof</h4><p>在 TypeScript 中， typeof 操作符可以用来获取一个变量声明或对象的类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">  <span class="attr">age</span>: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">sem</span>: <span class="title class_">Person</span> = &#123; <span class="attr">name</span>: <span class="string">&quot;semlinker&quot;</span>, <span class="attr">age</span>: <span class="number">30</span> &#125;;</span><br><span class="line">type <span class="title class_">Sem</span> = <span class="keyword">typeof</span> sem; <span class="comment">// -&gt; Person</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">toArray</span>(<span class="params">x: number</span>): <span class="title class_">Array</span>&lt;number&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> [x];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type <span class="title class_">Func</span> = <span class="keyword">typeof</span> toArray; <span class="comment">// -&gt; (x: number) =&gt; number[]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-keyof"><a href="#2-2-keyof" class="headerlink" title="2.2 keyof"></a>2.2 keyof</h4><p>keyof 操作符可以用来一个对象中的所有 key 值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="attr">name</span>: string;</span><br><span class="line">    <span class="attr">age</span>: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type <span class="variable constant_">K1</span> = keyof <span class="title class_">Person</span>; <span class="comment">// &quot;name&quot; | &quot;age&quot;</span></span><br><span class="line">type <span class="variable constant_">K2</span> = keyof <span class="title class_">Person</span>[]; <span class="comment">// &quot;length&quot; | &quot;toString&quot; | &quot;pop&quot; | &quot;push&quot; | &quot;concat&quot; | &quot;join&quot;</span></span><br><span class="line">type <span class="variable constant_">K3</span> = keyof &#123; [<span class="attr">x</span>: string]: <span class="title class_">Person</span> &#125;;  <span class="comment">// string | number</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-in"><a href="#2-3-in" class="headerlink" title="2.3 in"></a>2.3 in</h4><p>in 用来遍历枚举类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">type <span class="title class_">Keys</span> = <span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span></span><br><span class="line"></span><br><span class="line">type <span class="title class_">Obj</span> =  &#123;</span><br><span class="line">  [p <span class="keyword">in</span> <span class="title class_">Keys</span>]: any</span><br><span class="line">&#125; <span class="comment">// -&gt; &#123; a: any, b: any, c: any &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-infer"><a href="#2-4-infer" class="headerlink" title="2.4 infer"></a>2.4 infer</h4><p>在条件类型语句中，可以用 infer 声明一个类型变量并且对它进行使用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type <span class="title class_">ReturnType</span>&lt;T&gt; = T <span class="keyword">extends</span> (</span><br><span class="line">  ...<span class="attr">args</span>: any[]</span><br><span class="line">) =&gt; infer R ? R : any;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码中 infer R 就是声明一个变量来承载传入函数签名的返回值类型，简单说就是用它取到函数返回值的类型方便之后使用。</p>
+<h4 id="2-5-extends"><a href="#2-5-extends" class="headerlink" title="2.5 extends"></a>2.5 extends</h4><p>有时候我们定义的泛型不想过于灵活或者说想继承某些类等，可以通过 extends 关键字添加泛型约束。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">ILengthwise</span> &#123;</span><br><span class="line">  <span class="attr">length</span>: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> loggingIdentity&lt;T <span class="keyword">extends</span> <span class="title class_">ILengthwise</span>&gt;(<span class="attr">arg</span>: T): T &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arg.<span class="property">length</span>);</span><br><span class="line">  <span class="keyword">return</span> arg;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在这个泛型函数被定义了约束，因此它不再是适用于任意类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">loggingIdentity</span>(<span class="number">3</span>); <span class="comment">// Error, number doesn&#x27;t have a .length property</span></span><br></pre></td></tr></table></figure>
+
+<p>这时我们需要传入符合约束类型的值，必须包含必须的属性：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">loggingIdentity</span>(&#123; <span class="attr">length</span>: <span class="number">10</span>, <span class="attr">value</span>: <span class="number">3</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、内置类型别名"><a href="#三、内置类型别名" class="headerlink" title="三、内置类型别名"></a>三、内置类型别名</h3><h4 id="3-1-Partial"><a href="#3-1-Partial" class="headerlink" title="3.1 Partial"></a>3.1 Partial</h4><p>Partial<T> 的作用就是将某个类型里的属性全部变为可选项 ? 。</p>
+<h5 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Make all properties in T optional</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Partial</span>&lt;T&gt; = &#123;</span><br><span class="line">    [P <span class="keyword">in</span> keyof T]?: T[P];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>在以上代码中，首先通过 keyof T 拿到 T 的所有属性名，然后使用 in 进行遍历，将值赋给 P ，最后通过 T[P] 取得相应的属性值。中间的 ? ，用于将所有属性变为可选。</p>
+<h5 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Todo</span> &#123;</span><br><span class="line">  <span class="attr">title</span>: string;</span><br><span class="line">  <span class="attr">description</span>: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">updateTodo</span>(<span class="params">todo: Todo, fieldsToUpdate: Partial&lt;Todo&gt;</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123; ...todo, ...fieldsToUpdate &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo1 = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&quot;organize desk&quot;</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&quot;clear clutter&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> todo2 = <span class="title function_">updateTodo</span>(todo1, &#123;</span><br><span class="line">  <span class="attr">description</span>: <span class="string">&quot;throw out trash&quot;</span>,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-Required"><a href="#3-2-Required" class="headerlink" title="3.2 Required"></a>3.2 Required</h4><p>Required<T> 的作用就是将某个类型里的属性全部变为必选项。</p>
+<h5 id="定义：-1"><a href="#定义：-1" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Make all properties in T required</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Required</span>&lt;T&gt; = &#123;</span><br><span class="line">    [P <span class="keyword">in</span> keyof T]-?: T[P];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码中， -? 的作用就是移除可选项 ? 。</p>
+<h5 id="示例：-1"><a href="#示例：-1" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Props</span> &#123;</span><br><span class="line">  a?: number;</span><br><span class="line">  b?: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj</span>: <span class="title class_">Props</span> = &#123; <span class="attr">a</span>: <span class="number">5</span> &#125;; <span class="comment">// OK</span></span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj2</span>: <span class="title class_">Required</span>&lt;<span class="title class_">Props</span>&gt; = &#123; <span class="attr">a</span>: <span class="number">5</span> &#125;; <span class="comment">// Error: property &#x27;b&#x27; missing</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-3-Readonly"><a href="#3-3-Readonly" class="headerlink" title="3.3 Readonly"></a>3.3 Readonly</h4><p>Readonly<T> 的作用是将某个类型所有属性变为只读属性，也就意味着这些属性不能被重新赋值。</p>
+<h5 id="定义：-2"><a href="#定义：-2" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Make all properties in T readonly</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Readonly</span>&lt;T&gt; = &#123;</span><br><span class="line">    readonly [P <span class="keyword">in</span> keyof T]: T[P];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>如果将上面的 readonly 改成 -readonly ， 就是移除子属性的 readonly 标识。</p>
+<h5 id="示例：-2"><a href="#示例：-2" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Todo</span> &#123;</span><br><span class="line">  <span class="attr">title</span>: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">todo</span>: <span class="title class_">Readonly</span>&lt;<span class="title class_">Todo</span>&gt; = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&quot;Delete inactive users&quot;</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">todo.<span class="property">title</span> = <span class="string">&quot;Hello&quot;</span>; <span class="comment">// Error: cannot reassign a readonly property</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-4-Record"><a href="#3-4-Record" class="headerlink" title="3.4 Record"></a>3.4 Record</h4><p>Record&lt;K extends keyof any, T&gt; 的作用是将 K 中所有的属性的值转化为 T 类型。</p>
+<h5 id="定义：-3"><a href="#定义：-3" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Construct a type with a set of properties K of type T</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Record</span>&lt;K <span class="keyword">extends</span> keyof any, T&gt; = &#123;</span><br><span class="line">    [P <span class="keyword">in</span> K]: T;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例：-3"><a href="#示例：-3" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">PageInfo</span> &#123;</span><br><span class="line">  <span class="attr">title</span>: string;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type <span class="title class_">Page</span> = <span class="string">&quot;home&quot;</span> | <span class="string">&quot;about&quot;</span> | <span class="string">&quot;contact&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">x</span>: <span class="title class_">Record</span>&lt;<span class="title class_">Page</span>, <span class="title class_">PageInfo</span>&gt; = &#123;</span><br><span class="line">  <span class="attr">about</span>: &#123; <span class="attr">title</span>: <span class="string">&quot;about&quot;</span> &#125;,</span><br><span class="line">  <span class="attr">contact</span>: &#123; <span class="attr">title</span>: <span class="string">&quot;contact&quot;</span> &#125;,</span><br><span class="line">  <span class="attr">home</span>: &#123; <span class="attr">title</span>: <span class="string">&quot;home&quot;</span> &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-5-Pick"><a href="#3-5-Pick" class="headerlink" title="3.5 Pick"></a>3.5 Pick</h4><p>Pick&lt;T, K extends keyof T&gt; 的作用是将某个类型中的子属性挑出来，变成包含这个类型部分属性的子类型。</p>
+<h5 id="定义：-4"><a href="#定义：-4" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * From T, pick a set of properties whose keys are in the union K</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Pick</span>&lt;T, K <span class="keyword">extends</span> keyof T&gt; = &#123;</span><br><span class="line">    [P <span class="keyword">in</span> K]: T[P];</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例：-4"><a href="#示例：-4" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Todo</span> &#123;</span><br><span class="line">  <span class="attr">title</span>: string;</span><br><span class="line">  <span class="attr">description</span>: string;</span><br><span class="line">  <span class="attr">completed</span>: boolean;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type <span class="title class_">TodoPreview</span> = <span class="title class_">Pick</span>&lt;<span class="title class_">Todo</span>, <span class="string">&quot;title&quot;</span> | <span class="string">&quot;completed&quot;</span>&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">todo</span>: <span class="title class_">TodoPreview</span> = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&quot;Clean room&quot;</span>,</span><br><span class="line">  <span class="attr">completed</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-6-Exclude"><a href="#3-6-Exclude" class="headerlink" title="3.6 Exclude"></a>3.6 Exclude</h4><p>Exclude&lt;T, U&gt; 的作用是将某个类型中属于另一个的类型移除掉。</p>
+<h5 id="定义：-5"><a href="#定义：-5" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Exclude from T those types that are assignable to U</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Exclude</span>&lt;T, U&gt; = T <span class="keyword">extends</span> U ? never : T;</span><br></pre></td></tr></table></figure>
+
+<p>如果 T 能赋值给 U 类型的话，那么就会返回 never 类型，否则返回 T 类型。最终实现的效果就是将 T 中某些属于 U 的类型移除掉。</p>
+<h5 id="示例：-5"><a href="#示例：-5" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type <span class="variable constant_">T0</span> = <span class="title class_">Exclude</span>&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span>&gt;; <span class="comment">// &quot;b&quot; | &quot;c&quot;</span></span><br><span class="line">type <span class="variable constant_">T1</span> = <span class="title class_">Exclude</span>&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span>&gt;; <span class="comment">// &quot;c&quot;</span></span><br><span class="line">type <span class="variable constant_">T2</span> = <span class="title class_">Exclude</span>&lt;string | number | (<span class="function">() =&gt;</span> <span class="keyword">void</span>), <span class="title class_">Function</span>&gt;; <span class="comment">// string | number</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-7-Extract"><a href="#3-7-Extract" class="headerlink" title="3.7 Extract"></a>3.7 Extract</h4><p>Extract&lt;T, U&gt; 的作用是从 T 中提取出 U 。</p>
+<h5 id="定义：-6"><a href="#定义：-6" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Extract from T those types that are assignable to U</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Extract</span>&lt;T, U&gt; = T <span class="keyword">extends</span> U ? T : never;</span><br></pre></td></tr></table></figure>
+
+<p>如果 T 能赋值给 U 类型的话，那么就会返回 T 类型，否则返回 never 类型。</p>
+<h5 id="示例：-6"><a href="#示例：-6" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type <span class="variable constant_">T0</span> = <span class="title class_">Extract</span>&lt;<span class="string">&quot;a&quot;</span> | <span class="string">&quot;b&quot;</span> | <span class="string">&quot;c&quot;</span>, <span class="string">&quot;a&quot;</span> | <span class="string">&quot;f&quot;</span>&gt;; <span class="comment">// &quot;a&quot;</span></span><br><span class="line">type <span class="variable constant_">T1</span> = <span class="title class_">Extract</span>&lt;string | number | (<span class="function">() =&gt;</span> <span class="keyword">void</span>), <span class="title class_">Function</span>&gt;; <span class="comment">// () =&gt; void</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-8-Omit"><a href="#3-8-Omit" class="headerlink" title="3.8 Omit"></a>3.8 Omit</h4><p>Omit&lt;T, K extends keyof any&gt; 的作用是使用 T 类型中除了 K 类型的所有属性，来构造一个新的类型。</p>
+<h5 id="定义：-7"><a href="#定义：-7" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Construct a type with the properties of T except for those in type K.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Omit</span>&lt;T, K <span class="keyword">extends</span> keyof any&gt; = <span class="title class_">Pick</span>&lt;T, <span class="title class_">Exclude</span>&lt;keyof T, K&gt;&gt;;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例：-7"><a href="#示例：-7" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Todo</span> &#123;</span><br><span class="line">  <span class="attr">title</span>: string;</span><br><span class="line">  <span class="attr">description</span>: string;</span><br><span class="line">  <span class="attr">completed</span>: boolean;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type <span class="title class_">TodoPreview</span> = <span class="title class_">Omit</span>&lt;<span class="title class_">Todo</span>, <span class="string">&quot;description&quot;</span>&gt;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">todo</span>: <span class="title class_">TodoPreview</span> = &#123;</span><br><span class="line">  <span class="attr">title</span>: <span class="string">&quot;Clean room&quot;</span>,</span><br><span class="line">  <span class="attr">completed</span>: <span class="literal">false</span>,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-9-NonNullable"><a href="#3-9-NonNullable" class="headerlink" title="3.9 NonNullable"></a>3.9 NonNullable</h4><p>NonNullable<T> 的作用是用来过滤类型中的 null 及 undefined 类型。</p>
+<h5 id="定义：-8"><a href="#定义：-8" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Exclude null and undefined from T</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">NonNullable</span>&lt;T&gt; = T <span class="keyword">extends</span> <span class="literal">null</span> | <span class="literal">undefined</span> ? never : T;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例：-8"><a href="#示例：-8" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type <span class="variable constant_">T0</span> = <span class="title class_">NonNullable</span>&lt;string | number | <span class="literal">undefined</span>&gt;; <span class="comment">// string | number</span></span><br><span class="line">type <span class="variable constant_">T1</span> = <span class="title class_">NonNullable</span>&lt;string[] | <span class="literal">null</span> | <span class="literal">undefined</span>&gt;; <span class="comment">// string[]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-10-ReturnType"><a href="#3-10-ReturnType" class="headerlink" title="3.10 ReturnType"></a>3.10 ReturnType</h4><p>ReturnType<T> 的作用是用于获取函数 T 的返回类型。</p>
+<h5 id="定义：-9"><a href="#定义：-9" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Obtain the return type of a function type</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">ReturnType</span>&lt;T <span class="keyword">extends</span> (...<span class="attr">args</span>: any) =&gt; any&gt; = T <span class="keyword">extends</span> (...<span class="attr">args</span>: any) =&gt; infer R ? R : any;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例：-9"><a href="#示例：-9" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">type <span class="variable constant_">T0</span> = <span class="title class_">ReturnType</span>&lt;<span class="function">() =&gt;</span> string&gt;; <span class="comment">// string</span></span><br><span class="line">type <span class="variable constant_">T1</span> = <span class="title class_">ReturnType</span>&lt;<span class="function">(<span class="params">s: string</span>) =&gt;</span> <span class="keyword">void</span>&gt;; <span class="comment">// void</span></span><br><span class="line">type <span class="variable constant_">T2</span> = <span class="title class_">ReturnType</span>&lt;&lt;T&gt;<span class="function">() =&gt;</span> T&gt;; <span class="comment">// &#123;&#125;</span></span><br><span class="line">type <span class="variable constant_">T3</span> = <span class="title class_">ReturnType</span>&lt;&lt;T <span class="keyword">extends</span> U, U <span class="keyword">extends</span> number[]&gt;<span class="function">() =&gt;</span> T&gt;; <span class="comment">// number[]</span></span><br><span class="line">type <span class="variable constant_">T4</span> = <span class="title class_">ReturnType</span>&lt;any&gt;; <span class="comment">// any</span></span><br><span class="line">type <span class="variable constant_">T5</span> = <span class="title class_">ReturnType</span>&lt;never&gt;; <span class="comment">// any</span></span><br><span class="line">type <span class="variable constant_">T6</span> = <span class="title class_">ReturnType</span>&lt;string&gt;; <span class="comment">// Error</span></span><br><span class="line">type <span class="variable constant_">T7</span> = <span class="title class_">ReturnType</span>&lt;<span class="title class_">Function</span>&gt;; <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-11-InstanceType"><a href="#3-11-InstanceType" class="headerlink" title="3.11 InstanceType"></a>3.11 InstanceType</h4><p>InstanceType 的作用是获取构造函数类型的实例类型。</p>
+<h5 id="定义：-10"><a href="#定义：-10" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Obtain the return type of a constructor function type</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">InstanceType</span>&lt;T <span class="keyword">extends</span> <span class="keyword">new</span> (...<span class="attr">args</span>: any) =&gt; any&gt; = T <span class="keyword">extends</span> <span class="keyword">new</span> (...<span class="attr">args</span>: any) =&gt; infer R ? R : any;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例：-10"><a href="#示例：-10" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">C</span> &#123;</span><br><span class="line">  x = <span class="number">0</span>;</span><br><span class="line">  y = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">type <span class="variable constant_">T0</span> = <span class="title class_">InstanceType</span>&lt;<span class="keyword">typeof</span> C&gt;; <span class="comment">// C</span></span><br><span class="line">type <span class="variable constant_">T1</span> = <span class="title class_">InstanceType</span>&lt;any&gt;; <span class="comment">// any</span></span><br><span class="line">type <span class="variable constant_">T2</span> = <span class="title class_">InstanceType</span>&lt;never&gt;; <span class="comment">// any</span></span><br><span class="line">type <span class="variable constant_">T3</span> = <span class="title class_">InstanceType</span>&lt;string&gt;; <span class="comment">// Error</span></span><br><span class="line">type <span class="variable constant_">T4</span> = <span class="title class_">InstanceType</span>&lt;<span class="title class_">Function</span>&gt;; <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-12-ThisType"><a href="#3-12-ThisType" class="headerlink" title="3.12 ThisType"></a>3.12 ThisType</h4><p>ThisType<T> 的作用是用于指定上下文对象的类型。</p>
+<h5 id="定义：-11"><a href="#定义：-11" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Marker for contextual &#x27;this&#x27; type</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">interface <span class="title class_">ThisType</span>&lt;T&gt; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：使用 ThisType<T> 时，必须确保 –noImplicitThis 标志设置为 true。</p>
+<h5 id="示例：-11"><a href="#示例：-11" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface <span class="title class_">Person</span> &#123;</span><br><span class="line">  <span class="attr">name</span>: string;</span><br><span class="line">  <span class="attr">age</span>: number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="attr">obj</span>: <span class="title class_">ThisType</span>&lt;<span class="title class_">Person</span>&gt; = &#123;</span><br><span class="line">  <span class="title function_">dosth</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">name</span>; <span class="comment">// string</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-13-Parameters"><a href="#3-13-Parameters" class="headerlink" title="3.13 Parameters"></a>3.13 Parameters</h4><p>Parameters<T> 的作用是用于获得函数的参数类型组成的元组类型。</p>
+<h5 id="定义：-12"><a href="#定义：-12" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Obtain the parameters of a function type in a tuple</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">Parameters</span>&lt;T <span class="keyword">extends</span> (...<span class="attr">args</span>: any) =&gt; any&gt; = T <span class="keyword">extends</span> (...<span class="attr">args</span>: infer P) =&gt; any</span><br><span class="line">  ? P : never;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例：-12"><a href="#示例：-12" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">type A = <span class="title class_">Parameters</span>&lt;<span class="function">() =&gt;</span> <span class="keyword">void</span>&gt;; <span class="comment">// []</span></span><br><span class="line">type B = <span class="title class_">Parameters</span>&lt;<span class="keyword">typeof</span> <span class="title class_">Array</span>.<span class="property">isArray</span>&gt;; <span class="comment">// [any]</span></span><br><span class="line">type C = <span class="title class_">Parameters</span>&lt;<span class="keyword">typeof</span> <span class="built_in">parseInt</span>&gt;; <span class="comment">// [string, (number | undefined)?]</span></span><br><span class="line">type D = <span class="title class_">Parameters</span>&lt;<span class="keyword">typeof</span> <span class="title class_">Math</span>.<span class="property">max</span>&gt;; <span class="comment">// number[]</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3-14-ConstructorParameters"><a href="#3-14-ConstructorParameters" class="headerlink" title="3.14 ConstructorParameters"></a>3.14 ConstructorParameters</h4><p>ConstructorParameters<T> 的作用是提取构造函数类型的所有参数类型。它会生成具有所有参数类型的元组类型（如果 T 不是函数，则返回的是 never 类型）。</p>
+<h5 id="定义：-13"><a href="#定义：-13" class="headerlink" title="定义："></a>定义：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/typescript/lib/lib.es5.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Obtain the parameters of a constructor function type in a tuple</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">type <span class="title class_">ConstructorParameters</span>&lt;T <span class="keyword">extends</span> <span class="keyword">new</span> (...<span class="attr">args</span>: any) =&gt; any&gt; = T <span class="keyword">extends</span> <span class="keyword">new</span> (...<span class="attr">args</span>: infer P) =&gt; any ? P : never;</span><br></pre></td></tr></table></figure>
+
+<h5 id="示例：-13"><a href="#示例：-13" class="headerlink" title="示例："></a>示例：</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type A = <span class="title class_">ConstructorParameters</span>&lt;<span class="title class_">ErrorConstructor</span>&gt;; <span class="comment">// [(string | undefined)?]</span></span><br><span class="line">type B = <span class="title class_">ConstructorParameters</span>&lt;<span class="title class_">FunctionConstructor</span>&gt;; <span class="comment">// string[]</span></span><br><span class="line">type C = <span class="title class_">ConstructorParameters</span>&lt;<span class="title class_">RegExpConstructor</span>&gt;; <span class="comment">// [string, (string | undefined)?]</span></span><br></pre></td></tr></table></figure>
+
+<p>转载链接：<br><a href="https://www.cnblogs.com/cangqinglang/p/12896595.html">https://www.cnblogs.com/cangqinglang/p/12896595.html</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/26/JS/%E3%80%90%E6%90%AC%E3%80%91WebSocket%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" rel="next" title="【搬】WebSocket通信协议">
+                <i class="fa fa-chevron-left"></i> 【搬】WebSocket通信协议
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/02/14/%E6%89%A9%E5%B1%95%E7%9F%A5%E8%AF%86/%E3%80%90%E6%90%AC%E3%80%91%E4%BA%94%E7%AC%94%E8%BE%93%E5%85%A5%E6%B3%95/" rel="prev" title="五笔输入法">
+                五笔输入法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D"><span class="nav-number">1.</span> <span class="nav-text">一、类型别名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="nav-number">2.</span> <span class="nav-text">二、基础知识</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-typeof"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 typeof</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-keyof"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 keyof</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-in"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 in</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-infer"><span class="nav-number">2.4.</span> <span class="nav-text">2.4 infer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-extends"><span class="nav-number">2.5.</span> <span class="nav-text">2.5 extends</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%86%85%E7%BD%AE%E7%B1%BB%E5%9E%8B%E5%88%AB%E5%90%8D"><span class="nav-number">3.</span> <span class="nav-text">三、内置类型别名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Partial"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 Partial</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A"><span class="nav-number">3.1.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="nav-number">3.1.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-Required"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 Required</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-1"><span class="nav-number">3.2.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-1"><span class="nav-number">3.2.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-Readonly"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 Readonly</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-2"><span class="nav-number">3.3.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-2"><span class="nav-number">3.3.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-Record"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 Record</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-3"><span class="nav-number">3.4.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-3"><span class="nav-number">3.4.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-Pick"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 Pick</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-4"><span class="nav-number">3.5.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-4"><span class="nav-number">3.5.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-Exclude"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 Exclude</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-5"><span class="nav-number">3.6.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-5"><span class="nav-number">3.6.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-Extract"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 Extract</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-6"><span class="nav-number">3.7.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-6"><span class="nav-number">3.7.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-8-Omit"><span class="nav-number">3.8.</span> <span class="nav-text">3.8 Omit</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-7"><span class="nav-number">3.8.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-7"><span class="nav-number">3.8.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-9-NonNullable"><span class="nav-number">3.9.</span> <span class="nav-text">3.9 NonNullable</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-8"><span class="nav-number">3.9.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-8"><span class="nav-number">3.9.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-10-ReturnType"><span class="nav-number">3.10.</span> <span class="nav-text">3.10 ReturnType</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-9"><span class="nav-number">3.10.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-9"><span class="nav-number">3.10.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-11-InstanceType"><span class="nav-number">3.11.</span> <span class="nav-text">3.11 InstanceType</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-10"><span class="nav-number">3.11.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-10"><span class="nav-number">3.11.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-12-ThisType"><span class="nav-number">3.12.</span> <span class="nav-text">3.12 ThisType</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-11"><span class="nav-number">3.12.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-11"><span class="nav-number">3.12.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-13-Parameters"><span class="nav-number">3.13.</span> <span class="nav-text">3.13 Parameters</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-12"><span class="nav-number">3.13.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-12"><span class="nav-number">3.13.2.</span> <span class="nav-text">示例：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-14-ConstructorParameters"><span class="nav-number">3.14.</span> <span class="nav-text">3.14 ConstructorParameters</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%EF%BC%9A-13"><span class="nav-number">3.14.1.</span> <span class="nav-text">定义：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B%EF%BC%9A-13"><span class="nav-number">3.14.2.</span> <span class="nav-text">示例：</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

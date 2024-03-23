@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1.字符串123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面试题7：字符串数组对象的方法">
+<meta property="og:url" content="https://daykalif.github.io/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%987%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Daykalif">
+<meta property="og:description" content="1.字符串123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101">
+<meta property="og:locale">
+<meta property="article:published_time" content="2022-01-06T15:24:27.000Z">
+<meta property="article:modified_time" content="2022-01-24T16:01:47.000Z">
+<meta property="article:author" content="r00t_daykalif">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: "",
+      labels: ""
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://daykalif.github.io/2022/01/06/面试题/面试题7：字符串数组对象的方法/"/>
+
+
+
+
+
+  <title>面试题7：字符串数组对象的方法 | Daykalif</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 7.1.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Daykalif</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-文章">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            文章
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-前端">
+          <a href="/categories/web/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            前端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-后端">
+          <a href="/categories/server/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-server"></i> <br />
+            
+            后端
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/categories/aboutMe/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://daykalif.github.io/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%987%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Daykalif">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面试题7：字符串数组对象的方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-01-06T23:24:27+08:00">
+                2022-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%987%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%987%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%987%EF%BC%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95/" class="leancloud_visitors" data-flag-title="面试题7：字符串数组对象的方法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  3.1k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  15
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-字符串"><a href="#1-字符串" class="headerlink" title="1.字符串"></a>1.字符串</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;hello&quot;</span>.<span class="title function_">substring</span>(<span class="number">1</span>); <span class="comment">//ello -- 索引1到结束</span></span><br><span class="line"><span class="string">&quot;hello&quot;</span>.<span class="title function_">substring</span>(<span class="number">1</span>, <span class="number">3</span>); <span class="comment">//el -- 索引1到索引3（不包括3）</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;hello&quot;</span>.<span class="title function_">substr</span>(<span class="number">1</span>, <span class="number">3</span>); <span class="comment">//ell -- 索引1，截取3位</span></span><br><span class="line"><span class="string">&quot;hello&quot;</span>.<span class="title function_">substr</span>(<span class="number">1</span>, <span class="number">7</span>); <span class="comment">//ello -- 【超过长度】索引1，截取到末尾</span></span><br><span class="line"><span class="string">&quot;hello&quot;</span>.<span class="title function_">substr</span>(-<span class="number">3</span>, <span class="number">2</span>); <span class="comment">//ll -- 从倒数第三个字符开始起截取2个长度</span></span><br><span class="line"><span class="string">&quot;hello&quot;</span>.<span class="title function_">substr</span>(<span class="number">3</span>); <span class="comment">//lo -- 不带length参数，默认指代从start位置截取到字符串末尾</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;hello world!&quot;</span>.<span class="title function_">slice</span>(-<span class="number">3</span>); <span class="comment">//ld</span></span><br><span class="line"><span class="string">&quot;hello world!&quot;</span>.<span class="title function_">slice</span>(-<span class="number">3</span>, -<span class="number">1</span>); <span class="comment">//ld</span></span><br><span class="line"><span class="string">&quot;hello world!&quot;</span>.<span class="title function_">slice</span>(<span class="number">3</span>); <span class="comment">//&quot;lo world!&quot;</span></span><br><span class="line"><span class="string">&quot;hello world&quot;</span>.<span class="title function_">slice</span>(<span class="number">3</span>, <span class="number">7</span>); <span class="comment">//&quot;lo w&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">24</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num.<span class="title function_">toString</span>()); <span class="comment">//&quot;24&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">24</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">String</span>(num)); <span class="comment">//&quot;24&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">24</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;&quot;</span> + num); <span class="comment">//&quot;24&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mystr = <span class="string">&quot;qi,wo,ji&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> arr1 = mystr.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>); <span class="comment">//[&quot;qing&quot;,&quot;wo&quot;,&quot;ji&quot;];</span></span><br><span class="line"><span class="keyword">var</span> arr2 = mystr.<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>); <span class="comment">//[&quot;q&quot;,&quot;i&quot;,&quot;w&quot;,&quot;o&quot;,&quot;j&quot;,&quot;i&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mystr = <span class="string">&quot;qi,wo,ji&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> arr1 = mystr.<span class="title function_">split</span>(<span class="string">&quot;,&quot;</span>, <span class="number">2</span>); <span class="comment">//[&quot;qi&quot;,&quot;wo&quot;] //返回2项</span></span><br><span class="line"><span class="keyword">var</span> arr2 = mystr.<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>, <span class="number">5</span>); <span class="comment">//[&quot;q&quot;,&quot;i&quot;,&quot;w&quot;,&quot;o&quot;,&quot;j&quot;]  返回5项</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> mystr = <span class="string">&quot;hellohelhehellollo&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> arr1 = mystr.<span class="title function_">replace</span>(<span class="string">&quot;he&quot;</span>, <span class="string">&quot; A &quot;</span>); <span class="comment">//&quot; A llohelhehellollo&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;nihaome&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&quot;lixiaoqi&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str3 = str1.<span class="title function_">replace</span>(str1.<span class="title function_">match</span>(<span class="string">&quot;hao&quot;</span>), str2.<span class="title function_">match</span>(<span class="string">&quot;lixi&quot;</span>));</span><br><span class="line"><span class="comment">//找到str1的hao，找到str2的lixi，用str2替换掉str1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str3);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;lixiaoqi nihaoya zaiganma&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&quot;nihaoya&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str3 = <span class="string">&quot;wobuzai&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> num1 = str1.<span class="title function_">search</span>(str2); <span class="comment">//返回的是第一个字符所在的位置</span></span><br><span class="line"><span class="keyword">var</span> num2 = str1.<span class="title function_">search</span>(str3); <span class="comment">//未检测到返回-1</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num1);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(num2);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;helloworld&quot;</span>.<span class="property">length</span>); <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// indexOf()，该Of() 方法对大小写敏感。返回字符串中一个子串第一处出现的索引（从左到右搜索）。如果没有匹配项，返回 -1 。</span></span><br><span class="line"><span class="keyword">var</span> mystr = <span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> index = mystr.<span class="title function_">indexOf</span>(<span class="string">&quot;llo&quot;</span>); <span class="comment">//2</span></span><br><span class="line"><span class="keyword">var</span> index1 = mystr.<span class="title function_">indexOf</span>(<span class="string">&quot;l&quot;</span>); <span class="comment">//2</span></span><br><span class="line"><span class="keyword">var</span> index2 = mystr.<span class="title function_">indexOf</span>(<span class="string">&quot;l&quot;</span>, <span class="number">3</span>); <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello World!&quot;</span>.<span class="title function_">charAt</span>(<span class="number">7</span>)); <span class="comment">//&quot;o&quot;</span></span><br><span class="line"><span class="string">&quot;Hello World!&quot;</span>.<span class="title function_">charCodeAt</span>(<span class="number">7</span>); <span class="comment">//111 -- 查找对应位置的字符编码值</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;lixiaoqi&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = str1.<span class="title function_">match</span>(<span class="string">&quot;iao&quot;</span>); <span class="comment">//检索字符串，返回的是字符</span></span><br><span class="line"><span class="keyword">var</span> str3 = str1.<span class="title function_">match</span>(<span class="string">&quot;lll&quot;</span>); <span class="comment">//没有指定的字符，返回的是null</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str2); <span class="comment">//&#x27;iao&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str3); <span class="comment">//null</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;Hello World!&quot;</span>.<span class="title function_">toLowerCase</span>(); <span class="comment">//&quot;hello world!&quot;</span></span><br><span class="line"><span class="string">&quot;Hello World!&quot;</span>.<span class="title function_">toUpperCase</span>(); <span class="comment">//&quot;HELLO WORLD!&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;     hello world      &quot;</span>.<span class="title function_">trim</span>(); <span class="comment">//&quot;hello world&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串去重</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aahhgggsssjjj&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">removeRepeat</span>(<span class="params">msg</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> a = [];</span><br><span class="line">  <span class="keyword">var</span> arr = msg.<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  arr.<span class="title function_">map</span>(<span class="keyword">function</span> (<span class="params">item</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (a.<span class="title function_">indexOf</span>(item) === -<span class="number">1</span>) &#123;</span><br><span class="line">      a.<span class="title function_">push</span>(item);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> a.<span class="title function_">join</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">removeRepeat</span>(str));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断字符串中字符出现的次数</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;aacccbbeeeddd&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getCount</span>(<span class="params">str</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">  <span class="keyword">var</span> arr = str.<span class="title function_">split</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arr);</span><br><span class="line">  arr.<span class="title function_">map</span>(<span class="keyword">function</span> (<span class="params">value, index</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(value, index, obj.<span class="title function_">hasOwnProperty</span>(value));</span><br><span class="line">    <span class="keyword">if</span> (!obj.<span class="title function_">hasOwnProperty</span>(value)) &#123;</span><br><span class="line">      obj[value] = <span class="number">1</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      obj[value] += <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(key, obj[key]);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">getCount</span>(str);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-数组"><a href="#2-数组" class="headerlink" title="2.数组"></a>2.数组</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">10</span>, <span class="number">30</span>, <span class="number">20</span>].<span class="title function_">sort</span>(<span class="keyword">function</span> (<span class="params">a, b</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a - b;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr1 = [<span class="string">&quot;yang&quot;</span>, <span class="string">&quot;yan&quot;</span>, <span class="string">&quot;fei&quot;</span>];</span><br><span class="line"><span class="keyword">var</span> arr2 = [<span class="number">10</span>, <span class="number">11</span>, <span class="number">2</span>, <span class="number">33</span>, <span class="number">44</span>, <span class="number">55</span>];</span><br><span class="line"><span class="keyword">var</span> arr3 = [<span class="string">&quot;wang&quot;</span>, <span class="number">54</span>];</span><br><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;yangyanfei&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> result = arr1.<span class="title function_">concat</span>(arr2, str1, arr3); <span class="comment">//[&quot;yang&quot;, &quot;yan&quot;, &quot;fei&quot;, 10, 11, 2, 33, 44, 55, &quot;yangyanfei&quot;, &quot;wang&quot;, 54]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// iterable：一个具有可枚举属性并且可以迭代的对象。</span></span><br><span class="line"><span class="keyword">const</span> iterable = [<span class="string">&quot;mini&quot;</span>, <span class="string">&quot;mani&quot;</span>, <span class="string">&quot;mo&quot;</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">const</span> value <span class="keyword">of</span> iterable) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&quot;yang&quot;</span>, <span class="string">&quot;yan&quot;</span>, <span class="string">&quot;fei&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">join</span>(<span class="string">&quot;-&quot;</span>)); <span class="comment">//&quot;yang-yan-fei&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">//[&quot;yang&quot;, &quot;yan&quot;, &quot;fei&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&quot;yang&quot;</span>, <span class="string">&quot;yan&quot;</span>, <span class="string">&quot;fei&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">pop</span>()); <span class="comment">//&quot;fei&quot;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">//[&quot;yang&quot;, &quot;yan&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&quot;yang&quot;</span>, <span class="string">&quot;yan&quot;</span>, <span class="string">&quot;fei&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">push</span>(<span class="string">&quot;haha&quot;</span>)); <span class="comment">//4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">//[&quot;yang&quot;, &quot;yan&quot;, &quot;fei&quot;, &quot;haha&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&quot;yang&quot;</span>, <span class="string">&quot;yan&quot;</span>, <span class="string">&quot;fei&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">shift</span>()); <span class="comment">//yang</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">//[&quot;yang&quot;, &quot;yan&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&quot;yang&quot;</span>, <span class="string">&quot;yan&quot;</span>, <span class="string">&quot;fei&quot;</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">unshift</span>(<span class="string">&quot;hehe&quot;</span>)); <span class="comment">//4</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">//[&quot;hehe&quot;, &quot;yang&quot;, &quot;yan&quot;, &quot;fei&quot;]</span></span><br><span class="line"></span><br><span class="line">[<span class="string">&quot;yang&quot;</span>, <span class="string">&quot;yan&quot;</span>, <span class="string">&quot;fei&quot;</span>, <span class="string">&quot;haha&quot;</span>].<span class="title function_">reverse</span>(); <span class="comment">//[&quot;haha&quot;, &quot;fei&quot;, &quot;yan&quot;, &quot;yang&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&quot;yang&quot;</span>, <span class="string">&quot;yan&quot;</span>, <span class="string">&quot;fei&quot;</span>];</span><br><span class="line"><span class="keyword">var</span> result = arr.<span class="title function_">slice</span>(<span class="number">0</span>, <span class="number">1</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">//[&quot;yang&quot;, &quot;yan&quot;, &quot;fei&quot;]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result); <span class="comment">//[&quot;yang&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>];</span><br><span class="line"><span class="comment">// slice 纯函数</span></span><br><span class="line"><span class="keyword">const</span> arr1 = arr.<span class="title function_">slice</span>(); <span class="comment">//【什么也不传，浅拷贝一份数组】</span></span><br><span class="line"><span class="keyword">const</span> arr2 = arr.<span class="title function_">slice</span>(<span class="number">1</span>, <span class="number">4</span>); <span class="comment">//[20,30,40]    slice(开始的索引，结束的索引【不包括结束索引】)</span></span><br><span class="line"><span class="keyword">const</span> arr3 = arr.<span class="title function_">slice</span>(<span class="number">2</span>); <span class="comment">//[30,40,50]   slice(开始的索引)【从开始的索引到结束为止】</span></span><br><span class="line"><span class="keyword">const</span> arr4 = arr.<span class="title function_">slice</span>(-<span class="number">2</span>); <span class="comment">//[40,50] slice(负数数值)【从末尾往前截取个数】</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// splice 非纯函数</span></span><br><span class="line"><span class="keyword">const</span> spliceRes = arr.<span class="title function_">splice</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>); <span class="comment">//【开始的索引位置，剪接的长度，要插入的新元素】</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(spliceRes, arr); <span class="comment">//[20,30],[10,&quot;a&quot;,&quot;b&quot;,&quot;c&quot;,40,50]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> spliceRes1 = arr.<span class="title function_">splice</span>(<span class="number">1</span>, <span class="number">2</span>); <span class="comment">//只想剪接，不插入数值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(spliceRes1, arr); <span class="comment">//[20,30],[10,40,50]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> spliceRes2 = arr.<span class="title function_">splice</span>(<span class="number">1</span>, <span class="number">0</span>, <span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>); <span class="comment">//不剪接，只插入数值</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(spliceRes2, arr);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">Array</span>.<span class="title function_">isArray</span>(arr)); <span class="comment">// true</span></span><br><span class="line"><span class="comment">// ES3的判断方法</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="keyword">typeof</span> arr); <span class="comment">// object</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr.<span class="title function_">toString</span>()); <span class="comment">// 3,4,5</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr <span class="keyword">instanceof</span> <span class="title class_">Array</span>); <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// arr.includes() 判断数中是否包含给定的值</span></span><br><span class="line"><span class="comment">// ps:与indexOf()的区别：</span></span><br><span class="line"><span class="comment">// 1 indexOf()返回的是数值，而includes()返回的是布尔值</span></span><br><span class="line"><span class="comment">// 2 indexOf() 不能判断NaN，返回为-1 ，includes()则可以判断</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">includes</span>(<span class="number">2</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr1); <span class="comment">// ture</span></span><br><span class="line"><span class="keyword">let</span> arr2 = arr.<span class="title function_">includes</span>(<span class="number">9</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr2); <span class="comment">// false</span></span><br><span class="line"><span class="keyword">let</span> arr3 = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="title class_">NaN</span>].<span class="title function_">includes</span>(<span class="title class_">NaN</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr3); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// arr.keys() 遍历数组的键名</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> arr2 = arr.<span class="title function_">keys</span>();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> arr2) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(key); <span class="comment">// 0,1,2,3</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123; <span class="number">1</span>: <span class="number">2</span>, <span class="number">2</span>: <span class="number">2</span>, <span class="number">4</span>: <span class="number">2</span>, <span class="number">7</span>: <span class="number">1</span> &#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> obj) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i, obj[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 1 2</span></span><br><span class="line"><span class="comment"> * 2 2</span></span><br><span class="line"><span class="comment"> * 4 2</span></span><br><span class="line"><span class="comment"> * 7 1</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// arr.values() 遍历数组键值</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">values</span>();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> val <span class="keyword">of</span> arr1) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(val); <span class="comment">// 1,2,3,4</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// arr.entries() 遍历数组的键名和键值</span></span><br><span class="line"><span class="comment">// entries() 方法返回迭代数组。</span></span><br><span class="line"><span class="comment">// 迭代数组中每个值 前一个是索引值作为 key， 数组后一个值作为 value。</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>];</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.<span class="title function_">entries</span>();</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> e <span class="keyword">of</span> arr1) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(e); <span class="comment">// [0,1] [1,2] [2,3] [3,4]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-对象"><a href="#3-对象" class="headerlink" title="3.对象"></a>3.对象</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断对象为空：</span></span><br><span class="line"><span class="comment">// 方法一：</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">judgeObj</span>(<span class="params">obj</span>) &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> a <span class="keyword">in</span> obj) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">alert</span>(<span class="string">&quot;非空对象&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">alert</span>(<span class="string">&quot;空对象&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法二：</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title class_">JSON</span>.<span class="title function_">stringify</span>(c) == <span class="string">&quot;&#123;&#125;&quot;</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;空对象&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 方法三：</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title class_">Object</span>.<span class="title function_">keys</span>(obj).<span class="property">length</span> == <span class="number">0</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;空对象&quot;</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;非空对象&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-遍历"><a href="#4-遍历" class="headerlink" title="4.遍历"></a>4.遍历</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// reduce</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>];</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">  arr.<span class="title function_">reduce</span>(<span class="keyword">function</span> (<span class="params">v1, v2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> v1 + v2;</span><br><span class="line">  &#125;)</span><br><span class="line">); <span class="comment">// 21</span></span><br><span class="line"><span class="comment">//开始是1+2 = 3，之后3+3 =6，之后6+4 =10，之后</span></span><br><span class="line"><span class="comment">//10+5 =15，最后15+6 =21</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">  arr.<span class="title function_">reduce</span>(<span class="keyword">function</span> (<span class="params">v1, v2</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> v1 - v2;</span><br><span class="line">  &#125;, <span class="number">100</span>)</span><br><span class="line">); <span class="comment">// 79</span></span><br><span class="line"><span class="comment">//开始的时候100-1=99，之后99-2=97，之后97-3=94，之后</span></span><br><span class="line"><span class="comment">//94-4=90，之后90-5=85，最后85-6=79</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 1. 普通的for循环</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.<span class="property">length</span>; i++) &#123;</span><br><span class="line">  <span class="comment">// 这里的i是代表数组的下标</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 0, 1, 2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 优化版的for循环</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = arr.<span class="property">length</span>; i &lt; len; i++) &#123;</span><br><span class="line">  <span class="comment">// 这里的i是代表数组的下标</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(i); <span class="comment">// 0, 1, 2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. for...of...遍历(这种遍历支持ES6)</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">1、 这是最简洁、最直接的遍历数组元素的语法</span></span><br><span class="line"><span class="comment">2、 这个方法避开了for-in循环的所有缺陷</span></span><br><span class="line"><span class="comment">3、 与forEach()不同的是，它可以正确响应break、continue和return语句</span></span><br><span class="line"><span class="comment">4、性能要好于forin，但仍然比不上普通for循环</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">of</span> arr) &#123;</span><br><span class="line">  <span class="comment">// item代表数组里面的元素</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item); <span class="comment">// 1, 2, 3</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//4. forEach()</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这种遍历便捷还是挺便捷的，看起来优雅，对目标数组的操作很人性化，要元素给元素，要下标给下标，</span></span><br><span class="line"><span class="comment">但是当某种情况你想中断遍历的时候，你就会感觉它就像鸡肋，食之无味，弃之可惜。</span></span><br><span class="line"><span class="comment">由于foreach是Array型自带的，对于一些非这种类型的，无法直接使用(如NodeList)，</span></span><br><span class="line"><span class="comment">所以才有了这个变种，使用这个变种可以让类似的数组拥有foreach功能。而且forEach的性能也会比普通的for循环弱。</span></span><br><span class="line"><span class="comment">又下面的例子我们可以看到，我们常用的return false是可以终止代码继续往下执行的，但是在forEach遍历中，</span></span><br><span class="line"><span class="comment">并没有终止循环，所以在用forEach的时候，要考虑使用场景了。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr.<span class="title function_">forEach</span>(<span class="function">(<span class="params">item, index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// item为arr的元素，index为下标，arr原数组</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item); <span class="comment">// 1, 2, 3</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(index); <span class="comment">// 0, 1, 2</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">// [1, 2, 3]</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// forEach():对数组的每个元素执行一次提供的函数。</span></span><br><span class="line"><span class="keyword">var</span> array1 = [<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>, <span class="string">&quot;c&quot;</span>];</span><br><span class="line">array1.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">element</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(element);</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * a</span></span><br><span class="line"><span class="comment"> * b</span></span><br><span class="line"><span class="comment"> * c</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">queryToObj</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> res = &#123;&#125;;</span><br><span class="line">  <span class="keyword">const</span> pList = <span class="keyword">new</span> <span class="title class_">URLSearchParams</span>(<span class="string">&quot;?tpId=2&amp;tqId=10851&amp;rp=1&quot;</span>);</span><br><span class="line">  pList.<span class="title function_">forEach</span>(<span class="function">(<span class="params">val, key</span>) =&gt;</span> &#123;</span><br><span class="line">    res[key] = val;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">queryToObj</span>(); <span class="comment">//&#123;tpId: &quot;2&quot;, tqId: &quot;10851&quot;, rp: &quot;1&quot;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5.some()</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">some作为一个用来检测数组是否满足一些条件的函数存在，同样是可以用作遍历的函数签名同forEach，有区别的是当任一callback返回值匹配为true则会直接返回true，如果所有的callback匹配均为false，则返回false。</span></span><br><span class="line"><span class="comment">some() 方法会依次执行数组的每个元素：</span></span><br><span class="line"><span class="comment">如果有一个元素满足条件，则表达式返回true , 剩余的元素不会再执行检测。</span></span><br><span class="line"><span class="comment">如果没有满足条件的元素，则返回false。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr.<span class="title function_">some</span>(<span class="function">(<span class="params">item, index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// item为数组中的元素，index为下标，arr为目标数组</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item); <span class="comment">// 1, 2, 3</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(index); <span class="comment">// 0, 1, 2</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">// [1, 2, 3]</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">6</span>, <span class="number">8</span>, -<span class="number">2</span>, -<span class="number">5</span>, <span class="number">7</span>, -<span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> isPositive = arr.<span class="title function_">some</span>(<span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> value &gt; <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(isPositive); <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 6. every()</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">every() 方法用于检测数组所有元素是否都符合指定条件（通过函数提供）。</span></span><br><span class="line"><span class="comment">every() 方法使用指定函数检测数组中的所有元素：</span></span><br><span class="line"><span class="comment">如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测。</span></span><br><span class="line"><span class="comment">如果所有元素都满足条件，则返回 true。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr.<span class="title function_">every</span>(<span class="function">(<span class="params">item, index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// item为数组中的元素，index为下标，arr为目标数组</span></span><br><span class="line">  <span class="keyword">return</span> item &gt; <span class="number">0</span>; <span class="comment">// true</span></span><br><span class="line">  <span class="keyword">return</span> index == <span class="number">0</span>; <span class="comment">// false</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">6</span>, <span class="number">8</span>, -<span class="number">2</span>, -<span class="number">5</span>, <span class="number">7</span>, -<span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> isPositive = arr.<span class="title function_">every</span>(<span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> value &gt; <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(isPositive); <span class="comment">// false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 7. for...in...遍历</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">for...in更多是用来遍历对象，很少用来遍历数组， 不过 item 对应与数组的 key值，建议不要用该方法来遍历数组，</span></span><br><span class="line"><span class="comment">因为它的效率是最低的。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> item <span class="keyword">in</span> arr) &#123;</span><br><span class="line">  <span class="comment">// item遍历数组时为数组的下标，遍历对象时为对象的key值</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item); <span class="comment">// 0, 1, 2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 8. filter()</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">ES5-filter(function(element))</span></span><br><span class="line"><span class="comment">返回数组的一个子集，回调函数用于逻辑判断是否返回，返回true则把当前元素加到返回数组中，false则不加</span></span><br><span class="line"><span class="comment">新数组只包含返回true的值，索引确实的不包括，原数组保持不变。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">6</span>, <span class="number">8</span>, -<span class="number">2</span>, -<span class="number">5</span>, <span class="number">7</span>, -<span class="number">4</span>];</span><br><span class="line"><span class="keyword">var</span> positiverArr = arr.<span class="title function_">filter</span>(<span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> value &gt; <span class="number">0</span>;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(positiverArr); <span class="comment">// [1, 6, 8, 7]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(arr); <span class="comment">// [1, 6, 8, -2, -5, 7, -4]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr.<span class="title function_">filter</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// item为数组当前的元素</span></span><br><span class="line">  <span class="keyword">return</span> item &gt; <span class="number">1</span>; <span class="comment">// [2, 3]</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 9. map()</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * map() 方法返回一个新数组，数组中的元素为原始数组元素调用函数处理后的值。</span></span><br><span class="line"><span class="comment">　　map() 方法按照原始数组元素顺序依次处理元素。</span></span><br><span class="line"><span class="comment">　　这种方式也是用的比较广泛的，虽然用起来比较优雅，但实际效率还比不上foreach</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">arr.<span class="title function_">map</span>(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// item为数组的元素</span></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(item); <span class="comment">// 1, 2, 3</span></span><br><span class="line">  <span class="keyword">return</span> item * <span class="number">2</span>; <span class="comment">// 返回一个处理过的新数组[2, 4, 6]</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对数组的每一项运行给定的函数，返回没戏函数调用的结果组成的数组</span></span><br><span class="line"><span class="keyword">var</span> array1 = [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>];</span><br><span class="line"><span class="keyword">const</span> map1 = array1.<span class="title function_">map</span>(<span class="keyword">function</span> (<span class="params">param, index</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(param, index);</span><br><span class="line">  <span class="keyword">return</span> param * <span class="number">2</span>;</span><br><span class="line">&#125;); <span class="comment">//对数组的每项*2</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(map1);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">1 0</span></span><br><span class="line"><span class="comment">4 1</span></span><br><span class="line"><span class="comment">9 2</span></span><br><span class="line"><span class="comment">16 3</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">[2,8,18,32]</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持鼓励我继续创作</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WechatPay.png" alt=" WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.jpg" alt=" Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2022/01/06/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E9%A2%986%EF%BC%9A%E5%89%8D%E7%AB%AF%E4%B8%AD%E7%AD%89%E7%BC%96%E7%A8%8B%E9%A2%98--%E6%97%A0%E7%AD%94%E6%A1%88/" rel="next" title="面试题6：前端中等编程题--无答案">
+                <i class="fa fa-chevron-left"></i> 面试题6：前端中等编程题--无答案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2022/01/09/%E9%9D%A2%E8%AF%95%E9%A2%98/%E9%9D%A2%E8%AF%95%E7%9C%9F%E9%A2%981%EF%BC%9A%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/" rel="prev" title="面试真题1：字节跳动">
+                面试真题1：字节跳动 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">115</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/daykalif" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:r00t_daykalif@aliyun.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.daykalif.com/" title="Daykalif" target="_blank">Daykalif</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.</span> <span class="nav-text">1.字符串</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E6%95%B0%E7%BB%84"><span class="nav-number"></span> <span class="nav-text">2.数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AF%B9%E8%B1%A1"><span class="nav-number"></span> <span class="nav-text">3.对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E9%81%8D%E5%8E%86"><span class="nav-number"></span> <span class="nav-text">4.遍历</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2019 &mdash; <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-snowflake-o"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">r00t_daykalif</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">290.7k</span>
+  
+</div>
+
+
+
+
+
+
+<div style="width:300px;margin:0 auto; padding:20px 0;">
+	<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010902002156" style="display:inline-block;text-decoration:none;height:20px;line-height:20px;">
+    <img src="https://www.daykalif.com/beian.png" style="float:left;"/>
+    <p style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;">
+    浙公网安备 33010902002156号
+    </p>
+  </a>
+</div>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz',
+        appKey: 'q00Ulu1a5iQSaM6XV0ba4QeF',
+        placeholder: 'ヾﾉ≧∀≦)o来啊，快活啊!',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("NXoB8ypSoELq08t7Y4t4Y7Co-gzGzoHsz", "q00Ulu1a5iQSaM6XV0ba4QeF");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
